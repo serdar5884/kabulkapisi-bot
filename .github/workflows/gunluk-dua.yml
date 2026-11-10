@@ -1,0 +1,66 @@
+name: Kabul Kapisi Botu
+
+# Zamanlama cron-job.org'dan yapılır (GitHub'ın kendi zamanlayıcısı saatlerce gecikebiliyor).
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "post (bu vaktin duasi) | onizleme (3 gunluk 9 kart)"
+        default: "post"
+      dry_run:
+        description: "1 = sadece test (paylasma), 0 = paylas"
+        default: "1"
+      vakit:
+        description: "sabah | ogle | aksam (bos = saate gore)"
+        default: ""
+      tarih:
+        description: "Test icin tarih (YYYY-AA-GG), bos = bugun"
+        default: ""
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Paylaşım geçmişini yükle
+        uses: actions/cache/restore@v4
+        with:
+          path: gecmis.json
+          key: gecmis-${{ github.run_id }}
+          restore-keys: gecmis-
+      - name: Botu calistir
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IMGBB_API_KEY: ${{ secrets.IMGBB_API_KEY }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+          MODE: ${{ github.event.inputs.mode || 'post' }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || '0' }}
+          TARIH: ${{ github.event.inputs.tarih }}
+          VAKIT: ${{ github.event.inputs.vakit }}
+        run: python bot.py
+      - name: Kartları indirilebilir yap
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kartlar
+          path: gorseller/*.jpg
+          if-no-files-found: ignore
+      - name: Önizleme kartları
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: onizleme
+          path: gorseller/onizleme/
+          if-no-files-found: ignore
+      - name: Paylaşım geçmişini kaydet
+        if: always()
+        continue-on-error: true
+        uses: actions/cache/save@v4
+        with:
+          path: gecmis.json
+          key: gecmis-${{ github.run_id }}

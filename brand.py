@@ -311,19 +311,9 @@ def make_photo_card(path, metin, zemin, baslik="Günün Duası", kaynak=None, da
     ed.rounded_rectangle([px1 + 16, py1 + 16, px2 - 16, py2 - 16], radius=24, outline=GOLD + (90,), width=1)
     img = Image.alpha_composite(img, edge)
 
-    # başlık (kalın, altın degrade, gölgeli)
-    ft = font("bold", 74 if not kandil else 72)
-    title = baslik.replace("i", "İ").replace("ı", "I").upper()
-    tl = _gold_text(None, title, ft)
-    sh = Image.new("RGBA", tl.size, (0, 0, 0, 0))
-    sh.putalpha(tl.getchannel("A").point(lambda a: int(a * 0.8)))
-    sh = sh.filter(_IF.GaussianBlur(6))
-    ty = py1 + 42
-    tx = (W - tl.width) // 2
-    img.alpha_composite(sh, (tx + 2, ty + 5))
-    img.alpha_composite(tl, (tx, ty))
+    # başlık yok: üstte sadece süslü ayraç
     d = ImageDraw.Draw(img, "RGBA")
-    oy = ty + tl.height + 26
+    oy = py1 + 70
     _ornament(d, W // 2, oy)
     y = oy + 34
 
@@ -360,7 +350,7 @@ def make_photo_card(path, metin, zemin, baslik="Günün Duası", kaynak=None, da
 
     # alt bilgi
     fy = py2 - 126
-    _center(d, fy, "Âmin demeyi unutma", font("italic", 40), (250, 244, 230))
+    _center(d, fy, "Paylaşmayı unutma", font("italic", 40), (250, 244, 230))
     tarih = f"{date.day} {AYLAR[date.month - 1]} {date.year}"
     _center(d, fy + 54, f"{HANDLE}   ·   {tarih}", font("semibold", 29), GOLD_HI)
 

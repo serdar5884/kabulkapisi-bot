@@ -120,7 +120,34 @@ def onizleme():
             print(f"{gun} {v} [{tur}] {dua['metin'][:60]}...")
 
 
+def kontrol():
+    """Paylaşım yapmadan anahtarları dener."""
+    hata = False
+    for ad, val in (("IG_ACCESS_TOKEN", insta.IG_TOKEN), ("IMGBB_API_KEY", insta.IMGBB_KEY), ("GH_PAT", insta.GH_PAT)):
+        print(f"{ad}: {'VAR' if val else 'EKSİK'}")
+        hata |= not val
+    try:
+        r = insta.requests.get(f"{insta.API}/me", params={"fields": "user_id,username", "access_token": insta.IG_TOKEN}, timeout=30)
+        j = r.json()
+        print("Instagram hesabı:", j.get("username"), "| hata:" if "error" in j else "", j.get("error", {}).get("message", ""))
+        if j.get("username", "").lower() != "kabulkapisi":
+            hata = True
+    except Exception as e:
+        print("Instagram kontrol hatası:", e); hata = True
+    try:
+        test = os.path.join(brand.OUT_DIR, "logo.png")
+        print("imgbb yükleme:", insta.upload_public(test))
+    except Exception as e:
+        print("imgbb hatası:", e); hata = True
+    if hata:
+        sys.exit("KONTROL BAŞARISIZ")
+    print("KONTROL BAŞARILI")
+
+
 def main():
+    if MODE == "kontrol":
+        kontrol()
+        return
     if MODE == "onizleme":
         onizleme()
         return

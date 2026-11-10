@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "post (bu vaktin duasi) | onizleme (3 gunluk 9 kart)"
+        description: "post (bu vaktin duasi) | onizleme (3 gunluk 9 kart) | kontrol (anahtar testi)"
         default: "post"
       dry_run:
         description: "1 = sadece test (paylasma), 0 = paylas"

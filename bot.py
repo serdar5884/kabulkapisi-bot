@@ -126,13 +126,25 @@ def kontrol():
     for ad, val in (("IG_ACCESS_TOKEN", insta.IG_TOKEN), ("IMGBB_API_KEY", insta.IMGBB_KEY), ("GH_PAT", insta.GH_PAT)):
         print(f"{ad}: {'VAR' if val else 'EKSİK'}")
         hata |= not val
-    try:
+    if insta.SYSTEM_TOKEN:
+        print("Token türü: EAA (Unified/Facebook) -> IG_USER_ID:", insta.IG_USER_ID or "EKSİK")
+        for path, fields in (("me", "id,name"), ("me/accounts", "name,instagram_business_account{id,username}")):
+            r = insta.requests.get(f"{insta.API}/{path}", params={"fields": fields, "access_token": insta.IG_TOKEN}, timeout=30)
+            print(f"{path}:", r.text[:600])
+        if insta.IG_USER_ID:
+            r = insta.requests.get(f"{insta.API}/{insta.IG_USER_ID}", params={"fields": "username", "access_token": insta.IG_TOKEN}, timeout=30)
+            j = r.json(); print("Instagram hesabı:", j.get("username"), j.get("error", {}).get("message", ""))
+            hata |= j.get("username", "").lower() != "kabulkapisi"
+        else:
+            hata = True
+    else:
+      try:
         r = insta.requests.get(f"{insta.API}/me", params={"fields": "user_id,username", "access_token": insta.IG_TOKEN}, timeout=30)
         j = r.json()
         print("Instagram hesabı:", j.get("username"), "| hata:" if "error" in j else "", j.get("error", {}).get("message", ""))
         if j.get("username", "").lower() != "kabulkapisi":
             hata = True
-    except Exception as e:
+      except Exception as e:
         print("Instagram kontrol hatası:", e); hata = True
     try:
         test = os.path.join(brand.OUT_DIR, "logo.png")

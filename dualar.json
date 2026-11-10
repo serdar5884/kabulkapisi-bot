@@ -3,8 +3,18 @@
  "ozel": [
   {
    "tur": "ozgun",
+   "tema": "borç",
+   "metin": "Allah'ım, bu satırları okuyan borçlu kardeşimin borcunu helal rızkınla kapat. Gece uykusunu kaçıran o yükü omzundan al, yerine ferahlık ver."
+  },
+  {
+   "tur": "ozgun",
    "metin": "Hayırlı sabahlar. Bu satırları okuyan kardeşim; Rabbim gününü bereketli, yolunu açık, işini kolay eylesin. Akşama kadar seni her türlü kötülükten korusun.",
    "vakit": "sabah"
+  },
+  {
+   "tur": "ozgun",
+   "tema": "hasta",
+   "metin": "Allah'ım, bu satırları okuyan hasta kardeşime acil şifa ver. Çektiği her ağrıyı günahlarına kefaret, her sabrını ahiretine sermaye eyle."
   },
   {
    "tur": "ozgun",
@@ -13,8 +23,23 @@
   },
   {
    "tur": "ozgun",
+   "tema": "dert",
+   "metin": "Bu satırları okuyan dertli kardeşim; Rabbim kimseye söyleyemediğin o derdi biliyor. Dilinden dökülmeyen duayı kabul etsin, gönlüne ferahlık versin."
+  },
+  {
+   "tur": "ozgun",
    "metin": "Allah'ım, bu sabah gözünü açan kardeşimin kalbini de huzura aç. Bugün ona sadece hayırlı haberler, hayırlı insanlar ve hayırlı kapılar nasip eyle.",
    "vakit": "sabah"
+  },
+  {
+   "tur": "ozgun",
+   "tema": "borç",
+   "metin": "Rabbim, borcunu düşünüp sessizce iç çeken herkese kimseye muhtaç etmeden ödeme imkânı nasip etsin. Kapanmaz sandığı hesapları rahmetiyle kapatsın."
+  },
+  {
+   "tur": "ozgun",
+   "tema": "hasta",
+   "metin": "Rabbim, hastane koridorlarında bekleyen anne babalara sabır, yatakta yatan yavrularına şifa versin. Hiçbir ebeveyni evladıyla sınamasın."
   },
   {
    "tur": "ozgun",
@@ -23,8 +48,18 @@
   },
   {
    "tur": "ozgun",
+   "tema": "dert",
+   "metin": "Allah'ım, gece yastığa gözyaşıyla baş koyan kardeşlerimin gözyaşını sil. Sabaha sevinçle uyandır, kederlerini birer birer gider."
+  },
+  {
+   "tur": "ozgun",
    "metin": "Günaydın. Rabbim bu sabahı senin için kederlerin bittiği, sevinçlerin başladığı bir sabah eylesin.",
    "vakit": "sabah"
+  },
+  {
+   "tur": "ozgun",
+   "tema": "borç",
+   "metin": "Allah'ım, kirası, kredisi, taksidi olan kardeşlerimin yükünü hafiflet. Beklemedikleri yerden rızık ver, alacaklıların kalbine de yumuşaklık koy."
   },
   {
    "tur": "ozgun",
@@ -33,8 +68,18 @@
   },
   {
    "tur": "ozgun",
+   "tema": "hasta",
+   "metin": "Allah'ım, ameliyata girecek olan kardeşimizi selametle çıkar. Doktorlarının eline maharet, aklına isabet ver, ailesinin içine huzur doldur."
+  },
+  {
+   "tur": "ozgun",
    "metin": "Bu sabah okuyan herkese: Rabbim gönlünden geçen işi kolaylaştırsın, önündeki zorluğu aşmayı nasip etsin, akşam olduğunda şükürle yastığa baş koydursun.",
    "vakit": "sabah"
+  },
+  {
+   "tur": "ozgun",
+   "tema": "dert",
+   "metin": "Rabbim, içinden çıkamadığın o durumu sana kolaylaştırsın. Kapalı gördüğün yollar açılsın, imkânsız dediğin şey bir anda mümkün olsun."
   },
   {
    "tur": "ozgun",
@@ -43,8 +88,23 @@
   },
   {
    "tur": "ozgun",
+   "tema": "borç",
+   "metin": "Borcu yüzünden mahcup olan kardeşim; Rabbim seni o mahcubiyetten kurtarsın, alnının akıyla ödemeyi, sonra da kimseye borçlanmadan yaşamayı nasip etsin."
+  },
+  {
+   "tur": "ozgun",
    "metin": "Rabbim bu güne seni sevenlerin duasıyla başlamayı, seni sevindirecek haberlerle bitirmeyi nasip etsin.",
    "vakit": "sabah"
+  },
+  {
+   "tur": "ozgun",
+   "tema": "hasta",
+   "metin": "Kim bu satırları okuyorsa ve sevdiği biri hastaysa; Rabbim o hastaya şifa, sana da sabır versin. Sağlıkla, sevinçle yeniden bir sofrada buluşturun."
+  },
+  {
+   "tur": "ozgun",
+   "tema": "dert",
+   "metin": "Allah'ım, kalbi kırılan, emeği karşılıksız kalan, sevdiğinden vefa görmeyen kardeşlerimizin gönlünü sen hoş et. Kırıklarını rahmetinle onar."
   },
   {
    "tur": "ozgun",
@@ -53,8 +113,18 @@
   },
   {
    "tur": "ozgun",
+   "tema": "borç",
+   "metin": "Allah'ım, borç yüzünden evinde huzuru kaçmış ailelere sükûnet ver. Eşleri birbirine düşürme, çocukların gönlünü kırma, kapılarına bereket gönder."
+  },
+  {
+   "tur": "ozgun",
    "metin": "Günün ilk ışığıyla gelen bu dua sana olsun: Rabbim seni korkudan emniyete, darlıktan genişliğe, yalnızlıktan güzel dostluklara ulaştırsın.",
    "vakit": "sabah"
+  },
+  {
+   "tur": "ozgun",
+   "tema": "hasta",
+   "metin": "Allah'ım, yoğun bakımda nefes bekleyen kardeşlerimize hayat ver. Kapının önünde bekleyenlere güzel haberler ulaştır."
   },
   {
    "tur": "ozgun",
@@ -63,8 +133,18 @@
   },
   {
    "tur": "ozgun",
+   "tema": "dert",
+   "metin": "Kim bu duayı okuyorsa ve içi daralıyorsa; Rabbim göğsünü genişletsin, aklındaki düğümleri çözsün, gece seni uyutmayan endişeyi alsın."
+  },
+  {
+   "tur": "ozgun",
    "metin": "Rabbim sabahını nurlu, öğleni bereketli, akşamını huzurlu eylesin. Bugün kimseye muhtaç etmesin, kimseyi de kapından boş çevirtmesin.",
    "vakit": "sabah"
+  },
+  {
+   "tur": "ozgun",
+   "tema": "borç",
+   "metin": "Rabbim, emeğinin karşılığını alamayan, alacağını tahsil edemeyen kardeşlerimin hakkını onlara ulaştırsın. Helalinden kazandığını bereketlendirsin."
   },
   {
    "tur": "ozgun",
@@ -73,8 +153,18 @@
   },
   {
    "tur": "ozgun",
+   "tema": "hasta",
+   "metin": "Rabbim, tahlil sonucunu bekleyen kardeşimin korkusunu alsın, kalbini emniyete erdirsin, sonuçlarını hayırlı ve ferahlatıcı eylesin."
+  },
+  {
+   "tur": "ozgun",
    "metin": "Allah'ım, sabah namazına kalkanı mükâfatlandır, kalkamayanı bir sonraki sabaha uyandır. Hepimizi sana yönelen kullarından eyle.",
    "vakit": "sabah"
+  },
+  {
+   "tur": "ozgun",
+   "tema": "dert",
+   "metin": "Allah'ım, yalnızlık çeken kardeşlerimize güzel dostlar, iyi komşular, sıcak bir yuva nasip et. Kimseyi kimsesiz bırakma."
   },
   {
    "tur": "ozgun",
@@ -83,8 +173,23 @@
   },
   {
    "tur": "ozgun",
+   "tema": "borç",
+   "metin": "Bu satırları okuyan kardeşimin bütün borçları Rabbimin izniyle bu yıl bitsin. Hesabını yaparken titreyen eli, şükürle açılan bir ele dönsün."
+  },
+  {
+   "tur": "ozgun",
+   "tema": "hasta",
+   "metin": "Allah'ım, uzun süredir tedavi gören, ilaçlarla yorulan kardeşlerimize dayanma gücü ver. Tedavilerini şifaya, sabırlarını mükâfata çevir."
+  },
+  {
+   "tur": "ozgun",
    "metin": "Rabbim bugün yolculuğa çıkanı selametle varacağı yere ulaştırsın, direksiyon başındakini kazadan, beladan, her türlü kötülükten muhafaza eylesin.",
    "vakit": "sabah"
+  },
+  {
+   "tur": "ozgun",
+   "tema": "dert",
+   "metin": "Rabbim, evlat derdi çekenlere hayırlı evlat, evladı yoldan çıkmış olanlara evladının hidayetini nasip etsin. Ana baba yüreği yanmasın."
   },
   {
    "tur": "ozgun",
@@ -93,8 +198,18 @@
   },
   {
    "tur": "ozgun",
+   "tema": "borç",
+   "metin": "Allah'ım, işini kaybedip borçla bırakılanlara hayırlı bir kapı aç. Onları el açtırmaktan koru, alın teriyle kazanacakları helal bir iş nasip et."
+  },
+  {
+   "tur": "ozgun",
    "metin": "Allah'ım, bu sabah hastanede uyanan kardeşlerimize şifa, kapısını çalan derde deva, bekleyenlerine sabır ver.",
    "vakit": "sabah"
+  },
+  {
+   "tur": "ozgun",
+   "tema": "hasta",
+   "metin": "Bu duayı okuyan herkesin bedenine sağlık, zihnine dinçlik, kalbine huzur versin Rabbim. Evinizden hastalık eksik olmasın, şifa eksik olmasın."
   },
   {
    "tur": "ozgun",
@@ -103,8 +218,18 @@
   },
   {
    "tur": "ozgun",
+   "tema": "dert",
+   "metin": "Allah'ım, aile içinde huzursuzluk yaşayanlara barış, küs olanlara sulh, birbirinden uzaklaşan kalplere yeniden muhabbet ver."
+  },
+  {
+   "tur": "ozgun",
    "metin": "Günaydın. Rabbim bugün kalbine ilham, aklına isabet, işine bereket, yoluna aydınlık versin.",
    "vakit": "sabah"
+  },
+  {
+   "tur": "ozgun",
+   "tema": "borç",
+   "metin": "Rabbim borç derdini bir sınav olarak gönderdiyse, sabrını da beraberinde versin. Bu darlığın ardından öyle bir genişlik gelsin ki, bugünleri şükürle ansın."
   },
   {
    "tur": "ozgun",
@@ -113,7 +238,22 @@
   },
   {
    "tur": "ozgun",
+   "tema": "hasta",
+   "metin": "Allah'ım, yaşlı anne babalarımızın ağrılarını hafiflet, ömürlerini sağlıkla uzat, bizi onlara layıkıyla hizmet edenlerden eyle."
+  },
+  {
+   "tur": "ozgun",
+   "tema": "dert",
+   "metin": "Bu satırları okuyan kardeşim; Rabbim seni üzen kişinin kalbini yumuşatsın, aranızdaki kırgınlığı gidersin, ya da seni ondan hayırla ayırsın."
+  },
+  {
+   "tur": "ozgun",
    "metin": "Bu satırları okuyan kardeşim; Rabbim bugün yüzünü güldürsün, kalbindeki düğümleri bir bir çözsün, beklediğin hayırlı haberi en güzel vaktinde sana ulaştırsın."
+  },
+  {
+   "tur": "ozgun",
+   "tema": "borç",
+   "metin": "Allah'ım, borçluların duasını geri çevirme. Onlara aklı başında kararlar, hayırlı yol göstericiler ve beklemedikleri kolaylıklar nasip eyle."
   },
   {
    "tur": "ozgun",
@@ -121,7 +261,17 @@
   },
   {
    "tur": "ozgun",
+   "tema": "hasta",
+   "metin": "Rabbim, ruhu yorgun düşen, içine kapanan, kimseye derdini anlatamayan kardeşlerimize de şifa versin. Kalplerindeki ağırlığı kaldırsın."
+  },
+  {
+   "tur": "ozgun",
    "metin": "Rabbim, kimseye anlatamadığın yükü hafifletsin. Sessizce ettiğin duaları duyduğunu sana hissettirsin ve gönlüne ferahlık versin."
+  },
+  {
+   "tur": "ozgun",
+   "tema": "dert",
+   "metin": "Allah'ım, kaybettiği sevdiğinin yasını tutan kardeşlerimize sabır ver. Göçenlere rahmet, geride kalanlara metanet ve teselli ihsan eyle."
   },
   {
    "tur": "ozgun",
@@ -129,7 +279,17 @@
   },
   {
    "tur": "ozgun",
+   "tema": "borç",
+   "metin": "Kim bu satırları okuyorsa ve bir borcun altında eziliyorsa; Rabbim o borcu, ödendiği gün çok rahatlayacağın güzel bir hatıraya çevirsin."
+  },
+  {
+   "tur": "ozgun",
    "metin": "Allah'ım, bu satırları okuyanın kalbini kırık bırakma. Kapandığını sandığı kapıları ona rahmetinle aç, hayırlı olanı onun için kolaylaştır."
+  },
+  {
+   "tur": "ozgun",
+   "tema": "hasta",
+   "metin": "Allah'ım, şifayı sen verirsin. Bu satırları okuyan hastanın ilacında şifa, doktorunda isabet, ailesinde sabır, kendisinde umut olsun."
   },
   {
    "tur": "ozgun",
@@ -137,7 +297,22 @@
   },
   {
    "tur": "ozgun",
+   "tema": "dert",
+   "metin": "Rabbim, hayırlı bir kısmet bekleyenlerin kısmetini açsın; yuva kurmak isteyene hayırlı bir eş, evlat bekleyene salih bir evlat nasip etsin."
+  },
+  {
+   "tur": "ozgun",
    "metin": "Bu satırlara gözü değen kardeşim; Allah anneni, babanı ve sevdiklerini rahmetiyle kuşatsın. Hayatta olanlara sağlık, ahirete göçenlere nur versin."
+  },
+  {
+   "tur": "ozgun",
+   "tema": "borç",
+   "metin": "Allah'ım, esnafımıza bereket ver, çiftçimizin emeğini zayi etme, maaşını bekleyenin maaşını vaktinde ulaştır. Borçlarımızı kolaylıkla ödemeyi nasip et."
+  },
+  {
+   "tur": "ozgun",
+   "tema": "hasta",
+   "metin": "Rabbim, hasta yatağında yalnız kalanlara bir ziyaretçi, gönlü kırık olanlara bir teselli, umudu azalanlara bir müjde göndersin."
   },
   {
    "tur": "ozgun",
@@ -145,7 +320,17 @@
   },
   {
    "tur": "ozgun",
+   "tema": "dert",
+   "metin": "Allah'ım, haksızlığa uğrayan, sesini duyuramayan mazlumların yanında ol. Hakkını sen al, onları zalimin şerrinden koru."
+  },
+  {
+   "tur": "ozgun",
    "metin": "Rabbim, içindeki korkuları emniyete, endişelerini tevekküle, gözyaşlarını sevince çevirsin. Seni sevdiklerinle hayırda buluştursun."
+  },
+  {
+   "tur": "ozgun",
+   "tema": "borç",
+   "metin": "Rabbim, borcunu ödemek için gece gündüz çalışan kardeşimin yorgunluğunu kabul etsin, çabasını boşa çıkarmasın, kazancına berekete bereket katsın."
   },
   {
    "tur": "ozgun",
@@ -153,7 +338,17 @@
   },
   {
    "tur": "ozgun",
+   "tema": "hasta",
+   "metin": "Allah'ım, gurbette hastalanan, ailesinden uzakta tedavi gören kardeşlerimizi yalnız bırakma. Onları sağlıkla sevdiklerine kavuştur."
+  },
+  {
+   "tur": "ozgun",
    "metin": "Allah'ım, bu satırları okuyan öğrencinin zihnini aç, çalışanın işini kolaylaştır, sınavda olanın kalbine sükûnet ver."
+  },
+  {
+   "tur": "ozgun",
+   "tema": "dert",
+   "metin": "Kim bugün kendini çaresiz hissediyorsa, Rabbim ona çare olsun. Kimsenin uzanmadığı yerde rahmetinin elini uzatsın."
   },
   {
    "tur": "ozgun",
@@ -161,7 +356,22 @@
   },
   {
    "tur": "ozgun",
+   "tema": "borç",
+   "metin": "Allah'ım, borç yüzünden kimseye boyun eğmek zorunda kalan kardeşlerimizi o zilletten kurtar. İzzetlerini koru, hesaplarını rahmetinle kapat."
+  },
+  {
+   "tur": "ozgun",
    "metin": "Bu duayı okuyanın hastalarına acil şifa ver Allah'ım. Ameliyatta olana kolaylık, yoğun bakımda bekleyene umut, ailesine sabır ihsan eyle."
+  },
+  {
+   "tur": "ozgun",
+   "tema": "hasta",
+   "metin": "Kim bugün bir ağrıyla uyandıysa, Rabbim o ağrıyı akşama varmadan dindirsin. Hastalığı geçmiş bir dert, şifayı kalıcı bir nimet eylesin."
+  },
+  {
+   "tur": "ozgun",
+   "tema": "dert",
+   "metin": "Allah'ım, sınavı, mülakatı, davası, önemli bir kararı olan kardeşlerimize hayırlısını nasip et. Kalplerine sükûnet, işlerine kolaylık ver."
   },
   {
    "tur": "ozgun",
@@ -169,11 +379,26 @@
   },
   {
    "tur": "ozgun",
+   "tema": "borç",
+   "metin": "Bu duayı okuyan herkesin cüzdanına helal bereket, kalbine kanaat, hesaplarına kolaylık versin Rabbim. Borçla yatıp borçsuz uyanmayı nasip etsin."
+  },
+  {
+   "tur": "ozgun",
    "metin": "Rabbim, yuvanı huzurla doldursun. Evinde sevgi eksik olmasın, sofranda bereket, dilinde şükür, kalbinde kanaat olsun."
   },
   {
    "tur": "ozgun",
+   "tema": "hasta",
+   "metin": "Allah'ım, bütün hastalarımıza, bilerek bilmeyerek dua bekleyenlere, adını bilmediğimiz nice dertliye senden şifa diliyoruz. Kabul eyle."
+  },
+  {
+   "tur": "ozgun",
    "metin": "Bu satırları okuyan kardeşim; Allah seni sevdiği ve razı olduğu işlerde kullansın, attığın her adımı hayra, söylediğin her sözü güzelliğe vesile kılsın."
+  },
+  {
+   "tur": "ozgun",
+   "tema": "dert",
+   "metin": "Rabbim, bu satırları okuyan herkesin derdini derman, sıkıntısını ferahlık, gözyaşını tebessüm eylesin. Bir derdi varsa bu dua ona ulaşsın."
   },
   {
    "tur": "ozgun",
@@ -286,6 +511,12 @@
   }
  ],
  "kuran": [
+  {
+   "tur": "ayet",
+   "tema": "hasta",
+   "metin": "Başıma bu dert geldi. Sen merhametlilerin en merhametlisisin.",
+   "kaynak": "Enbiyâ Suresi, 83. ayet (Hz. Eyyûb'un duası, meali)"
+  },
   {
    "tur": "ayet",
    "metin": "Rabbim! Bana indireceğin her hayra muhtacım.",
@@ -423,6 +654,24 @@
   }
  ],
  "hadis": [
+  {
+   "tur": "hadis",
+   "tema": "borç",
+   "metin": "Allah'ım! Helal rızkınla beni haramdan uzak tut, lütfunla beni senden başkasına muhtaç etme.",
+   "kaynak": "Tirmizî, Daavât"
+  },
+  {
+   "tur": "hadis",
+   "tema": "hasta",
+   "metin": "Ey insanların Rabbi! Sıkıntıyı gider, şifa ver. Şifa veren ancak sensin. Senin şifandan başka şifa yoktur. Öyle bir şifa ver ki hiçbir hastalık bırakmasın.",
+   "kaynak": "Buhârî, Merdâ; Müslim, Selâm"
+  },
+  {
+   "tur": "hadis",
+   "tema": "dert",
+   "metin": "Azîm ve Halîm olan Allah'tan başka ilah yoktur. Büyük Arş'ın Rabbi olan Allah'tan başka ilah yoktur. Göklerin, yerin ve kerim Arş'ın Rabbi olan Allah'tan başka ilah yoktur.",
+   "kaynak": "Buhârî, Daavât; Müslim, Zikir (sıkıntı anında okunan dua)"
+  },
   {
    "tur": "hadis",
    "metin": "Allah'ım! Senin izninle sabaha erdik, senin izninle akşama ereriz. Senin izninle yaşar, senin izninle ölürüz. Dönüş ancak sanadır.",

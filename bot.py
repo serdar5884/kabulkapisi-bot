@@ -68,7 +68,8 @@ def sec(gun, vakit):
     zit = {"sabah": "aksam", "aksam": "sabah"}.get(vakit)
     havuz = [e for e in DB[VAKIT_HAVUZ[vakit]] if not zit or e.get("vakit") != zit]
     dua = havuz[gecen % len(havuz)]
-    return dua, vakit, VAKIT_BASLIK[vakit], VAKIT_TAG[vakit] + ["#amin"]
+    tema_tag = {"borç": ["#borçduası"], "hasta": ["#şifaduası"], "dert": ["#sıkıntıduası"]}.get(dua.get("tema"), [])
+    return dua, vakit, VAKIT_BASLIK[vakit], tema_tag + VAKIT_TAG[vakit] + ["#amin"]
 
 
 def caption(dua, tur, baslik, tags):

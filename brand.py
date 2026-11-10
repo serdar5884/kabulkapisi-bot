@@ -318,7 +318,7 @@ def make_photo_card(path, metin, zemin, baslik="Günün Duası", kaynak=None, da
     y = oy + 34
 
     # gövde metni
-    foot_h = 150
+    foot_h = 165
     src_h = 62 if kaynak else 0
     box_h = py2 - y - foot_h - src_h
     toks = _tokens(metin)
@@ -349,10 +349,38 @@ def make_photo_card(path, metin, zemin, baslik="Günün Duası", kaynak=None, da
         _center(d, cy + 14, "— " + kaynak, font("italic", 36), GOLD_HI)
 
     # alt bilgi
-    fy = py2 - 126
-    _center(d, fy, "Paylaşmayı unutma", font("italic", 40), (250, 244, 230))
+    fy = py2 - 140
+    # "Paylaşmayı Unutma" altın buton
+    bf = font("bold", 38)
+    label = "PAYLAŞMAYI UNUTMA"
+    tw = d.textlength(label, font=bf)
+    icon_w = 40
+    bw, bh = int(tw + icon_w + 84), 66
+    bx, by = (W - bw) // 2, fy - 4
+    pm = Image.new("L", (bw, bh), 0)
+    ImageDraw.Draw(pm).rounded_rectangle([0, 0, bw - 1, bh - 1], radius=bh // 2, fill=255)
+    grad = Image.new("RGBA", (bw, bh))
+    gd = ImageDraw.Draw(grad)
+    for yy in range(bh):
+        k = yy / (bh - 1)
+        c = tuple(int((255, 230, 160)[i] + ((200, 150, 55)[i] - (255, 230, 160)[i]) * k) for i in range(3))
+        gd.line([(0, yy), (bw, yy)], fill=c + (255,))
+    grad.putalpha(pm)
+    glow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    ImageDraw.Draw(glow).rounded_rectangle([bx - 6, by - 6, bx + bw + 6, by + bh + 6], radius=bh // 2 + 6, fill=(255, 200, 90, 120))
+    img.alpha_composite(glow.filter(_IF.GaussianBlur(10)))
+    img.alpha_composite(grad, (bx, by))
+    d = ImageDraw.Draw(img, "RGBA")
+    navy = (22, 30, 44)
+    # paylaş (kağıt uçak) simgesi
+    ix, iy = bx + 34, by + bh // 2
+    d.polygon([(ix, iy + 2), (ix + 34, iy - 14), (ix + 22, iy + 16), (ix + 15, iy + 6)], fill=navy)
+    d.polygon([(ix + 15, iy + 6), (ix + 34, iy - 14), (ix + 13, iy + 15)], fill=(70, 60, 40))
+    l, t, r, b = d.textbbox((0, 0), label, font=bf)
+    d.text((bx + 34 + icon_w + 14, by + (bh - (b - t)) / 2 - t), label, font=bf, fill=navy)
+    fy += 22
     tarih = f"{date.day} {AYLAR[date.month - 1]} {date.year}"
-    _center(d, fy + 54, f"{HANDLE}   ·   {tarih}", font("semibold", 29), GOLD_HI)
+    _center(d, fy + 58, f"{HANDLE}   ·   {tarih}", font("semibold", 29), GOLD_HI)
 
     img.convert("RGB").save(path, "JPEG", quality=93)
     return path

@@ -2,7 +2,7 @@
 Kabul Kapısı — Instagram dua botu
 
 Her çalıştığında bugünün duasını seçer, kartını çizer ve Instagram'a paylaşır.
-  Günde 3 paylaşım: sabah 07:00 özel dua, öğle 13:00 Kur'an duası, akşam 21:00 hadis duası
+  Günde 4 paylaşım: 07:00 özel dua, 13:00 Kur'an duası, 17:00 özel dua, 21:00 hadis duası
   * Cuma sabahı      -> Cuma duası
   * Kandil akşamı    -> kandile özel dua (dualar.json > kandil_tarihleri)
 
@@ -11,7 +11,7 @@ Ortam değişkenleri:
   MODE=post        (varsayılan) bugünün duasını paylaşır
   MODE=onizleme    önümüzdeki 3 günün (9 kart) kartlarını gorseller/onizleme/ içine çizer
   TARIH=2026-12-10 testi belirli bir güne göre yapar (YYYY-AA-GG)
-  VAKIT=sabah|ogle|aksam  boşsa Türkiye saatine göre seçilir
+  VAKIT=sabah|ogle|ikindi|aksam  boşsa Türkiye saatine göre seçilir
 """
 import json
 import os
@@ -40,11 +40,11 @@ def bugun():
     return date.fromisoformat(t) if t else datetime.now(TR_TZ).date()
 
 
-VAKITLER = ("sabah", "ogle", "aksam")
+VAKITLER = ("sabah", "ogle", "ikindi", "aksam")
 # her vaktin türü: sabah özel dua, öğle Kur'an duası, akşam hadis duası
-VAKIT_HAVUZ = {"sabah": "ozel", "ogle": "kuran", "aksam": "hadis"}
-VAKIT_BASLIK = {"sabah": "Günün Duası", "ogle": "Kur'an'dan Bir Dua", "aksam": "Hadislerden Bir Dua"}
-VAKIT_TAG = {"sabah": ["#gününduası", "#sabahduası"], "ogle": ["#kuran", "#ayet"], "aksam": ["#hadis", "#akşamduası"]}
+VAKIT_HAVUZ = {"sabah": "ozel", "ogle": "kuran", "ikindi": "ozel", "aksam": "hadis"}
+VAKIT_BASLIK = {"sabah": "Günün Duası", "ogle": "Kur'an'dan Bir Dua", "ikindi": "Günün Duası", "aksam": "Hadislerden Bir Dua"}
+VAKIT_TAG = {"sabah": ["#gününduası", "#sabahduası"], "ogle": ["#kuran", "#ayet"], "ikindi": ["#gününduası"], "aksam": ["#hadis", "#akşamduası"]}
 
 
 def vakit_bul():
@@ -52,7 +52,7 @@ def vakit_bul():
     if v in VAKITLER:
         return v
     saat = datetime.now(TR_TZ).hour
-    return "sabah" if saat < 11 else ("ogle" if saat < 17 else "aksam")
+    return "sabah" if saat < 11 else ("ogle" if saat < 15 else ("ikindi" if saat < 19 else "aksam"))
 
 
 def sec(gun, vakit):
@@ -65,15 +65,20 @@ def sec(gun, vakit):
     if vakit == "sabah" and gun.weekday() == 4:   # Cuma sabahı
         cuma = DB["cuma"]
         return cuma[(gecen // 7) % len(cuma)], "cuma", "Hayırlı Cumalar", ["#hayırlıcumalar", "#cumamesajları"]
-    zit = {"sabah": "aksam", "aksam": "sabah"}.get(vakit)
+    zit = {"sabah": "aksam", "ikindi": "aksam", "aksam": "sabah"}.get(vakit)
     havuz = [e for e in DB[VAKIT_HAVUZ[vakit]] if not zit or e.get("vakit") != zit]
-    dua = havuz[gecen % len(havuz)]
-    tema_tag = {"borç": ["#borçduası"], "hasta": ["#şifaduası"], "dert": ["#sıkıntıduası"]}.get(dua.get("tema"), [])
+    if VAKIT_HAVUZ[vakit] == "ozel":   # günde 2 özel dua: sabah çift, ikindi tek sıradaki
+        dua = havuz[(gecen * 2 + (1 if vakit == "ikindi" else 0)) % len(havuz)]
+    else:
+        dua = havuz[gecen % len(havuz)]
+    tema_tag = {"borç": ["#borçduası"], "hasta": ["#şifaduası"], "dert": ["#sıkıntıduası"],
+                "çocuk": ["#evlatduası"], "aile": ["#aileduası"]}.get(dua.get("tema"), [])
     return dua, vakit, VAKIT_BASLIK[vakit], tema_tag + VAKIT_TAG[vakit] + ["#amin"]
 
 
 def caption(dua, tur, baslik, tags):
     acilis = {"sabah": "🌅 Hayırlı sabahlar, bu satırları okuyan sana bir dua var",
+              "ikindi": "🤲 Bu satırları okuyan sana bir dua var",
               "ogle": "📖 Kur'an-ı Kerim'den bir dua, bu satırları okuyan herkes için",
               "aksam": "🌙 Hayırlı akşamlar, Peygamber Efendimizin dualarından biri sana",
               "cuma": "🕌 Hayırlı cumalar",
@@ -94,7 +99,7 @@ def kart(gun, dua, tur, baslik, out, vakit="ogle"):
     dt = datetime(gun.year, gun.month, gun.day)
     zs = brand.zeminler()
     if zs:   # arkaplanlar/ klasöründeki görseller sırayla döner
-        zemin = zs[((gun - BASLANGIC).days * 3 + VAKITLER.index(vakit)) % len(zs)]
+        zemin = zs[((gun - BASLANGIC).days * len(VAKITLER) + VAKITLER.index(vakit)) % len(zs)]
         return brand.make_photo_card(out, dua["metin"], zemin, baslik=baslik, kaynak=dua.get("kaynak"),
                                      date=dt, kandil=(tur == "kandil"))
     return brand.make_card(out, dua["metin"], baslik=baslik, kaynak=dua.get("kaynak"),

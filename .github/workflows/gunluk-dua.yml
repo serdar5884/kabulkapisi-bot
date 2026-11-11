@@ -11,7 +11,7 @@ on:
         description: "1 = sadece test (paylasma), 0 = paylas"
         default: "1"
       vakit:
-        description: "sabah | ogle | aksam (bos = saate gore)"
+        description: "sabah | ogle | ikindi | aksam (bos = saate gore)"
         default: ""
       tarih:
         description: "Test icin tarih (YYYY-AA-GG), bos = bugun"

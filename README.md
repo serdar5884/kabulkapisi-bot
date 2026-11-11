@@ -6,6 +6,7 @@
 |---|---|
 | 07:00 | 🤲 Günün Duası: okuyana hitap eden özel dua (Cuma sabahı: Cuma duası) |
 | 13:00 | 📖 Kur'an'dan Bir Dua: ayet duası + sure/ayet kaynağı |
+| 17:00 | 🤲 İkinci özel dua (borç, şifa, dert, evlat, aile...) |
 | 21:00 | 🌙 Hadislerden Bir Dua: hadis duası + kaynak (kandil akşamı: kandil duası) |
 
 Maliyet: **0 TL**. Claude API, X kredisi yok. Instagram API, imgbb ve GitHub Actions ücretsiz.
@@ -43,7 +44,7 @@ Actions → "Kabul Kapisi Botu" → **Run workflow**:
 - `tarih = 2026-12-10` ile Regaip Kandili kartını, `2026-11-13` ile Cuma kartını test edebilirsin
 - Beğendiysen `dry_run = 0` ile bir kez gerçek paylaşım yap.
 
-## 5) Otomatik zamanlama (cron-job.org) — 3 ayrı iş
+## 5) Otomatik zamanlama (cron-job.org) — 4 ayrı iş
 Her biri için aynı ayarlar, sadece saat ve `vakit` farklı:
 - **URL:** `https://api.github.com/repos/<KULLANICI>/kabulkapisi-bot/actions/workflows/gunluk-dua.yml/dispatches`
 - **Method:** POST · **Saat dilimi:** Europe/Istanbul
@@ -53,6 +54,7 @@ Her biri için aynı ayarlar, sadece saat ve `vakit` farklı:
 |---|---|---|
 | Sabah | 07:00 | `{"ref":"main","inputs":{"mode":"post","dry_run":"0","vakit":"sabah"}}` |
 | Öğle | 13:00 | `{"ref":"main","inputs":{"mode":"post","dry_run":"0","vakit":"ogle"}}` |
+| İkindi | 17:00 | `{"ref":"main","inputs":{"mode":"post","dry_run":"0","vakit":"ikindi"}}` |
 | Akşam | 21:00 | `{"ref":"main","inputs":{"mode":"post","dry_run":"0","vakit":"aksam"}}` |
 
 Bot aynı vakit için ikinci kez tetiklenirse paylaşmaz (çift gönderi koruması).

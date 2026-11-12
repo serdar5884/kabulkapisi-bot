@@ -91,7 +91,7 @@ def caption(dua, tur, baslik, tags):
     for t in tags + insta.BASE_TAGS:
         if t.lower() not in [a.lower() for a in alltags]:
             alltags.append(t)
-    parts.append(" ".join(alltags[:6]))
+    parts.append(" ".join(alltags[:5]))   # Instagram sınırı: en fazla 5 etiket
     return "\n\n".join(parts)[:2150]
 
 

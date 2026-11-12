@@ -84,3 +84,10 @@ Bot aynı vakit için ikinci kez tetiklenirse paylaşmaz (çift gönderi korumas
 - **imgbb / Instagram 400:** token süresi dolmuş olabilir → yeni token üret, Secret'ı güncelle.
 - **Paylaşılmadı, "zaten paylaşıldı":** o gün zaten gönderi atılmış.
 - GitHub 60 gün işlem olmayan repoda Actions'ı durdurabilir → Actions'tan tekrar etkinleştir.
+
+## Büyüme özellikleri
+- **Reels:** Her dua kartı 9 sn'lik dikey videoya çevrilip Reels olarak paylaşılır (akışta da görünür). Video olmazsa otomatik olarak görsel gönderiye döner. Kapatmak için workflow'a `REELS: "0"` ekle.
+- **Hikâye:** Her paylaşım dikey hâliyle hikâyede de yayınlanır. Kapatmak için `STORY: "0"`.
+- **Pazar derlemesi:** Pazar 17:00'de tek dua yerine kapak + 5 kartlık kaydırmalı gönderi gider (Borçlular, Şifa, Çocuklar, Dertliler, Aile — haftalık sırayla).
+- **Açıklama:** "Duaya ihtiyacı olan birini etiketle 👇" çağrısı eklendi; etiket sayısı Instagram sınırı olan 5'tir.
+- Test: Actions → `mode = reels_test` videoyu yükler ama yayınlamaz.

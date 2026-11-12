@@ -174,12 +174,14 @@ def _wait_long(container_id, tries=60, sleep=5):
     raise RuntimeError("Instagram video işleme zaman aşımı")
 
 
-def reel_container(video_path, caption):
+def reel_container(video_path, caption, cover_path=None):
     """Reels kapsayıcısı oluşturur, videoyu yükler ve işlenmesini bekler. Kapsayıcı id döner."""
     uid = _user_id()
-    r = requests.post(f"{API}/{uid}/media", timeout=60, data={
-        "media_type": "REELS", "upload_type": "resumable", "caption": caption,
-        "share_to_feed": "true", "access_token": IG_TOKEN})
+    data = {"media_type": "REELS", "upload_type": "resumable", "caption": caption,
+            "share_to_feed": "true", "access_token": IG_TOKEN}
+    if cover_path:
+        data["cover_url"] = upload_public(cover_path)
+    r = requests.post(f"{API}/{uid}/media", timeout=60, data=data)
     j = _check(r, "reels kapsayıcısı")
     cid = j["id"]
     url = j.get("uri") or f"{RUPLOAD}/{cid}"
@@ -193,9 +195,9 @@ def reel_container(video_path, caption):
     return cid
 
 
-def publish_reel(video_path, caption):
+def publish_reel(video_path, caption, cover_path=None):
     uid = _user_id()
-    cid = reel_container(video_path, caption)
+    cid = reel_container(video_path, caption, cover_path)
     r = requests.post(f"{API}/{uid}/media_publish", timeout=60,
                       data={"creation_id": cid, "access_token": IG_TOKEN})
     mid = _check(r, "reels yayınlama")["id"]

@@ -204,6 +204,17 @@ def main():
     if MODE == "kontrol":
         kontrol()
         return
+    if MODE == "sabit":   # sabit/ klasöründeki tanıtım Reels'ini bir kez paylaşır
+        d = os.path.join(HERE, "sabit")
+        cap = open(os.path.join(d, "aciklama.txt"), encoding="utf-8").read().strip()
+        if DRY_RUN:
+            print("DRY_RUN=1 -> sabit gönderi paylaşılmadı"); return
+        insta.publish_reel(os.path.join(d, "sabit_reels.mp4"), cap, os.path.join(d, "sabit_kart.jpg"))
+        try:
+            insta.publish_story(video.dikey_kare(os.path.join(d, "sabit_kart.jpg"), None, os.path.join(d, "story.jpg")))
+        except Exception as e:
+            print("[insta] hikâye paylaşılamadı:", e)
+        return
     if MODE == "reels_test":   # videoyu yükler ama YAYINLAMAZ
         gun = bugun(); dua, tur, baslik, tags = sec(gun, "sabah")
         out = os.path.join(brand.OUT_DIR, "test.jpg"); z = kart(gun, dua, tur, baslik, out, "sabah")

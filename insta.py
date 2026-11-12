@@ -153,3 +153,65 @@ def refresh_token():
             print(f"[insta] anahtar GitHub'a kaydedilemedi: {r.status_code} {r.text[:200]}")
     except Exception as e:
         print(f"[insta] anahtar yenilenemedi: {e}")
+
+
+# ---------------------------------------------------------------------------
+# Reels (doğrudan dosya yükleme — imgbb gerekmez) ve Hikâye
+RUPLOAD = "https://rupload.facebook.com/ig-api-upload/" + _VER
+
+
+def _wait_long(container_id, tries=60, sleep=5):
+    for _ in range(tries):
+        r = requests.get(f"{API}/{container_id}",
+                         params={"fields": "status_code,status", "access_token": IG_TOKEN}, timeout=30)
+        j = _check(r, "durum sorgusu")
+        st = j.get("status_code")
+        if st == "FINISHED":
+            return
+        if st in ("ERROR", "EXPIRED"):
+            raise RuntimeError(f"Instagram videoyu işleyemedi: {st} {j.get('status', '')}")
+        time.sleep(sleep)
+    raise RuntimeError("Instagram video işleme zaman aşımı")
+
+
+def reel_container(video_path, caption):
+    """Reels kapsayıcısı oluşturur, videoyu yükler ve işlenmesini bekler. Kapsayıcı id döner."""
+    uid = _user_id()
+    r = requests.post(f"{API}/{uid}/media", timeout=60, data={
+        "media_type": "REELS", "upload_type": "resumable", "caption": caption,
+        "share_to_feed": "true", "access_token": IG_TOKEN})
+    j = _check(r, "reels kapsayıcısı")
+    cid = j["id"]
+    url = j.get("uri") or f"{RUPLOAD}/{cid}"
+    size = os.path.getsize(video_path)
+    with open(video_path, "rb") as f:
+        r = requests.post(url, data=f.read(), timeout=300, headers={
+            "Authorization": f"OAuth {IG_TOKEN}", "offset": "0", "file_size": str(size)})
+    _check(r, "video yükleme")
+    print(f"[insta] video yüklendi ({size // 1024} KB), işleniyor...")
+    _wait_long(cid)
+    return cid
+
+
+def publish_reel(video_path, caption):
+    uid = _user_id()
+    cid = reel_container(video_path, caption)
+    r = requests.post(f"{API}/{uid}/media_publish", timeout=60,
+                      data={"creation_id": cid, "access_token": IG_TOKEN})
+    mid = _check(r, "reels yayınlama")["id"]
+    print(f"[insta] ✅ Reels paylaşıldı (medya id: {mid})")
+    return mid
+
+
+def publish_story(image_path):
+    uid = _user_id()
+    url = upload_public(image_path)
+    r = requests.post(f"{API}/{uid}/media", timeout=60, data={
+        "image_url": url, "media_type": "STORIES", "access_token": IG_TOKEN})
+    cid = _check(r, "hikâye oluşturma")["id"]
+    _wait(cid)
+    r = requests.post(f"{API}/{uid}/media_publish", timeout=60,
+                      data={"creation_id": cid, "access_token": IG_TOKEN})
+    mid = _check(r, "hikâye yayınlama")["id"]
+    print(f"[insta] ✅ hikâye paylaşıldı (medya id: {mid})")
+    return mid

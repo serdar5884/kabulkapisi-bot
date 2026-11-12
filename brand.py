@@ -386,6 +386,50 @@ def make_photo_card(path, metin, zemin, baslik="Günün Duası", kaynak=None, da
     return path
 
 
+
+def make_cover(path, baslik, alt, zemin):
+    """Haftalık derleme (kaydırmalı gönderi) kapağı: büyük altın başlık + 'Kaydır' butonu."""
+    img = Image.open(zemin).convert("RGB").resize((W, H), Image.LANCZOS).convert("RGBA")
+    box = (90, 470, W - 90, 1110)
+    blur = img.crop(box).filter(_IF.GaussianBlur(14))
+    m = Image.new("L", blur.size, 0)
+    ImageDraw.Draw(m).rounded_rectangle([0, 0, blur.width, blur.height], radius=34, fill=255)
+    img.paste(blur, box[:2], m)
+    ov = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    ImageDraw.Draw(ov).rounded_rectangle(box, radius=34, fill=(16, 20, 30, 160))
+    img = Image.alpha_composite(img, ov)
+    glow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    ImageDraw.Draw(glow).rounded_rectangle(box, radius=34, outline=(255, 200, 90, 220), width=8)
+    img = Image.alpha_composite(img, glow.filter(_IF.GaussianBlur(9)))
+    d = ImageDraw.Draw(img, "RGBA")
+    d.rounded_rectangle(box, radius=34, outline=GOLD_HI + (255,), width=3)
+    _ornament(d, W // 2, box[1] + 70)
+    ft = font("bold", 92)
+    up = baslik.replace("i", "İ").replace("ı", "I").upper()
+    lines = _wrap(d, up, ft, box[2] - box[0] - 100)
+    y = box[1] + 120
+    for ln in lines:
+        tl = _gold_text(None, ln, ft)
+        img.alpha_composite(tl, ((W - tl.width) // 2, y))
+        y += 104
+    d = ImageDraw.Draw(img, "RGBA")
+    _center(d, y + 20, alt, font("italic", 44), (250, 244, 230))
+    # kaydır butonu
+    bf = font("bold", 38)
+    lab = "KAYDIR"
+    bw, bh = int(d.textlength(lab, font=bf) + 150), 66
+    bx, by = (W - bw) // 2, box[3] - 130
+    d.rounded_rectangle([bx, by, bx + bw, by + bh], radius=bh // 2, fill=(226, 180, 80))
+    l, t, r, b = d.textbbox((0, 0), lab, font=bf)
+    d.text((bx + 45, by + (bh - (b - t)) / 2 - t), lab, font=bf, fill=(22, 30, 44))
+    ax, ay = bx + bw - 80, by + bh // 2
+    d.line([(ax, ay), (ax + 34, ay)], fill=(22, 30, 44), width=5)
+    d.polygon([(ax + 44, ay), (ax + 28, ay - 12), (ax + 28, ay + 12)], fill=(22, 30, 44))
+    _center(d, box[3] - 48, HANDLE, font("semibold", 29), GOLD_HI)
+    img.convert("RGB").save(path, "JPEG", quality=93)
+    return path
+
+
 if __name__ == "__main__":
     zs = zeminler()
     if zs:

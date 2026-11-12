@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "post (bu vaktin duasi) | onizleme (3 gunluk 9 kart) | kontrol (anahtar testi)"
+        description: "post (bu vaktin duasi) | onizleme | kontrol | reels_test"
         default: "post"
       dry_run:
         description: "1 = sadece test (paylasma), 0 = paylas"
@@ -26,6 +26,8 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt
+      - name: ffmpeg
+        run: which ffmpeg || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg)
       - name: Paylaşım geçmişini yükle
         uses: actions/cache/restore@v4
         with:
@@ -48,7 +50,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: kartlar
-          path: gorseller/*.jpg
+          path: |
+            gorseller/*.jpg
+            gorseller/*.mp4
           if-no-files-found: ignore
       - name: Önizleme kartları
         if: always()

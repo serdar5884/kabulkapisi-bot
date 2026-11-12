@@ -20,6 +20,7 @@ from datetime import date, datetime, timedelta, timezone
 
 import brand
 import insta
+import video
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TR_TZ = timezone(timedelta(hours=3))
@@ -86,7 +87,7 @@ def caption(dua, tur, baslik, tags):
     parts = [acilis, dua["metin"]]
     if dua.get("kaynak"):
         parts.append(f"📖 {dua['kaynak']}")
-    parts.append("Âmin yazmayı unutma 🤲\nSevdiklerine gönder, bu dua onlara da ulaşsın 💛")
+    parts.append("Âmin yazmayı unutma 🤲\nDuaya ihtiyacı olan birini etiketle 👇\nSevdiklerine gönder, bu dua onlara da ulaşsın 💛")
     alltags = []
     for t in tags + insta.BASE_TAGS:
         if t.lower() not in [a.lower() for a in alltags]:
@@ -100,10 +101,12 @@ def kart(gun, dua, tur, baslik, out, vakit="ogle"):
     zs = brand.zeminler()
     if zs:   # arkaplanlar/ klasöründeki görseller sırayla döner
         zemin = zs[((gun - BASLANGIC).days * len(VAKITLER) + VAKITLER.index(vakit)) % len(zs)]
-        return brand.make_photo_card(out, dua["metin"], zemin, baslik=baslik, kaynak=dua.get("kaynak"),
-                                     date=dt, kandil=(tur == "kandil"))
-    return brand.make_card(out, dua["metin"], baslik=baslik, kaynak=dua.get("kaynak"),
-                           date=dt, kandil=(tur == "kandil"))
+        brand.make_photo_card(out, dua["metin"], zemin, baslik=baslik, kaynak=dua.get("kaynak"),
+                              date=dt, kandil=(tur == "kandil"))
+        return zemin
+    brand.make_card(out, dua["metin"], baslik=baslik, kaynak=dua.get("kaynak"),
+                    date=dt, kandil=(tur == "kandil"))
+    return None
 
 
 def gecmis_oku():
@@ -124,6 +127,41 @@ def onizleme():
             dua, tur, baslik, tags = sec(gun, v)
             kart(gun, dua, tur, baslik, os.path.join(d, f"{gun.isoformat()}_{v}_{tur}.jpg"), v)
             print(f"{gun} {v} [{tur}] {dua['metin'][:60]}...")
+
+
+DERLEME = [("borç", "Borçlular İçin 5 Dua", "#borçduası"), ("hasta", "Hastalar İçin 5 Şifa Duası", "#şifaduası"),
+           ("çocuk", "Çocuklarımız İçin 5 Dua", "#evlatduası"), ("dert", "Dertliler İçin 5 Dua", "#sıkıntıduası"),
+           ("aile", "Ailemiz İçin 5 Dua", "#aileduası")]
+
+
+def derleme(gun):
+    """Pazar ikindisi: bir temadan 5 dua + kapak (kaydırmalı gönderi)."""
+    hafta = (gun - BASLANGIC).days // 7
+    tema, baslik, tag = DERLEME[hafta % len(DERLEME)]
+    lst = [e for e in DB["ozel"] if e.get("tema") == tema]
+    tur = hafta // len(DERLEME)
+    secilen = [lst[(tur * 5 + i) % len(lst)] for i in range(5)]
+    zs = brand.zeminler()
+    dt = datetime(gun.year, gun.month, gun.day)
+    yollar = [brand.make_cover(os.path.join(brand.OUT_DIR, f"derleme_{gun}_0.jpg"), baslik,
+                               "Kaydır, sana uygun olanı kaydet", zs[hafta % len(zs)])]
+    for i, e in enumerate(secilen, 1):
+        yollar.append(brand.make_photo_card(os.path.join(brand.OUT_DIR, f"derleme_{gun}_{i}.jpg"), e["metin"],
+                                            zs[(hafta + i) % len(zs)], date=dt))
+    cap = "\n\n".join([f"🤲 {baslik}", "Kaydır, sana en çok dokunanı kaydet ve ihtiyacı olana gönder.",
+                        "Âmin yazmayı unutma 🤲\nDuaya ihtiyacı olan birini etiketle 👇",
+                        " ".join([tag, "#dua", "#amin", "#kabulkapisi"])])
+    return yollar, cap
+
+
+def hikaye(kart_path, zemin):
+    if os.getenv("STORY", "1") != "1":
+        return
+    try:
+        dikey = video.dikey_kare(kart_path, zemin, kart_path.replace(".jpg", "_story.jpg"))
+        insta.publish_story(dikey)
+    except Exception as e:
+        print("[insta] hikâye paylaşılamadı (gönderi yine de yayında):", e)
 
 
 def kontrol():
@@ -166,6 +204,13 @@ def main():
     if MODE == "kontrol":
         kontrol()
         return
+    if MODE == "reels_test":   # videoyu yükler ama YAYINLAMAZ
+        gun = bugun(); dua, tur, baslik, tags = sec(gun, "sabah")
+        out = os.path.join(brand.OUT_DIR, "test.jpg"); z = kart(gun, dua, tur, baslik, out, "sabah")
+        mp4, _ = video.reel(out, z, out.replace(".jpg", ".mp4"))
+        cid = insta.reel_container(mp4, "test")
+        print("REELS TEST BAŞARILI (yayınlanmadı), kapsayıcı:", cid)
+        return
     if MODE == "onizleme":
         onizleme()
         return
@@ -177,18 +222,43 @@ def main():
         print(f"{gun} {vakit} paylaşımı zaten yapıldı, tekrar paylaşılmıyor.")
         return
 
-    dua, tur, baslik, tags = sec(gun, vakit)
-    out = os.path.join(brand.OUT_DIR, f"kart_{anahtar}.jpg")
-    kart(gun, dua, tur, baslik, out, vakit)
-    cap = caption(dua, tur, baslik, tags)
-    print(f"--- {gun} {vakit} [{tur}] ---\n{cap}\n---")
-
-    if DRY_RUN:
-        print("DRY_RUN=1 -> paylaşılmadı. Kart:", out)
-        return
-    if not insta.enabled():
-        sys.exit(1)
-    insta.publish_carousel([out], cap)
+    if vakit == "ikindi" and gun.weekday() == 6 and os.getenv("DERLEME", "1") == "1":   # Pazar: haftalık derleme
+        yollar, cap = derleme(gun)
+        print(f"--- {gun} {vakit} [derleme] ---\n{cap}\n---")
+        if DRY_RUN:
+            print("DRY_RUN=1 -> paylaşılmadı:", yollar)
+            return
+        if not insta.enabled():
+            sys.exit(1)
+        insta.publish_carousel(yollar, cap)
+        hikaye(yollar[0], None)
+    else:
+        dua, tur, baslik, tags = sec(gun, vakit)
+        out = os.path.join(brand.OUT_DIR, f"kart_{anahtar}.jpg")
+        zemin = kart(gun, dua, tur, baslik, out, vakit)
+        cap = caption(dua, tur, baslik, tags)
+        print(f"--- {gun} {vakit} [{tur}] ---\n{cap}\n---")
+        mp4 = None
+        if os.getenv("REELS", "1") == "1":
+            try:
+                mp4, _ = video.reel(out, zemin, out.replace(".jpg", ".mp4"))
+            except Exception as e:
+                print("[video] üretilemedi, görsel olarak paylaşılacak:", e)
+        if DRY_RUN:
+            print("DRY_RUN=1 -> paylaşılmadı. Kart:", out, "Video:", mp4)
+            return
+        if not insta.enabled():
+            sys.exit(1)
+        paylasildi = False
+        if mp4:
+            try:
+                insta.publish_reel(mp4, cap)
+                paylasildi = True
+            except Exception as e:
+                print("[insta] Reels başarısız, görsel gönderiye dönülüyor:", e)
+        if not paylasildi:
+            insta.publish_carousel([out], cap)
+        hikaye(out, zemin)
     son = (hist.get("paylasilanlar", []) + [anahtar])[-30:]
     with open(HISTORY_FILE, "w", encoding="utf-8") as f:
         json.dump({"paylasilanlar": son}, f)

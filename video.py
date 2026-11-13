@@ -1,6 +1,6 @@
 """
 Kabul Kapısı — dua kartından Reels videosu (1080x1920, ~9 sn) ve hikâye görseli üretir.
-Ses: ffmpeg ile üretilen sakin bir fon tonu (telif yok).
+Ses: ses/ klasöründeki ney kayıtları (sırayla). Klasör boşsa sakin bir fon tonu üretilir.
 """
 import os
 import subprocess
@@ -26,6 +26,19 @@ def dikey_kare(kart_path, zemin_path, out_path):
     return out_path
 
 
+SES_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ses")
+
+
+def ses_sec(anahtar):
+    """ses/ klasöründeki ney kayıtlarından birini sırayla seçer (yoksa None)."""
+    if not os.path.isdir(SES_DIR):
+        return None
+    fs = sorted(f for f in os.listdir(SES_DIR) if f.lower().endswith((".m4a", ".mp3", ".wav", ".aac")))
+    if not fs:
+        return None
+    return os.path.join(SES_DIR, fs[sum(map(ord, anahtar)) % len(fs)])
+
+
 def reel(kart_path, zemin_path, out_path):
     kare = out_path.replace(".mp4", "_dikey.jpg")
     dikey_kare(kart_path, zemin_path, kare)
@@ -36,10 +49,13 @@ def reel(kart_path, zemin_path, out_path):
           f"fade=t=in:st=0:d=0.6,format=yuv420p")
     ses = ("aevalsrc='0.05*sin(2*PI*196*t)+0.04*sin(2*PI*246.94*t)+0.035*sin(2*PI*293.66*t)"
            "+0.02*sin(2*PI*392*t)*(0.6+0.4*sin(2*PI*0.25*t))':s=44100:d=" + str(SURE))
+    ney = ses_sec(os.path.basename(out_path))
+    ses_girdi = ["-stream_loop", "-1", "-i", ney] if ney else ["-f", "lavfi", "-i", ses]
     cmd = ["ffmpeg", "-y", "-loglevel", "error",
            "-loop", "1", "-i", kare,
-           "-f", "lavfi", "-i", ses,
-           "-vf", vf, "-af", f"lowpass=f=1800,afade=t=in:d=1.5,afade=t=out:st={SURE - 2}:d=2",
+           *ses_girdi,
+           "-vf", vf, "-af", (f"afade=t=in:d=0.8,afade=t=out:st={SURE - 1.5}:d=1.5" if ney else
+                   f"lowpass=f=1800,afade=t=in:d=1.5,afade=t=out:st={SURE - 2}:d=2"),
            "-t", str(SURE), "-r", str(fr),
            "-c:v", "libx264", "-preset", "veryfast", "-crf", "21", "-profile:v", "high",
            "-c:a", "aac", "-b:a", "128k", "-ar", "44100", "-ac", "2",

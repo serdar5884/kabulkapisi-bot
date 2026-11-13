@@ -82,7 +82,7 @@ def caption(dua, tur, baslik, tags):
               "ikindi": "🤲 Bu satırları okuyan sana bir dua var",
               "ogle": "📖 Kur'an-ı Kerim'den bir dua, bu satırları okuyan herkes için",
               "aksam": "🌙 Hayırlı akşamlar, Peygamber Efendimizin dualarından biri sana",
-              "cuma": "🕌 Hayırlı cumalar",
+              "cuma": "🕌 Hayırlı Cumalar",
               "kandil": f"✨ {baslik} mübarek olsun"}[tur]
     parts = [acilis, dua["metin"]]
     if dua.get("kaynak"):

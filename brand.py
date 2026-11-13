@@ -439,7 +439,7 @@ if __name__ == "__main__":
                         "Rabbimiz! Bize dünyada da iyilik ver, ahirette de iyilik ver ve bizi ateş azabından koru.", zs[1],
                         kaynak="Bakara Suresi, 201. ayet (meali)")
         make_photo_card(os.path.join(OUT_DIR, "ornek_cuma.jpg"),
-                        "Hayırlı cumalar. Bu mübarek günün hürmetine Rabbim bu satırları okuyanın günahlarını affetsin, dualarını kabul eylesin, kalbine huzur versin.", zs[2],
+                        "Hayırlı Cumalar. Bu mübarek günün hürmetine Rabbim bu satırları okuyanın günahlarını affetsin, dualarını kabul eylesin, kalbine huzur versin.", zs[2],
                         baslik="Hayırlı Cumalar")
         make_photo_card(os.path.join(OUT_DIR, "ornek_kandil.jpg"),
                         "Regaip Kandiliniz mübarek olsun. Üç ayların bu ilk kandilinde Rabbim bu satırları okuyanın dualarını kabul etsin; Recep'i ve Şaban'ı bereketli kılıp hepimizi sağlıkla Ramazan'a ulaştırsın.", zs[3],
@@ -459,7 +459,7 @@ if False:
               "Rabbimiz! Bize dünyada da iyilik ver, ahirette de iyilik ver ve bizi ateş azabından koru.",
               kaynak="Bakara Suresi, 201. ayet (meali)")
     make_card(os.path.join(OUT_DIR, "ornek_cuma.jpg"),
-              "Hayırlı cumalar. Bu mübarek günün hürmetine Rabbim bu satırları okuyanın günahlarını affetsin, dualarını kabul eylesin, kalbine huzur versin.",
+              "Hayırlı Cumalar. Bu mübarek günün hürmetine Rabbim bu satırları okuyanın günahlarını affetsin, dualarını kabul eylesin, kalbine huzur versin.",
               baslik="Hayırlı Cumalar")
     make_card(os.path.join(OUT_DIR, "ornek_kandil.jpg"),
               "Regaip Kandiliniz mübarek olsun. Üç ayların bu ilk kandilinde Rabbim bu satırları okuyanın dualarını kabul etsin; Recep'i ve Şaban'ı bereketli kılıp hepimizi sağlıkla Ramazan'a ulaştırsın.",

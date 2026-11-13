@@ -27,16 +27,22 @@ def dikey_kare(kart_path, zemin_path, out_path):
 
 
 SES_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ses")
+MUZIK = os.path.join(SES_DIR, "muzik.mp3")       # Pixabay: Alex Morgan - Islamic Music
+BOLUMLER = [47, 15, 64, 33, 86, 75, 99, 110]      # parçanın güzel 9 sn'lik bölümleri (saniye)
 
 
-def ses_sec(anahtar):
-    """ses/ klasöründeki ney kayıtlarından birini sırayla seçer (yoksa None)."""
-    if not os.path.isdir(SES_DIR):
-        return None
-    fs = sorted(f for f in os.listdir(SES_DIR) if f.lower().endswith((".m4a", ".mp3", ".wav", ".aac")))
-    if not fs:
-        return None
-    return os.path.join(SES_DIR, fs[sum(map(ord, anahtar)) % len(fs)])
+def bolum_sec(anahtar):
+    return BOLUMLER[sum(map(ord, anahtar)) % len(BOLUMLER)]
+
+
+def _ses_girdi(anahtar, sure):
+    """(ffmpeg girdi argümanları, ses filtresi)"""
+    if os.path.exists(MUZIK):
+        bas = bolum_sec(anahtar)
+        return (["-ss", str(bas), "-t", str(sure + 1), "-i", MUZIK],
+                f"afade=t=in:d=0.8,afade=t=out:st={sure - 1.7}:d=1.7,loudnorm=I=-16:TP=-1.5")
+    ses = ("aevalsrc='0.05*sin(2*PI*196*t)+0.04*sin(2*PI*246.94*t)+0.035*sin(2*PI*293.66*t)':s=44100:d=" + str(sure))
+    return (["-f", "lavfi", "-i", ses], f"lowpass=f=1800,afade=t=in:d=1.5,afade=t=out:st={sure - 2}:d=2")
 
 
 def reel(kart_path, zemin_path, out_path):
@@ -47,18 +53,50 @@ def reel(kart_path, zemin_path, out_path):
     vf = (f"scale=2160:-1,zoompan=z='min(zoom+0.00018,1.05)':d={n}:"
           f"x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s={W}x{H}:fps={fr},"
           f"fade=t=in:st=0:d=0.6,format=yuv420p")
-    ses = ("aevalsrc='0.05*sin(2*PI*196*t)+0.04*sin(2*PI*246.94*t)+0.035*sin(2*PI*293.66*t)"
-           "+0.02*sin(2*PI*392*t)*(0.6+0.4*sin(2*PI*0.25*t))':s=44100:d=" + str(SURE))
-    ney = ses_sec(os.path.basename(out_path))
-    ses_girdi = ["-stream_loop", "-1", "-i", ney] if ney else ["-f", "lavfi", "-i", ses]
+    girdi, af = _ses_girdi(os.path.basename(out_path), SURE)
     cmd = ["ffmpeg", "-y", "-loglevel", "error",
            "-loop", "1", "-i", kare,
-           *ses_girdi,
-           "-vf", vf, "-af", (f"afade=t=in:d=0.8,afade=t=out:st={SURE - 1.5}:d=1.5" if ney else
-                   f"lowpass=f=1800,afade=t=in:d=1.5,afade=t=out:st={SURE - 2}:d=2"),
+           *girdi,
+           "-vf", vf, "-af", af,
            "-t", str(SURE), "-r", str(fr),
            "-c:v", "libx264", "-preset", "veryfast", "-crf", "21", "-profile:v", "high",
            "-c:a", "aac", "-b:a", "128k", "-ar", "44100", "-ac", "2",
            "-movflags", "+faststart", "-shortest", out_path]
     subprocess.run(cmd, check=True)
     return out_path, kare
+
+
+def ozet_reel(kartlar, zemin_path, out_path, giris_sure=3.0, kart_sure=5.0, gecis=0.7):
+    """Günün kartlarını (ilki kapak) yumuşak geçişlerle tek dikey videoda birleştirir."""
+    fr = 30
+    dikeyler = []
+    for i, k in enumerate(kartlar):
+        p = out_path.replace(".mp4", f"_{i}.jpg")
+        dikey_kare(k, zemin_path, p)
+        dikeyler.append(p)
+    sureler = [giris_sure] + [kart_sure] * (len(kartlar) - 1)
+    toplam = sum(sureler) - gecis * (len(kartlar) - 1)
+    args = []
+    for p, d in zip(dikeyler, sureler):
+        args += ["-loop", "1", "-t", str(d), "-framerate", str(fr), "-i", p]
+    girdi, af = _ses_girdi("ozet" + os.path.basename(out_path), toplam)
+    # bu özet için uzun ve dolu bir bölüm: 64. sn (64-86 arası kesintisiz)
+    if os.path.exists(MUZIK):
+        girdi = ["-ss", "64", "-t", str(toplam + 1), "-i", MUZIK]
+    fc, son, ofs = [], "[0:v]", 0.0
+    for i in range(len(dikeyler)):
+        fc.append(f"[{i}:v]scale={W}:{H},setsar=1,format=yuv420p[v{i}]")
+    son = "[v0]"
+    for i in range(1, len(dikeyler)):
+        ofs += sureler[i - 1] - gecis
+        fc.append(f"{son}[v{i}]xfade=transition=fade:duration={gecis}:offset={ofs:.2f}[x{i}]")
+        son = f"[x{i}]"
+    na = len(dikeyler)
+    fc.append(f"[{na}:a]{af}[a]")
+    cmd = ["ffmpeg", "-y", "-loglevel", "error", *args, *girdi,
+           "-filter_complex", ";".join(fc), "-map", son, "-map", "[a]",
+           "-t", f"{toplam:.2f}", "-r", str(fr), "-c:v", "libx264", "-preset", "veryfast", "-crf", "21",
+           "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k", "-ar", "44100", "-ac", "2",
+           "-movflags", "+faststart", out_path]
+    subprocess.run(cmd, check=True)
+    return out_path

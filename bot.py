@@ -11,7 +11,7 @@ Ortam değişkenleri:
   MODE=post        (varsayılan) bugünün duasını paylaşır
   MODE=onizleme    önümüzdeki 3 günün (9 kart) kartlarını gorseller/onizleme/ içine çizer
   TARIH=2026-12-10 testi belirli bir güne göre yapar (YYYY-AA-GG)
-  VAKIT=sabah|ogle|ikindi|aksam  boşsa Türkiye saatine göre seçilir
+  VAKIT=sabah|ogle|ikindi|aksam|ozet  boşsa Türkiye saatine göre seçilir
 """
 import json
 import os
@@ -50,7 +50,7 @@ VAKIT_TAG = {"sabah": ["#gününduası", "#sabahduası"], "ogle": ["#kuran", "#a
 
 def vakit_bul():
     v = (os.getenv("VAKIT") or "").strip().lower()
-    if v in VAKITLER:
+    if v in VAKITLER or v == "ozet":
         return v
     saat = datetime.now(TR_TZ).hour
     return "sabah" if saat < 11 else ("ogle" if saat < 15 else ("ikindi" if saat < 19 else "aksam"))
@@ -66,8 +66,8 @@ def sec(gun, vakit):
     if vakit == "sabah" and gun.weekday() == 4:   # Cuma sabahı
         cuma = DB["cuma"]
         return cuma[(gecen // 7) % len(cuma)], "cuma", "Hayırlı Cumalar", ["#hayırlıcumalar", "#cumamesajları"]
-    zit = {"sabah": "aksam", "ikindi": "aksam", "aksam": "sabah"}.get(vakit)
-    havuz = [e for e in DB[VAKIT_HAVUZ[vakit]] if not zit or e.get("vakit") != zit]
+    zit = {"sabah": ("aksam",), "ikindi": ("sabah", "aksam"), "aksam": ("sabah",)}.get(vakit, ())
+    havuz = [e for e in DB[VAKIT_HAVUZ[vakit]] if e.get("vakit") not in zit]
     if VAKIT_HAVUZ[vakit] == "ozel":   # günde 2 özel dua: sabah çift, ikindi tek sıradaki
         dua = havuz[(gecen * 2 + (1 if vakit == "ikindi" else 0)) % len(havuz)]
     else:
@@ -164,6 +164,41 @@ def hikaye(kart_path, zemin):
         print("[insta] hikâye paylaşılamadı (gönderi yine de yayında):", e)
 
 
+def gunun_ozeti():
+    """Akşam: o gün paylaşılan 4 duanın hepsi tek Reels'te (22:30)."""
+    gun = bugun()
+    anahtar = f"{gun.isoformat()}_ozet"
+    hist = gecmis_oku()
+    if anahtar in hist.get("paylasilanlar", []) and not DRY_RUN:
+        print("Bugünün özeti zaten paylaşıldı."); return
+    zs = brand.zeminler()
+    tarih = f"{gun.day} {brand.AYLAR[gun.month - 1]} {gun.year}"
+    kapak = brand.make_cover(os.path.join(brand.OUT_DIR, f"ozet_{gun}_0.jpg"), "Bugünün Duaları",
+                             tarih, zs[(gun - BASLANGIC).days % len(zs)])
+    kartlar, ozet_satir = [kapak], []
+    for i, v in enumerate(("sabah", "ogle", "ikindi", "aksam"), 1):
+        dua, tur, baslik, tags = sec(gun, v)
+        p = os.path.join(brand.OUT_DIR, f"ozet_{gun}_{i}.jpg")
+        kart(gun, dua, tur, baslik, p, v)
+        kartlar.append(p)
+        ozet_satir.append(f"{['🌅', '📖', '🤲', '🌙'][i - 1]} {dua['metin'][:60].rsplit(' ', 1)[0]}…")
+    mp4 = video.ozet_reel(kartlar, zs[0], os.path.join(brand.OUT_DIR, f"ozet_{gun}.mp4"))
+    cap = "\n\n".join([f"🌙 Bugünün duaları bir arada · {tarih}", "\n".join(ozet_satir),
+                        "Gün içinde kaçırdıysan hepsini tek videoda izle. Hangisine âmin dersin? 🤲",
+                        "Duaya ihtiyacı olan birini etiketle 👇",
+                        "#dua #gününduaları #amin #akşamduası #kabulkapisi"])
+    print(cap)
+    if DRY_RUN:
+        print("DRY_RUN=1 -> özet paylaşılmadı:", mp4); return
+    if not insta.enabled():
+        sys.exit(1)
+    insta.publish_reel(mp4, cap, kapak)
+    hikaye(kapak, zs[0])
+    son = (hist.get("paylasilanlar", []) + [anahtar])[-30:]
+    with open(HISTORY_FILE, "w", encoding="utf-8") as f:
+        json.dump({"paylasilanlar": son}, f)
+
+
 def kontrol():
     """Paylaşım yapmadan anahtarları dener."""
     hata = False
@@ -221,6 +256,8 @@ def main():
         except Exception as e:
             print("[insta] hikâye paylaşılamadı:", e)
         return
+    if MODE == "post" and vakit_bul() == "ozet":
+        return gunun_ozeti()
     if MODE == "reels_test":   # videoyu yükler ama YAYINLAMAZ
         gun = bugun(); dua, tur, baslik, tags = sec(gun, "sabah")
         out = os.path.join(brand.OUT_DIR, "test.jpg"); z = kart(gun, dua, tur, baslik, out, "sabah")

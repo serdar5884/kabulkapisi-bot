@@ -123,6 +123,8 @@ DUALAR = {
 # beddua, hakaret, reklam: cevap verilmez
 ATLA = ["beddua", "lanet", "kahrolsun", "geberesi", "ölsün", "belasını", "http", "www.", "takip et", "dm at",
         "kazan", "bonus", "bahis", "kripto"]
+REKLAM = re.compile(r"\bdm\b|\bdm[' ]?(ye|e|den)\b|mesaj att|istek kutu|isteklere|isteğe bak|bakar ?m[ıi]s[ıi]n[ıi]z|"
+                    r"profilime|profilimize|sayfama|bio|link|takipleş|takip ederseniz|gt\b|karşılıklı", re.I)
 SIKCA_AMIN = re.compile(r"^\W*(amin|âmin|amiin|amin+|ecmain|allah kabul etsin|inşallah|insallah)\W*$", re.I)
 
 
@@ -137,7 +139,7 @@ def konu_bul(metin):
 def cevap_yaz(metin, seed=None):
     r = random.Random(seed)
     t = metin.lower()
-    if any(a in t for a in ATLA):
+    if any(a in t for a in ATLA) or REKLAM.search(metin):
         return None
     if SIKCA_AMIN.match(metin.strip()):
         return r.choice(DUALAR["amin"])
@@ -207,6 +209,7 @@ if __name__ == "__main__":
                 "Kızım YKS'ye girecek dua edin", "Ayşe için şifa duası lütfen", "Babamı geçen hafta kaybettim",
                 "Hayırlı bir kısmet için dua edin", "Çok güzel paylaşım", "Benim için dua edin çok sıkıntıdayım",
                 "Oğlum askere gidiyor", "Eşimle evlat bekliyoruz dua edin", "Kardeşim kötü arkadaşlara takıldı",
-                "Allah kabul etsin", "Mehmet için dua edin işsiz kaldı"]
+                "Allah kabul etsin", "Mehmet için dua edin işsiz kaldı", "Merhaba Dm bakabilirmisiniz",
+                "isteklere bakar mısınız", "Dm ye bakar mısınız 🌺"]
     for o in ornekler:
         print(f"{o}\n   -> {cevap_yaz(o, seed=o)}")

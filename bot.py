@@ -204,6 +204,12 @@ def main():
     if MODE == "kontrol":
         kontrol()
         return
+    if MODE == "yorum":   # yorumlara dua cevabı
+        import yorum
+        if not insta.enabled():
+            sys.exit(1)
+        yorum.calistir(dry_run=DRY_RUN)
+        return
     if MODE == "sabit":   # sabit/ klasöründeki tanıtım Reels'ini bir kez paylaşır
         d = os.path.join(HERE, "sabit")
         cap = open(os.path.join(d, "aciklama.txt"), encoding="utf-8").read().strip()

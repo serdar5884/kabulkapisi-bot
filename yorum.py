@@ -48,16 +48,26 @@ KESIN_DEGIL = {"Allah", "Rabbim", "Rabbimiz", "Amin", "Âmin", "Kabul", "Kapıs�
                "Benim", "Bizim", "Hepimiz", "Inşallah", "İnşallah", "Selam", "Selamün", "Hayırlı", "Cuma"}
 
 
+EKLER = r"(?:e|a|ye|ya|i|ı|u|ü|in|ın|un|ün|le|la|den|dan|de|da|çün|cun)?"
+
+
 def hedef_bul(metin):
-    """(ad, yonelme_hali) döndürür. Bulamazsa ('sen', 'sana')."""
+    """(ad, yonelme_hali) döndürür. Bulamazsa ('sen', 'sana').
+    'annem', 'anneme', 'Ercan kardeşime', 'Ahmet için' gibi kalıpları tanır."""
     t = metin.lower()
     for y in sorted(YAKINLAR, key=len, reverse=True):
-        if re.search(rf"\b{y}\b", t):
+        m = re.search(rf"\b{y}{EKLER}\b", t)
+        if m:
             if y in ("anne babam", "annemle babam"):
                 return "anne baban", "anne babana"
             iyelik = y[:-1] + "n"          # annem -> annen, kızım -> kızın
+            # önünde isim var mı? "Ercan kardeşime" -> "Ercan kardeşin"
+            once = metin[:m.start()].split()
+            if once:
+                isim = once[-1].strip(",.!?")
+                if isim[:1].isupper() and isim not in KESIN_DEGIL and len(isim) > 2:
+                    iyelik = f"{isim} {iyelik}"
             return iyelik, yonelme(iyelik)
-    # "Ahmet için", "Ayşe kardeşimiz için", "@kullanici için"
     m = re.search(r"([A-ZÇĞİÖŞÜ][a-zçğıöşü]{2,})(?:\s+[a-zçğıöşü]+)?\s+için", metin)
     if m and m.group(1) not in KESIN_DEGIL:
         ad = m.group(1)
@@ -151,7 +161,7 @@ def cevap_yaz(metin, seed=None):
     ad, ad_y = hedef_bul(metin)
     sablon = r.choice(DUALAR[konu or "genel"])
     k_n = "senin" if ad == "sen" else ad + ("'in" if ad[0].isupper() else "in")
-    if ad[0].isupper():   # özel isim: Ahmet'in
+    if ad[0].isupper() and " " not in ad:   # özel isim: Ahmet'in
         u = _son_unlu(ad)
         ek = {"a": "ın", "ı": "ın", "o": "un", "u": "un", "e": "in", "i": "in", "ö": "ün", "ü": "ün"}[u]
         k_n = f"{ad}'{'n' if ad[-1].lower() in UNLU else ''}{ek}"
@@ -210,6 +220,7 @@ if __name__ == "__main__":
                 "Hayırlı bir kısmet için dua edin", "Çok güzel paylaşım", "Benim için dua edin çok sıkıntıdayım",
                 "Oğlum askere gidiyor", "Eşimle evlat bekliyoruz dua edin", "Kardeşim kötü arkadaşlara takıldı",
                 "Allah kabul etsin", "Mehmet için dua edin işsiz kaldı", "Merhaba Dm bakabilirmisiniz",
-                "isteklere bakar mısınız", "Dm ye bakar mısınız 🌺"]
+                "isteklere bakar mısınız", "Dm ye bakar mısınız 🌺",
+                "Ercan kardeşime dua et, bol para lazımmış", "Anneme şifa duası", "oğlumun sınavı var"]
     for o in ornekler:
         print(f"{o}\n   -> {cevap_yaz(o, seed=o)}")

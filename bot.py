@@ -293,7 +293,8 @@ def main():
         cap = caption(dua, tur, baslik, tags)
         print(f"--- {gun} {vakit} [{tur}] ---\n{cap}\n---")
         mp4 = None
-        if os.getenv("REELS", "1") == "1":
+        reels_vakit = os.getenv("REELS_VAKITLER", "sabah,aksam").split(",")
+        if os.getenv("REELS", "1") == "1" and vakit in reels_vakit:   # 13:00 ve 17:00 normal fotoğraf
             try:
                 mp4, _ = video.reel(out, zemin, out.replace(".jpg", ".mp4"))
             except Exception as e:

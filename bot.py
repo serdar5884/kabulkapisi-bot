@@ -74,7 +74,10 @@ def sec(gun, vakit):
         dua = havuz[gecen % len(havuz)]
     tema_tag = {"borç": ["#borçduası"], "hasta": ["#şifaduası"], "dert": ["#sıkıntıduası"],
                 "çocuk": ["#evlatduası"], "aile": ["#aileduası"]}.get(dua.get("tema"), [])
-    return dua, vakit, VAKIT_BASLIK[vakit], tema_tag + VAKIT_TAG[vakit] + ["#amin"]
+    vtag = VAKIT_TAG[vakit]
+    if vakit == "aksam" and dua.get("tur") != "hadis":
+        vtag = ["#akşamduası", "#duaistegi"]
+    return dua, vakit, VAKIT_BASLIK[vakit], tema_tag + vtag + ["#amin"]
 
 
 def caption(dua, tur, baslik, tags):

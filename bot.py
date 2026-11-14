@@ -84,7 +84,12 @@ def caption(dua, tur, baslik, tags):
               "aksam": "🌙 Hayırlı akşamlar, Peygamber Efendimizin dualarından biri sana",
               "cuma": "🕌 Hayırlı Cumalar",
               "kandil": f"✨ {baslik} mübarek olsun"}[tur]
-    parts = [acilis, dua["metin"]]
+    if tur == "aksam" and dua.get("tur") != "hadis":
+        acilis = "🌙 Hayırlı akşamlar, bu satırları okuyan sana bir dua var"
+    parts = [acilis]
+    if dua.get("okunus"):
+        parts.append(f"🕋 Okunuşu: {dua['okunus']}")
+    parts.append(("Anlamı: " if dua.get("okunus") else "") + dua["metin"])
     if dua.get("kaynak"):
         parts.append(f"📖 {dua['kaynak']}")
     parts.append("Âmin yazmayı unutma 🤲\nDuaya ihtiyacı olan birini etiketle 👇\nSevdiklerine gönder, bu dua onlara da ulaşsın 💛")

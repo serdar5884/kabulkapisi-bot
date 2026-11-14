@@ -12,6 +12,14 @@
    "metin": "Allah'ım, annemi ve babamı rahmetinle kuşat. Hayatta iseler ömürlerini sağlıkla uzat, vefat etmişlerse kabirlerini nurla doldur."
   },
   {
+   "tur": "dua",
+   "metin": "Allah'ın adıyla çıkıyorum, Allah'a tevekkül ettim. Güç ve kuvvet ancak Allah'ın yardımıyladır. Allah'ım, rızkımıza, kazancımıza ve hayatımıza bereket ihsan eyle.",
+   "kaynak": "Evden çıkarken okunan dua",
+   "vakit": "sabah",
+   "tema": "borç",
+   "okunus": "Bismillâhi tevekkeltü alallâh. Lâ havle ve lâ kuvvete illâ billâh. Allahümme bârik lenâ fi'r-rızkı ve'l-kazâi ve'l-kader."
+  },
+  {
    "tur": "ozgun",
    "tema": "dert",
    "metin": "Bu satırları okuyan dertli kardeşim; Rabbim kimseye söyleyemediğin o derdi biliyor. Dilinden dökülmeyen duayı kabul etsin, gönlüne ferahlık versin."
@@ -724,6 +732,12 @@
   },
   {
    "tur": "ayet",
+   "metin": "Şüphesiz Allah rızık verendir, güçlüdür, çok kuvvetlidir.",
+   "kaynak": "Zâriyât Suresi, 58. ayet (meali)",
+   "tema": "borç"
+  },
+  {
+   "tur": "ayet",
    "metin": "Rabbim! Bana ilim ver ve beni salihler arasına kat.",
    "kaynak": "Şuarâ Suresi, 83. ayet (meali)"
   },
@@ -739,6 +753,12 @@
   },
   {
    "tur": "ayet",
+   "metin": "Kim Allah'a karşı takvâ sahibi olursa Allah ona bir çıkış yolu ihsan eder; onu ummadığı yerden rızıklandırır. Kim Allah'a tevekkül ederse O kendisine yeter.",
+   "kaynak": "Talâk Suresi, 2-3. ayetler (meali)",
+   "tema": "borç"
+  },
+  {
+   "tur": "ayet",
    "metin": "Rabbimiz! Bizi doğru yola ilettikten sonra kalplerimizi kaydırma, bize katından rahmet bağışla. Şüphesiz sen çok bağışlayansın.",
    "kaynak": "Âl-i İmrân Suresi, 8. ayet (meali)"
   },
@@ -751,6 +771,12 @@
    "tur": "ayet",
    "metin": "Rabbimiz! Bize gözümüzü aydınlatacak eşler ve nesiller bağışla ve bizi takva sahiplerine önder kıl.",
    "kaynak": "Furkân Suresi, 74. ayet (meali)"
+  },
+  {
+   "tur": "ayet",
+   "metin": "Üç peygamber, üç dua: Hz. İbrahim ateşe atılırken \"Hasbünallahu ve ni'mel vekîl\" dedi. Hz. Yunus karanlıklar içinde \"Lâ ilâhe illâ ente sübhâneke innî küntü mine'z-zâlimîn\" dedi. Hz. Musa çaresiz kaldığında \"Rabbi innî limâ enzelte ileyye min hayrin fakîr\" dedi.",
+   "kaynak": "Âl-i İmrân 173 · Enbiyâ 87 · Kasas 24",
+   "tema": "dert"
   },
   {
    "tur": "ayet",
@@ -857,7 +883,7 @@
   {
    "tur": "hadis",
    "tema": "borç",
-   "metin": "Allah'ım! Helal rızkınla beni haramdan uzak tut, lütfunla beni senden başkasına muhtaç etme.",
+   "metin": "Allah'ım! Helâlinle beni haramdan koruyup kifayetlendir; lütfunla beni Senden başkasına muhtaç bırakma.",
    "kaynak": "Tirmizî, Daavât"
   },
   {
@@ -868,9 +894,21 @@
   },
   {
    "tur": "hadis",
+   "metin": "De ki: Ey mülkün sahibi olan Allah'ım! Dilediğine mülk verirsin, dilediğinden mülkü çeker alırsın; dilediğini yüceltir, dilediğini alçaltırsın. *Hayır yalnız senin elindedir.* Sen dünyanın ve ahiretin Rahmân'ısın. Bana, senden başkasının rahmetine ihtiyaç duymayacağım şekilde *rahmet et.*",
+   "kaynak": "Taberânî, es-Sağîr, 1/336",
+   "tema": "borç"
+  },
+  {
+   "tur": "hadis",
    "tema": "dert",
    "metin": "Azîm ve Halîm olan Allah'tan başka ilah yoktur. Büyük Arş'ın Rabbi olan Allah'tan başka ilah yoktur. Göklerin, yerin ve kerim Arş'ın Rabbi olan Allah'tan başka ilah yoktur.",
    "kaynak": "Buhârî, Daavât; Müslim, Zikir (sıkıntı anında okunan dua)"
+  },
+  {
+   "tur": "hadis",
+   "metin": "Allah'ım! Üzüntüden ve kederden sana sığınırım. Acizlikten ve tembellikten sana sığınırım, korkaklıktan ve cimrilikten sana sığınırım. Borcun galebe çalmasından ve insanların kahrından sana sığınırım.",
+   "kaynak": "Ebû Dâvûd, Salât 367 (Ebû Ümâme rivayeti)",
+   "tema": "borç"
   },
   {
    "tur": "hadis",
@@ -880,15 +918,32 @@
   },
   {
    "tur": "hadis",
+   "metin": "Allah'ım! Hamd ancak sanadır, senden başka ilah yoktur. Sen Mennân'sın, gökleri ve yeri eşsiz şekilde yaratansın. Ey Celâl ve İkrâm sahibi, ey Hayy ve Kayyûm! İşte bu isimlerin hürmetine senden istiyorum.",
+   "kaynak": "İsm-i Âzam duası (Ebû Dâvûd)"
+  },
+  {
+   "tur": "hadis",
    "metin": "Allah'ım! Bedenime afiyet ver, kulağıma afiyet ver, gözüme afiyet ver.",
    "kaynak": "Ebû Dâvûd, Edeb",
    "vakit": "sabah"
   },
   {
+   "tur": "dua",
+   "metin": "Ey kendisinden gayrisi gücünü bilmeyen Allah'ım! Sıkıntılarımı, kederlerimi sevince çevir.",
+   "kaynak": "Hz. Yâkub'a öğretildiği rivayet edilen dua",
+   "tema": "dert",
+   "okunus": "Yâ Men lâ yebleğu kudratehû ğayruhû, ferric annî."
+  },
+  {
    "tur": "hadis",
    "metin": "Allah'ım! Senden faydalı ilim, helal rızık ve kabul edilmiş amel isterim.",
    "kaynak": "İbn Mâce, İkâme",
-   "vakit": "sabah"
+   "okunus": "Allahümme innî es'elüke ilmen nâfian ve rızkan tayyiben ve amelen mütekabbelen."
+  },
+  {
+   "tur": "dua",
+   "metin": "Ey Allah'ım! Ancak senin nurunla hidayet buldum, ancak senin lütfunla ihtiyaçlarımdan kurtuldum, ancak senin nimetinle sabahladım ve akşama çıktım. İşte günahlarım senin huzurunda. Senden mağfiret diler, sana tevbe ederim. Yâ Hannân! Yâ Mennân! Beni bu sıkıntıdan kurtar.",
+   "tema": "dert"
   },
   {
    "tur": "hadis",
@@ -897,9 +952,20 @@
    "vakit": "sabah"
   },
   {
+   "tur": "dua",
+   "metin": "Allah'ım! Sen dertleri ferahlatan, kederleri gideren, darda kalanların duasına icabet eden, dünya ve ahiretin Rahmân ve Rahîm'isin. Bana ancak sen merhamet edersin; bana öyle bir rahmet et ki, senden başkasının merhametine ihtiyaç bırakmasın.",
+   "tema": "dert"
+  },
+  {
    "tur": "hadis",
    "metin": "Allah'ım! Senden hidayet, takva, iffet ve gönül zenginliği isterim.",
    "kaynak": "Müslim, Zikir"
+  },
+  {
+   "tur": "dua",
+   "metin": "Allah'ım! Geçmişteki ve gelecekteki tüm kötü bakışların şerrinden sana sığınırım.",
+   "kaynak": "Nazar duası",
+   "okunus": "Allâhümme innî eûzü bike mine'n-nazari'l-âhiri ve'l-evveli."
   },
   {
    "tur": "hadis",
@@ -907,9 +973,18 @@
    "kaynak": "Buhârî, Daavât"
   },
   {
+   "tur": "dua",
+   "metin": "Allah'ım! Senden lütfunu ve rahmetini diliyorum. Çünkü bunlara yalnızca sen sahipsin."
+  },
+  {
    "tur": "hadis",
    "metin": "Allah'ım! Bana öğrettiklerinle beni faydalandır, bana fayda verecek olanı öğret ve ilmimi artır.",
    "kaynak": "Tirmizî, Daavât; İbn Mâce"
+  },
+  {
+   "tur": "dua",
+   "metin": "Allah'ım, kendi gücümden ve kuvvetimden sıyrılıp senin gücüne ve kuvvetine sığınıyorum. Allah'ım, bana yardım et, aleyhime yardım etme. Beni muzaffer kıl, aleyhime zafer verme. Beni hidayete erdir ve hidayeti bana kolaylaştır.",
+   "tema": "dert"
   },
   {
    "tur": "hadis",

@@ -66,7 +66,12 @@ def reel(kart_path, zemin_path, out_path):
     return out_path, kare
 
 
-def ozet_reel(kartlar, zemin_path, out_path, giris_sure=3.0, kart_sure=5.0, gecis=0.7):
+def okuma_suresi(metin, en_az=8.0, en_cok=15.0):
+    """Yavaş okuyan biri için: ~2 kelime/sn + 3 sn pay."""
+    return max(en_az, min(en_cok, len(metin.split()) / 2.0 + 3.0))
+
+
+def ozet_reel(kartlar, zemin_path, out_path, giris_sure=3.5, kart_sure=5.0, gecis=1.0, sureler_kart=None):
     """Günün kartlarını (ilki kapak) yumuşak geçişlerle tek dikey videoda birleştirir."""
     fr = 30
     dikeyler = []
@@ -74,15 +79,15 @@ def ozet_reel(kartlar, zemin_path, out_path, giris_sure=3.0, kart_sure=5.0, geci
         p = out_path.replace(".mp4", f"_{i}.jpg")
         dikey_kare(k, zemin_path, p)
         dikeyler.append(p)
-    sureler = [giris_sure] + [kart_sure] * (len(kartlar) - 1)
+    sureler = [giris_sure] + (list(sureler_kart) if sureler_kart else [kart_sure] * (len(kartlar) - 1))
     toplam = sum(sureler) - gecis * (len(kartlar) - 1)
     args = []
     for p, d in zip(dikeyler, sureler):
         args += ["-loop", "1", "-t", str(d), "-framerate", str(fr), "-i", p]
     girdi, af = _ses_girdi("ozet" + os.path.basename(out_path), toplam)
-    # bu özet için uzun ve dolu bir bölüm: 64. sn (64-86 arası kesintisiz)
+    # uzun özet için parçanın başından (15. sn) itibaren; yetmezse başa sarar
     if os.path.exists(MUZIK):
-        girdi = ["-ss", "64", "-t", str(toplam + 1), "-i", MUZIK]
+        girdi = ["-stream_loop", "-1", "-ss", "15", "-t", str(toplam + 1), "-i", MUZIK]
     fc, son, ofs = [], "[0:v]", 0.0
     for i in range(len(dikeyler)):
         fc.append(f"[{i}:v]scale={W}:{H},setsar=1,format=yuv420p[v{i}]")

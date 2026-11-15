@@ -66,12 +66,12 @@ def reel(kart_path, zemin_path, out_path):
     return out_path, kare
 
 
-def okuma_suresi(metin, en_az=8.0, en_cok=15.0):
-    """Yavaş okuyan biri için: ~2 kelime/sn + 3 sn pay."""
-    return max(en_az, min(en_cok, len(metin.split()) / 2.0 + 3.0))
+def okuma_suresi(metin, en_az=6.5, en_cok=11.0):
+    """Rahat okuma: ~2.7 kelime/sn + 2 sn pay."""
+    return round(max(en_az, min(en_cok, len(metin.split()) / 2.7 + 2.0)), 1)
 
 
-def ozet_reel(kartlar, zemin_path, out_path, giris_sure=3.5, kart_sure=5.0, gecis=1.0, sureler_kart=None):
+def ozet_reel(kartlar, zemin_path, out_path, giris_sure=3.0, kart_sure=5.0, gecis=0.8, sureler_kart=None):
     """Günün kartlarını (ilki kapak) yumuşak geçişlerle tek dikey videoda birleştirir."""
     fr = 30
     dikeyler = []

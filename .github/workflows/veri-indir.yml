@@ -1,0 +1,23 @@
+name: Veri indir (tek seferlik)
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  indir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Diyanet meali (Tanzil) ve hadis verisi
+        run: |
+          mkdir -p kaynak
+          curl -sSfL -A "Mozilla/5.0" -o kaynak/tr.diyanet.txt "https://tanzil.net/trans/?transID=tr.diyanet&type=txt-2" || echo "tanzil olmadi"
+          head -c 400 kaynak/tr.diyanet.txt || true
+          wc -l kaynak/tr.diyanet.txt || true
+      - name: Kaydet
+        run: |
+          git config user.name "kabulkapisi-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add kaynak || true
+          git commit -m "Kaynak veri: Diyanet meali" || echo "degisiklik yok"
+          git push || true

@@ -195,9 +195,17 @@ def reel_container(video_path, caption, cover_path=None):
     return cid
 
 
-def publish_reel(video_path, caption, cover_path=None):
+def publish_reel(video_path, caption, cover_path=None, deneme=3):
     uid = _user_id()
-    cid = reel_container(video_path, caption, cover_path)
+    for i in range(deneme):   # Instagram bazen geçici "ProcessingFailedError" veriyor: yeniden dene
+        try:
+            cid = reel_container(video_path, caption, cover_path)
+            break
+        except Exception as e:
+            if i == deneme - 1:
+                raise
+            print(f"[insta] video yüklenemedi ({e}); {20 * (i + 1)} sn sonra yeniden denenecek")
+            time.sleep(20 * (i + 1))
     r = requests.post(f"{API}/{uid}/media_publish", timeout=60,
                       data={"creation_id": cid, "access_token": IG_TOKEN})
     mid = _check(r, "reels yayınlama")["id"]

@@ -18,6 +18,7 @@ import os
 import sys
 from datetime import date, datetime, timedelta, timezone
 
+import animasyon
 import brand
 import insta
 import video
@@ -306,7 +307,13 @@ def main():
         reels_vakit = os.getenv("REELS_VAKITLER", "sabah,aksam").split(",")
         if os.getenv("REELS", "1") == "1" and vakit in reels_vakit:   # 13:00 ve 17:00 normal fotoğraf
             try:
-                mp4, _ = video.reel(out, zemin, out.replace(".jpg", ".mp4"))
+                try:   # hareketli kart: arka plan -> panel -> yazılar soluktan nete -> parlayan buton
+                    mp4, _ = animasyon.hareketli_reel(dua["metin"], zemin, out.replace(".jpg", ".mp4"),
+                                                      kaynak=dua.get("kaynak"), date=datetime(gun.year, gun.month, gun.day),
+                                                      ses_anahtar=os.path.basename(out))
+                except Exception as e:
+                    print("[animasyon] olmadı, sade video:", e)
+                    mp4, _ = video.reel(out, zemin, out.replace(".jpg", ".mp4"))
             except Exception as e:
                 print("[video] üretilemedi, görsel olarak paylaşılacak:", e)
         if DRY_RUN:

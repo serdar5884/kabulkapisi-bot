@@ -183,7 +183,7 @@ def gunun_ozeti():
     zs = brand.zeminler()
     tarih = f"{gun.day} {brand.AYLAR[gun.month - 1]} {gun.year}"
     kapak = brand.make_cover(os.path.join(brand.OUT_DIR, f"ozet_{gun}_0.jpg"), "Bugünün Duaları",
-                             tarih, zs[(gun - BASLANGIC).days % len(zs)])
+                             tarih, zs[(gun - BASLANGIC).days % len(zs)], buton="4 DUA BİR ARADA", ok=False)
     kartlar, ozet_satir, sureler = [kapak], [], []
     for i, v in enumerate(("sabah", "ogle", "ikindi", "aksam"), 1):
         dua, tur, baslik, tags = sec(gun, v)

@@ -387,7 +387,7 @@ def make_photo_card(path, metin, zemin, baslik="Günün Duası", kaynak=None, da
 
 
 
-def make_cover(path, baslik, alt, zemin):
+def make_cover(path, baslik, alt, zemin, buton="KAYDIR", ok=True):
     """Haftalık derleme (kaydırmalı gönderi) kapağı: büyük altın başlık + 'Kaydır' butonu."""
     img = Image.open(zemin).convert("RGB").resize((W, H), Image.LANCZOS).convert("RGBA")
     box = (90, 470, W - 90, 1110)
@@ -416,15 +416,16 @@ def make_cover(path, baslik, alt, zemin):
     _center(d, y + 20, alt, font("italic", 44), (250, 244, 230))
     # kaydır butonu
     bf = font("bold", 38)
-    lab = "KAYDIR"
-    bw, bh = int(d.textlength(lab, font=bf) + 150), 66
+    lab = buton
+    bw, bh = int(d.textlength(lab, font=bf) + (150 if ok else 90)), 66
     bx, by = (W - bw) // 2, box[3] - 130
     d.rounded_rectangle([bx, by, bx + bw, by + bh], radius=bh // 2, fill=(226, 180, 80))
     l, t, r, b = d.textbbox((0, 0), lab, font=bf)
     d.text((bx + 45, by + (bh - (b - t)) / 2 - t), lab, font=bf, fill=(22, 30, 44))
-    ax, ay = bx + bw - 80, by + bh // 2
-    d.line([(ax, ay), (ax + 34, ay)], fill=(22, 30, 44), width=5)
-    d.polygon([(ax + 44, ay), (ax + 28, ay - 12), (ax + 28, ay + 12)], fill=(22, 30, 44))
+    if ok:
+        ax, ay = bx + bw - 80, by + bh // 2
+        d.line([(ax, ay), (ax + 34, ay)], fill=(22, 30, 44), width=5)
+        d.polygon([(ax + 44, ay), (ax + 28, ay - 12), (ax + 28, ay + 12)], fill=(22, 30, 44))
     _center(d, box[3] - 48, HANDLE, font("semibold", 29), GOLD_HI)
     img.convert("RGB").save(path, "JPEG", quality=93)
     return path

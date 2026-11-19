@@ -324,7 +324,7 @@ def main():
         paylasildi = False
         if mp4:
             try:
-                insta.publish_reel(mp4, cap)
+                insta.publish_reel(mp4, cap, out)   # kapak: yazıların tam olduğu kart
                 paylasildi = True
             except Exception as e:
                 print("[insta] Reels başarısız, görsel gönderiye dönülüyor:", e)

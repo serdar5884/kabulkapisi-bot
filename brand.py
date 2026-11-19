@@ -287,11 +287,55 @@ def _ornament(d, cx, y, half=150):
         d.ellipse([cx + s * half - 4, y - 4, cx + s * half + 4, y + 4], fill=GOLD)
 
 
+
+# --- yerleşim: uzun metinde yazıyı küçültmek yerine paneli genişlet ---
+PANEL = (70, 390, W - 70, 1175)
+GENIS_KENAR = 34                             # uzun metinde yan boşluk (normalde 70)
+PANEL_EN_UST, PANEL_EN_ALT = 280, 1328       # büyüme sınırları (önce aşağı büyür)
+YAZI_EN_AZ = 56                              # bu boyutun altına inmeden önce panel büyür
+
+
+def yerlesim(metin, kaynak=None):
+    """(box, font, satırlar, satır_yüksekliği, yazı_başlangıç_y) döndürür."""
+    d0 = ImageDraw.Draw(Image.new("RGBA", (1, 1)))
+    toks = _tokens(metin)
+    px1, py1, px2, py2 = PANEL
+    foot_h, src_h = 165, (62 if kaynak else 0)
+    ust_bosluk = 104                          # süs + boşluk
+
+    def dene(size, x1, x2, y1, y2):
+        f = font("semibold", size)
+        lines = _wrap_tokens(d0, toks, f, (x2 - x1) - 100)
+        lh = int(size * 1.36)
+        return f, lines, lh, lh * len(lines) <= (y2 - y1 - ust_bosluk - foot_h - src_h)
+
+    # 1) normal panelde 72..YAZI_EN_AZ
+    for size in range(72, YAZI_EN_AZ - 1, -2):
+        f, lines, lh, ok = dene(size, px1, px2, py1, py2)
+        if ok:
+            return (px1, py1, px2, py2), f, lines, lh, py1 + ust_bosluk
+    # 2) yanlara genişlet, sonra önce aşağı, gerekirse yukarı uzat
+    x1, x2 = GENIS_KENAR, W - GENIS_KENAR
+    f, lines, lh, ok = dene(YAZI_EN_AZ, x1, x2, py1, py2)
+    if ok:
+        return (x1, py1, x2, py2), f, lines, lh, py1 + ust_bosluk
+    gerek = lh * len(lines) + ust_bosluk + foot_h + src_h + 16
+    y1, y2 = py1, min(PANEL_EN_ALT, py1 + gerek)
+    if y2 - y1 < gerek:
+        y1 = max(PANEL_EN_UST, y2 - gerek)
+    # 3) hâlâ sığmıyorsa en büyük panelde yazıyı küçült
+    for size in range(YAZI_EN_AZ, 34, -2):
+        f, lines, lh, ok = dene(size, x1, x2, y1, y2)
+        if ok:
+            break
+    return (x1, y1, x2, y2), f, lines, lh, y1 + ust_bosluk
+
+
 def make_photo_card(path, metin, zemin, baslik="Günün Duası", kaynak=None, date=None, kandil=False):
     date = date or datetime.now()
     img = Image.open(zemin).convert("RGB").resize((W, H), Image.LANCZOS).convert("RGBA")
-    px1, py1, px2, py2 = 70, 390, W - 70, 1175
-    box = (px1, py1, px2, py2)
+    box, f, lines, lh, ty0 = yerlesim(metin, kaynak)
+    px1, py1, px2, py2 = box
 
     # buzlu cam panel
     blur = img.crop(box).filter(_IF.GaussianBlur(14))
@@ -318,17 +362,9 @@ def make_photo_card(path, metin, zemin, baslik="Günün Duası", kaynak=None, da
     y = oy + 34
 
     # gövde metni
-    foot_h = 165
-    src_h = 62 if kaynak else 0
+    foot_h, src_h = 165, (62 if kaynak else 0)
+    y = ty0
     box_h = py2 - y - foot_h - src_h
-    toks = _tokens(metin)
-    max_w = (px2 - px1) - 110
-    for size in range(72, 38, -2):
-        f = font("semibold", size)
-        lines = _wrap_tokens(d, toks, f, max_w)
-        lh = int(size * 1.36)
-        if lh * len(lines) <= box_h:
-            break
     layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     ld = ImageDraw.Draw(layer)
     sp = ld.textlength(" ", font=f)

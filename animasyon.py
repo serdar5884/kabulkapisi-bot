@@ -23,8 +23,8 @@ def _katman():
 def katmanlar(metin, zemin, kaynak=None, date=None):
     date = date or datetime.now()
     bg = Image.open(zemin).convert("RGB").resize((W, H), Image.LANCZOS).convert("RGBA")
-    px1, py1, px2, py2 = 70, 390, W - 70, 1175
-    box = (px1, py1, px2, py2)
+    box, f, lines, lh, ty0 = brand.yerlesim(metin, kaynak)
+    px1, py1, px2, py2 = box
 
     # panel (bulanık cam + koyu örtü + parlayan kenar), arka planla birlikte hazır görüntü
     pan = bg.copy()
@@ -63,15 +63,9 @@ def katmanlar(metin, zemin, kaynak=None, date=None):
 
     # satırlar (her satır ayrı katman, gölgesiyle)
     foot_h, src_h = 165, (62 if kaynak else 0)
+    y = ty0
     box_h = py2 - y - foot_h - src_h
-    toks = _tokens(metin)
     d0 = ImageDraw.Draw(_katman())
-    for size in range(72, 38, -2):
-        f = font("semibold", size)
-        lines = _wrap_tokens(d0, toks, f, (px2 - px1) - 110)
-        lh = int(size * 1.36)
-        if lh * len(lines) <= box_h:
-            break
     sp = d0.textlength(" ", font=f)
     cy = y + (box_h - lh * len(lines)) / 2
     satirlar = []
@@ -162,7 +156,7 @@ def hareketli_reel(metin, zemin, out_path, kaynak=None, date=None, ses_girdi=Non
     t_kay = t_sat + adim * (len(satirlar) - 1) + belirme * 0.8
     t_but = t_kay + (0.5 if kay else 0.0)
     t_alt = t_but + 0.4
-    sure = max(9.0, t_alt + 4.5)
+    sure = max(10.0, t_alt + 6.0)   # sonda yazı tam hâliyle 6 sn kalır
     n = int(sure * FPS)
 
     # 9:16 arka zemin (bulanık), bir kez

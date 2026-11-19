@@ -26,7 +26,9 @@ import video
 HERE = os.path.dirname(os.path.abspath(__file__))
 TR_TZ = timezone(timedelta(hours=3))
 DRY_RUN = os.getenv("DRY_RUN", "0") == "1"
-ZORLA = os.getenv("ZORLA", "0") == "1"      # aynı vakit daha önce paylaşıldıysa bile yeniden paylaş
+ZORLA = os.getenv("ZORLA", "0") == "1"
+# elle paylaşılacak vakitler (bot bu vakitleri atlar): "YYYY-AA-GG_vakit"
+ELLE = {"2026-11-20_aksam"}      # aynı vakit daha önce paylaşıldıysa bile yeniden paylaş
 MODE = (os.getenv("MODE") or "post").strip().lower()
 BASLANGIC = date(2026, 11, 11)          # sıralamanın başladığı gün
 HISTORY_FILE = os.path.join(HERE, "gecmis.json")
@@ -283,6 +285,9 @@ def main():
     gun = bugun()
     vakit = vakit_bul()
     anahtar = f"{gun.isoformat()}_{vakit}"
+    if anahtar in ELLE and not ZORLA:
+        print(f"{anahtar} elle paylaşılacak, bot atlıyor.")
+        return
     hist = gecmis_oku()
     if anahtar in hist.get("paylasilanlar", []) and not DRY_RUN and not ZORLA:
         print(f"{gun} {vakit} paylaşımı zaten yapıldı, tekrar paylaşılmıyor.")

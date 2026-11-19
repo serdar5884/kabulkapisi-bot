@@ -1,10 +1,24 @@
 """Bilgi serisi kartları: dua kartlarından ayrı, desenli renkli zemin."""
 import math, os, random
-from PIL import Image, ImageDraw, ImageFilter as _IF
+from PIL import Image, ImageDraw, ImageFont, ImageFilter as _IF
 from brand import (W, H, font, _wrap, _center, _gold_text, _ornament, cta_katmanlari,
                    GOLD, GOLD_HI, HANDLE)
 
 CREAM = (250, 244, 230)
+NUNITO = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fonts", "Nunito.ttf")
+_AG = {"bold": "Black", "semibold": "ExtraBold", "medium": "Medium", "italic": "SemiBold"}
+_OLC = {"bold": 0.86, "semibold": 0.9, "medium": 0.88, "italic": 0.86}
+
+
+def nf(stil, boyut):
+    """Bilgi kartları: NeHaberÖzet / Bugün Hava Nasıl ile aynı Nunito yazı tipi."""
+    try:
+        f = ImageFont.truetype(NUNITO, int(boyut * _OLC.get(stil, 0.9)))
+        f.set_variation_by_name(_AG.get(stil, "Regular"))
+        return f
+    except Exception:
+        return font(stil, boyut)
+
 SERI = {   # seri: (etiket, koyu renk, açık renk)
     "adab":      ("DUANIN ADABI",          (10, 58, 46),  (24, 96, 76)),
     "vakit":     ("KABUL VAKİTLERİ",       (8, 48, 62),   (20, 86, 104)),
@@ -60,7 +74,7 @@ def zemin(seri):
 
 def _rozet(img, y, metin):
     d = ImageDraw.Draw(img, "RGBA")
-    f = font("bold", 30)
+    f = nf("bold", 30)
     tw = d.textlength(metin, font=f)
     bw, bh = int(tw + 70), 54
     x = (W - bw) // 2
@@ -78,7 +92,7 @@ def kapak(path, post, n_kart):
     _rozet(img, 150, SERI[post["seri"]][0])
     d = ImageDraw.Draw(img, "RGBA")
     _ornament(d, W // 2, 330, half=200)
-    ft = font("bold", 96)
+    ft = nf("bold", 96)
     lines = _wrap(d, _ust(post["baslik"]), ft, W - 200)
     y = 640 - len(lines) * 108 // 2
     for ln in lines:
@@ -86,10 +100,10 @@ def kapak(path, post, n_kart):
         img.alpha_composite(tl, ((W - tl.width) // 2, y))
         y += 108
     d = ImageDraw.Draw(img, "RGBA")
-    _center(d, y + 30, post.get("alt", ""), font("italic", 46), CREAM)
+    _center(d, y + 30, post.get("alt", ""), nf("italic", 46), CREAM)
     _ornament(d, W // 2, y + 140, half=120)
     # kaydır göstergesi
-    bf = font("bold", 36)
+    bf = nf("bold", 36)
     lab = f"{n_kart} KART · KAYDIR"
     bw, bh = int(d.textlength(lab, font=bf) + 150), 66
     bx, by = (W - bw) // 2, 1080
@@ -99,7 +113,7 @@ def kapak(path, post, n_kart):
     ax, ay = bx + bw - 80, by + bh // 2
     d.line([(ax, ay), (ax + 34, ay)], fill=(22, 30, 44), width=5)
     d.polygon([(ax + 44, ay), (ax + 28, ay - 12), (ax + 28, ay + 12)], fill=(22, 30, 44))
-    _center(d, 1228, HANDLE, font("semibold", 32), GOLD_HI)
+    _center(d, 1228, HANDLE, nf("semibold", 32), GOLD_HI)
     img.convert("RGB").save(path, "JPEG", quality=93)
     return path
 
@@ -114,12 +128,12 @@ def kart(path, post, i):
     cy = 270
     d.ellipse([W // 2 - 52, cy - 52, W // 2 + 52, cy + 52], fill=(0, 0, 0, 80), outline=GOLD_HI + (255,), width=3)
     _yildiz(d, W // 2, cy, 66, GOLD + (150,), 2)
-    nf = font("bold", 62)
-    tl = _gold_text(None, str(i + 1), nf)
+    numf = nf("bold", 62)
+    tl = _gold_text(None, str(i + 1), numf)
     img.alpha_composite(tl, ((W - tl.width) // 2, cy - tl.height // 2 - 6))
     d = ImageDraw.Draw(img, "RGBA")
     # başlık
-    ft = font("bold", 64)
+    ft = nf("bold", 64)
     y = 370
     for ln in _wrap(d, k["baslik"], ft, W - 200):
         tl = _gold_text(None, ln, ft)
@@ -130,7 +144,7 @@ def kart(path, post, i):
     # metin: alt sınıra sığana kadar küçült
     ust, alt = y + 70, 1040 - (60 if k.get("kaynak") else 0)
     for sz in range(52, 33, -2):
-        mf = font("medium", sz)
+        mf = nf("medium", sz)
         satir = _wrap(d, k["metin"], mf, W - 190)
         lh = int(sz * 1.32)
         if len(satir) * lh <= alt - ust:
@@ -140,12 +154,17 @@ def kart(path, post, i):
         _center(d, ty, ln, mf, CREAM)
         ty += lh
     if k.get("kaynak"):
-        _center(d, alt + 18, "— " + k["kaynak"], font("italic", 32), GOLD_HI)
-    dug, cag, _, _, alt_y = cta_katmanlari(H - 20)
+        _center(d, alt + 18, "— " + k["kaynak"], nf("italic", 32), GOLD_HI)
+    import brand
+    eski, brand.font = brand.font, nf          # düğmeler de Nunito
+    try:
+        dug, cag, _, _, alt_y = cta_katmanlari(H - 20)
+    finally:
+        brand.font = eski
     img.alpha_composite(dug)
     img.alpha_composite(cag)
     d = ImageDraw.Draw(img, "RGBA")
-    _center(d, alt_y, HANDLE, font("semibold", 30), GOLD_HI)
+    _center(d, alt_y, HANDLE, nf("semibold", 30), GOLD_HI)
     img.convert("RGB").save(path, "JPEG", quality=93)
     return path
 

@@ -71,7 +71,7 @@ def okuma_suresi(metin, en_az=6.5, en_cok=11.0):
     return round(max(en_az, min(en_cok, len(metin.split()) / 2.7 + 2.0)), 1)
 
 
-def ozet_reel(kartlar, zemin_path, out_path, giris_sure=3.0, kart_sure=5.0, gecis=0.8, sureler_kart=None):
+def ozet_reel(kartlar, zemin_path, out_path, giris_sure=3.0, kart_sure=5.0, gecis=0.8, sureler_kart=None, muzik_bas=15):
     """Günün kartlarını (ilki kapak) yumuşak geçişlerle tek dikey videoda birleştirir."""
     fr = 30
     dikeyler = []
@@ -87,7 +87,7 @@ def ozet_reel(kartlar, zemin_path, out_path, giris_sure=3.0, kart_sure=5.0, geci
     girdi, af = _ses_girdi("ozet" + os.path.basename(out_path), toplam)
     # uzun özet için parçanın başından (15. sn) itibaren; yetmezse başa sarar
     if os.path.exists(MUZIK):
-        girdi = ["-stream_loop", "-1", "-ss", "15", "-t", str(toplam + 1), "-i", MUZIK]
+        girdi = ["-stream_loop", "-1", "-ss", str(muzik_bas), "-t", str(toplam + 1), "-i", MUZIK]
     fc, son, ofs = [], "[0:v]", 0.0
     for i in range(len(dikeyler)):
         fc.append(f"[{i}:v]scale={W}:{H},setsar=1,format=yuv420p[v{i}]")

@@ -13,6 +13,9 @@ on:
       vakit:
         description: "sabah | ogle | ikindi | aksam | ozet (bos = saate gore)"
         default: ""
+      zorla:
+        description: "1 = daha once paylasildiysa bile yeniden paylas"
+        default: "0"
       tarih:
         description: "Test icin tarih (YYYY-AA-GG), bos = bugun"
         default: ""
@@ -45,6 +48,7 @@ jobs:
           DRY_RUN: ${{ github.event.inputs.dry_run || '0' }}
           TARIH: ${{ github.event.inputs.tarih }}
           VAKIT: ${{ github.event.inputs.vakit }}
+          ZORLA: ${{ github.event.inputs.zorla }}
         run: python bot.py
       - name: Kartları indirilebilir yap
         if: always()

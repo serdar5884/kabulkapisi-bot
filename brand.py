@@ -288,6 +288,73 @@ def _ornament(d, cx, y, half=150):
 
 
 
+
+def _yer_imi(d, x, y, renk):
+    """kaydet (yer imi) simgesi; (x,y) sol üst"""
+    d.polygon([(x, y), (x + 22, y), (x + 22, y + 30), (x + 11, y + 21), (x, y + 30)], fill=renk)
+
+
+def _ucak(d, x, y, renk, golge=(70, 60, 40)):
+    """gönder (kağıt uçak) simgesi; (x,y) sol orta"""
+    d.polygon([(x, y + 2), (x + 34, y - 14), (x + 22, y + 16), (x + 15, y + 6)], fill=renk)
+    d.polygon([(x + 15, y + 6), (x + 34, y - 14), (x + 13, y + 15)], fill=golge)
+
+
+def cta_katmanlari(py2):
+    """Alt bölüm: [KAYDET] [GÖNDER] düğmeleri + çağrı satırı.
+    (dugmeler, cagri, parilti_kaydet, parilti_gonder, alt_y) döndürür; alt_y = @hesap satırının y'si."""
+    navy = (22, 30, 44)
+    bf = font("bold", 36)
+    dugmeler, cagri = Image.new("RGBA", (W, H), (0, 0, 0, 0)), Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(dugmeler, "RGBA")
+    bh, ara = 64, 26
+    etiket = [("KAYDET", 36), ("GÖNDER", 40)]
+    gen = [int(d.textlength(t, font=bf) + iw + 74) for t, iw in etiket]
+    x = (W - (sum(gen) + ara)) // 2
+    by = py2 - 212
+    kutular, parilti = [], []
+    for (t, iw), bw in zip(etiket, gen):
+        kutular.append((x, by, x + bw, by + bh))
+        g = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        ImageDraw.Draw(g).rounded_rectangle([x - 9, by - 9, x + bw + 9, by + bh + 9], radius=bh // 2 + 9, outline=(255, 215, 120, 255), width=12)
+        g = g.filter(_IF.GaussianBlur(10))
+        k = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        ImageDraw.Draw(k).rounded_rectangle([x - 3, by - 3, x + bw + 3, by + bh + 3], radius=bh // 2 + 3, outline=(255, 245, 200, 255), width=3)
+        g.alpha_composite(k)
+        parilti.append(g)
+        x += bw + ara
+    # hafif sabit hale
+    hale = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    hd = ImageDraw.Draw(hale)
+    for (x1, y1, x2, y2) in kutular:
+        hd.rounded_rectangle([x1 - 6, y1 - 6, x2 + 6, y2 + 6], radius=bh // 2 + 6, fill=(255, 200, 90, 110))
+    dugmeler.alpha_composite(hale.filter(_IF.GaussianBlur(10)))
+    for (x1, y1, x2, y2), (t, iw) in zip(kutular, etiket):
+        bw = x2 - x1
+        pm = Image.new("L", (bw, bh), 0)
+        ImageDraw.Draw(pm).rounded_rectangle([0, 0, bw - 1, bh - 1], radius=bh // 2, fill=255)
+        grad = Image.new("RGBA", (bw, bh))
+        gd = ImageDraw.Draw(grad)
+        for yy in range(bh):
+            kk = yy / (bh - 1)
+            gd.line([(0, yy), (bw, yy)], fill=tuple(int((255, 230, 160)[i] + ((200, 150, 55)[i] - (255, 230, 160)[i]) * kk) for i in range(3)) + (255,))
+        grad.putalpha(pm)
+        dugmeler.alpha_composite(grad, (x1, y1))
+    d = ImageDraw.Draw(dugmeler, "RGBA")
+    for (x1, y1, x2, y2), (t, iw) in zip(kutular, etiket):
+        cy = (y1 + y2) // 2
+        if t == "KAYDET":
+            _yer_imi(d, x1 + 30, cy - 15, navy)
+        else:
+            _ucak(d, x1 + 28, cy, navy)
+        l, tt, r, b = d.textbbox((0, 0), t, font=bf)
+        d.text((x1 + 30 + iw, cy - (b - tt) / 2 - tt), t, font=bf, fill=navy)
+    _center(ImageDraw.Draw(cagri, "RGBA"), py2 - 128, "İhtiyacı olan birine ulaştır, duasına vesile ol", font("italic", 34), (250, 244, 230))
+    return dugmeler, cagri, parilti[0], parilti[1], py2 - 72
+
+
+FOOT_H = 225   # alt bölüm: KAYDET/GÖNDER + çağrı satırı + @hesap
+
 # --- yerleşim: uzun metinde yazıyı küçültmek yerine paneli genişlet ---
 PANEL = (70, 390, W - 70, 1175)
 GENIS_KENAR = 34                             # uzun metinde yan boşluk (normalde 70)
@@ -300,7 +367,7 @@ def yerlesim(metin, kaynak=None):
     d0 = ImageDraw.Draw(Image.new("RGBA", (1, 1)))
     toks = _tokens(metin)
     px1, py1, px2, py2 = PANEL
-    foot_h, src_h = 165, (62 if kaynak else 0)
+    foot_h, src_h = FOOT_H, (62 if kaynak else 0)
     ust_bosluk = 104                          # süs + boşluk
 
     def dene(size, x1, x2, y1, y2):
@@ -362,7 +429,7 @@ def make_photo_card(path, metin, zemin, baslik="Günün Duası", kaynak=None, da
     y = oy + 34
 
     # gövde metni
-    foot_h, src_h = 165, (62 if kaynak else 0)
+    foot_h, src_h = FOOT_H, (62 if kaynak else 0)
     y = ty0
     box_h = py2 - y - foot_h - src_h
     layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
@@ -384,39 +451,13 @@ def make_photo_card(path, metin, zemin, baslik="Günün Duası", kaynak=None, da
     if kaynak:
         _center(d, cy + 14, "— " + kaynak, font("italic", 36), GOLD_HI)
 
-    # alt bilgi
-    fy = py2 - 140
-    # "Paylaşmayı Unutma" altın buton
-    bf = font("bold", 38)
-    label = "PAYLAŞMAYI UNUTMA"
-    tw = d.textlength(label, font=bf)
-    icon_w = 40
-    bw, bh = int(tw + icon_w + 84), 66
-    bx, by = (W - bw) // 2, fy - 4
-    pm = Image.new("L", (bw, bh), 0)
-    ImageDraw.Draw(pm).rounded_rectangle([0, 0, bw - 1, bh - 1], radius=bh // 2, fill=255)
-    grad = Image.new("RGBA", (bw, bh))
-    gd = ImageDraw.Draw(grad)
-    for yy in range(bh):
-        k = yy / (bh - 1)
-        c = tuple(int((255, 230, 160)[i] + ((200, 150, 55)[i] - (255, 230, 160)[i]) * k) for i in range(3))
-        gd.line([(0, yy), (bw, yy)], fill=c + (255,))
-    grad.putalpha(pm)
-    glow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    ImageDraw.Draw(glow).rounded_rectangle([bx - 6, by - 6, bx + bw + 6, by + bh + 6], radius=bh // 2 + 6, fill=(255, 200, 90, 120))
-    img.alpha_composite(glow.filter(_IF.GaussianBlur(10)))
-    img.alpha_composite(grad, (bx, by))
+    # alt bölüm: KAYDET / GÖNDER + çağrı + @hesap
+    dug, cag, _, _, alt_y = cta_katmanlari(py2)
+    img.alpha_composite(dug)
+    img.alpha_composite(cag)
     d = ImageDraw.Draw(img, "RGBA")
-    navy = (22, 30, 44)
-    # paylaş (kağıt uçak) simgesi
-    ix, iy = bx + 34, by + bh // 2
-    d.polygon([(ix, iy + 2), (ix + 34, iy - 14), (ix + 22, iy + 16), (ix + 15, iy + 6)], fill=navy)
-    d.polygon([(ix + 15, iy + 6), (ix + 34, iy - 14), (ix + 13, iy + 15)], fill=(70, 60, 40))
-    l, t, r, b = d.textbbox((0, 0), label, font=bf)
-    d.text((bx + 34 + icon_w + 14, by + (bh - (b - t)) / 2 - t), label, font=bf, fill=navy)
-    fy += 22
     tarih = f"{date.day} {AYLAR[date.month - 1]} {date.year}"
-    _center(d, fy + 58, f"{HANDLE}   ·   {tarih}", font("semibold", 29), GOLD_HI)
+    _center(d, alt_y, f"{HANDLE}   ·   {tarih}", font("semibold", 28), GOLD_HI)
 
     img.convert("RGB").save(path, "JPEG", quality=93)
     return path

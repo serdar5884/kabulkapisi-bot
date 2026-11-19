@@ -62,7 +62,7 @@ def katmanlar(metin, zemin, kaynak=None, date=None):
     y = oy + 34
 
     # satırlar (her satır ayrı katman, gölgesiyle)
-    foot_h, src_h = 165, (62 if kaynak else 0)
+    foot_h, src_h = brand.FOOT_H, (62 if kaynak else 0)
     y = ty0
     box_h = py2 - y - foot_h - src_h
     d0 = ImageDraw.Draw(_katman())
@@ -90,44 +90,15 @@ def katmanlar(metin, zemin, kaynak=None, date=None):
         kay = _katman()
         _center(ImageDraw.Draw(kay, "RGBA"), cy + 14, "— " + kaynak, font("italic", 36), GOLD_HI)
 
-    # buton
-    but = _katman()
-    fy = py2 - 140
-    bf = font("bold", 38)
-    label = "PAYLAŞMAYI UNUTMA"
-    bd = ImageDraw.Draw(but, "RGBA")
-    bw, bh = int(bd.textlength(label, font=bf) + 40 + 84), 66
-    bx, by = (W - bw) // 2, fy - 4
-    g2 = _katman()
-    ImageDraw.Draw(g2).rounded_rectangle([bx - 6, by - 6, bx + bw + 6, by + bh + 6], radius=bh // 2 + 6, fill=(255, 200, 90, 120))
-    but.alpha_composite(g2.filter(ImageFilter.GaussianBlur(10)))
-    pm = Image.new("L", (bw, bh), 0)
-    ImageDraw.Draw(pm).rounded_rectangle([0, 0, bw - 1, bh - 1], radius=bh // 2, fill=255)
-    grad = Image.new("RGBA", (bw, bh))
-    gd = ImageDraw.Draw(grad)
-    for yy in range(bh):
-        k = yy / (bh - 1)
-        gd.line([(0, yy), (bw, yy)], fill=tuple(int((255, 230, 160)[i] + ((200, 150, 55)[i] - (255, 230, 160)[i]) * k) for i in range(3)) + (255,))
-    grad.putalpha(pm)
-    but.alpha_composite(grad, (bx, by))
-    bd = ImageDraw.Draw(but, "RGBA")
-    navy = (22, 30, 44)
-    ix, iy = bx + 34, by + bh // 2
-    bd.polygon([(ix, iy + 2), (ix + 34, iy - 14), (ix + 22, iy + 16), (ix + 15, iy + 6)], fill=navy)
-    bd.polygon([(ix + 15, iy + 6), (ix + 34, iy - 14), (ix + 13, iy + 15)], fill=(70, 60, 40))
-    l, t, r, b = bd.textbbox((0, 0), label, font=bf)
-    bd.text((bx + 34 + 40 + 14, by + (bh - (b - t)) / 2 - t), label, font=bf, fill=navy)
-
-    bpar = _katman()
-    ImageDraw.Draw(bpar).rounded_rectangle([bx - 10, by - 10, bx + bw + 10, by + bh + 10], radius=bh // 2 + 10, outline=(255, 215, 120, 255), width=12)
-    bpar = bpar.filter(ImageFilter.GaussianBlur(10))
-    bk = _katman()
-    ImageDraw.Draw(bk).rounded_rectangle([bx - 3, by - 3, bx + bw + 3, by + bh + 3], radius=bh // 2 + 3, outline=(255, 245, 200, 255), width=3)
-    bpar.alpha_composite(bk.filter(ImageFilter.GaussianBlur(1)))
+    # alt bölüm: KAYDET / GÖNDER düğmeleri + çağrı satırı
+    dug, cag, par_k, par_g, alt_y = brand.cta_katmanlari(py2)
+    but = dug
+    but.alpha_composite(cag)
+    bpar = (par_k, par_g)
 
     alt = _katman()
     tarih = f"{date.day} {AYLAR[date.month - 1]} {date.year}"
-    _center(ImageDraw.Draw(alt, "RGBA"), fy + 22 + 58, f"{HANDLE}   ·   {tarih}", font("semibold", 29), GOLD_HI)
+    _center(ImageDraw.Draw(alt, "RGBA"), alt_y, f"{HANDLE}   ·   {tarih}", font("semibold", 28), GOLD_HI)
     return bg, pan, sus, satirlar, kay, but, alt, par, bpar
 
 
@@ -206,9 +177,11 @@ def hareketli_reel(metin, zemin, out_path, kaynak=None, date=None, ses_girdi=Non
         _yerlestir(kare, but, a, (1 - a) * 30)
         _yerlestir(kare, alt, _ease((tt - t_alt) / 0.6))
         # paylaş butonu: belirdikten sonra yanıp söner
-        if tt > t_but + 0.6:
-            faz = (tt - t_but - 0.6) * 2 * math.pi / 1.2
-            _yerlestir(kare, bpar, _ease((tt - t_but - 0.6) / 0.4) * (0.15 + 0.85 * (0.5 + 0.5 * math.sin(faz - math.pi / 2))))
+        if tt > t_but + 0.6:   # KAYDET ve GÖNDER sırayla parlar
+            faz = (tt - t_but - 0.6) * 2 * math.pi / 1.6
+            gir = _ease((tt - t_but - 0.6) / 0.4)
+            _yerlestir(kare, bpar[0], gir * max(0.0, math.sin(faz)) ** 2)
+            _yerlestir(kare, bpar[1], gir * max(0.0, -math.sin(faz)) ** 2)
         # son 3 saniye: çerçeve parlar (yumuşak nabız)
         kalan = sure - tt
         if kalan <= 3.0:

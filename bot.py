@@ -210,7 +210,7 @@ def liste_gonderi(gun):
     kap = liste_kart.kapak(os.path.join(k, "kapak.jpg"), p["ust"], p["kapak"], p.get("soru", "Hangileri?"))
     mp4 = liste_kart.reel(lst, kap, os.path.join(k, "liste.mp4"), muzik_bas=[47, 64, 86, 99][gun.toordinal() % 4])
     tags = (["#kabulkapisi"] + p.get("etiket", []) + ["#dua", "#amin"])[:5]
-    cap = "\n\n".join([p["acilis"], "📌 Kaydet, ihtiyacı olana gönder. Kaynaklar görselde.", p["yorum"], " ".join(tags)])
+    cap = "\n\n".join([p["acilis"], "Yetişemediysen durdurup oku 👆\n📌 Kaydet, ihtiyacı olana gönder. Kaynaklar görselde.", p["yorum"], " ".join(tags)])
     return kap, lst, mp4, cap
 
 
@@ -231,12 +231,12 @@ def gunun_ozeti():
     hist = gecmis_oku()
     if anahtar in hist.get("paylasilanlar", []) and not DRY_RUN and not ZORLA:
         print("Bugünün özeti zaten paylaşıldı."); return
+    ozet_vakit = [v for v in VAKITLER if not (v == "ikindi" and (os.getenv("BILGI", "0") == "1" or os.getenv("LISTE", "0") == "1"))]
     zs = brand.zeminler()
     tarih = f"{gun.day} {brand.AYLAR[gun.month - 1]} {gun.year}"
     kapak = brand.make_cover(os.path.join(brand.OUT_DIR, f"ozet_{gun}_0.jpg"), "Bugünün Duaları",
-                             tarih, zs[(gun - BASLANGIC).days % len(zs)], buton="3 DUA BİR ARADA", ok=False)
+                             tarih, zs[(gun - BASLANGIC).days % len(zs)], buton=f"{len(ozet_vakit)} DUA BİR ARADA", ok=False)
     kartlar, ozet_satir, sureler = [kapak], [], []
-    ozet_vakit = [v for v in VAKITLER if not (v == "ikindi" and os.getenv("BILGI", "1") == "1")]
     simge = {"sabah": "🌅", "ogle": "📖", "ikindi": "🤲", "aksam": "🌙"}
     for i, v in enumerate(ozet_vakit, 1):
         dua, tur, baslik, tags = sec(gun, v)
@@ -343,7 +343,7 @@ def main():
         print(f"{gun} {vakit} paylaşımı zaten yapıldı, tekrar paylaşılmıyor.")
         return
 
-    if vakit == "ikindi" and os.getenv("LISTE", "1") == "1" and os.path.exists(os.path.join(HERE, "listeler.json")):
+    if vakit == "ikindi" and os.getenv("LISTE", "0") == "1" and os.path.exists(os.path.join(HERE, "listeler.json")):
         kap, lst, mp4, cap = liste_gonderi(gun)   # 17:00: kapak + liste Reels'i
         print(f"--- {gun} {vakit} [liste] ---\n{cap}\n---")
         if DRY_RUN:
@@ -357,7 +357,7 @@ def main():
                 insta.publish_story(lst)   # liste zaten 9:16
             except Exception as e:
                 print("[insta] hikâye paylaşılamadı:", e)
-    elif vakit == "ikindi" and os.getenv("BILGI", "1") == "1":   # 17:00: bilgi gönderisi (carousel + Reels)
+    elif vakit == "ikindi" and os.getenv("BILGI", "0") == "1":   # 17:00: bilgi gönderisi (carousel + Reels)
         yollar, mp4, cap = bilgi(gun)
         print(f"--- {gun} {vakit} [bilgi] ---\n{cap}\n---")
         if DRY_RUN:

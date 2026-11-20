@@ -106,15 +106,16 @@ def liste(path, ust, baslik, maddeler, dipnot=None):
             yy += 40
     # alt çağrı
     f1, f2 = nf("medium", 30), nf("black", 30)
-    parcalar = [("KAYDET", f2), (" ve ihtiyacı olana ", f1), ("GÖNDER", f2), ("  ·  " + HANDLE, f1)]
+    parcalar = [("KAYDET", f2), (", sonra rahatça oku  ·  ihtiyacı olana ", f1), ("GÖNDER", f2)]
     tw = sum(d.textlength(t, font=f) for t, f in parcalar)
     x = (W - tw - 46) / 2
-    yb = H - 100
+    yb = H - 122
     d.polygon([(x, yb), (x + 26, yb), (x + 26, yb + 34), (x + 13, yb + 25), (x, yb + 34)], fill=ZUMRUT)
     x += 46
     for t, f in parcalar:
         d.text((x, yb), t, font=f, fill=ZUMRUT if f is f2 else METIN)
         x += d.textlength(t, font=f)
+    _orta(d, H - 72, HANDLE, nf("bold", 26), ZUMRUT)
     img.convert("RGB").save(path, "JPEG", quality=94)
     return path
 
@@ -163,19 +164,16 @@ def kapak(path, ust, baslik, soru="Hangileri?", cagri="Detaylar Reels'te"):
     return path
 
 
-def reel(liste_jpg, kapak_jpg, out, sure=18, muzik_bas=47):
-    """Kapak 1.2 sn → listeye yumuşak geçiş → liste sabit; müzikli."""
-    import subprocess, video
+def reel(liste_jpg, kapak_jpg, out, sure=9, muzik_bas=47):
+    """Döngü için kısa Reels: doğrudan listeyle açılır, solma yok (kapak sadece profil kapağı olarak gider)."""
+    import subprocess
     muzik = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ses", "muzik.mp3")
     cmd = ["ffmpeg", "-loglevel", "error", "-y",
-           "-loop", "1", "-t", "2.0", "-i", kapak_jpg,
-           "-loop", "1", "-t", str(sure), "-i", liste_jpg,
-           "-ss", str(muzik_bas), "-i", muzik,
-           "-filter_complex",
-           f"[0:v]scale=1080:1920,format=yuv420p,fps=30[a];[1:v]scale=1080:1920,format=yuv420p,fps=30[b];"
-           f"[a][b]xfade=transition=fade:duration=0.8:offset=1.2[v];"
-           f"[2:a]afade=t=in:d=1,afade=t=out:st={sure + 0.4}:d=2[s]",
-           "-map", "[v]", "-map", "[s]", "-t", str(sure + 2.4), "-c:v", "libx264", "-preset", "veryfast",
-           "-crf", "21", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", out]
+           "-loop", "1", "-framerate", "30", "-t", str(sure), "-i", liste_jpg,
+           "-ss", str(muzik_bas), "-t", str(sure), "-i", muzik,
+           "-vf", "scale=1080:1920,format=yuv420p",
+           "-map", "0:v", "-map", "1:a", "-t", str(sure), "-c:v", "libx264", "-preset", "veryfast",
+           "-tune", "stillimage", "-crf", "20", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k",
+           "-movflags", "+faststart", out]
     subprocess.run(cmd, check=True)
     return out

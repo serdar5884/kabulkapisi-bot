@@ -124,7 +124,7 @@ def hareketli_reel(metin, zemin, out_path, kaynak=None, date=None, ses_girdi=Non
     import math
     t0 = kapak_sure if kapak else 0.0
     # zaman çizelgesi (sn) — kapaktan sonra başlar
-    t_pan, t_sus, t_sat = (0.2, 0.8, 1.1) if kapak else (1.0, 1.9, 2.3)
+    t_pan, t_sus, t_sat = (0.2, 0.8, 1.1) if kapak else (0.3, 0.8, 1.1)
     adim = 1.0          # satırlar arası
     belirme = 2.2       # bir satırın soluktan nete geçiş süresi
     t_kay = t_sat + adim * (len(satirlar) - 1) + belirme * 0.8
@@ -162,7 +162,7 @@ def hareketli_reel(metin, zemin, out_path, kaynak=None, date=None, ses_girdi=Non
         tt = tg - t0
         sure_k = sure_anim
         # 1) arka plan + paneli karıştır
-        a_pan = _ease((tt - t_pan) / 0.8)
+        a_pan = _ease((tt - t_pan) / 0.5)
         kare = Image.blend(bg, pan, a_pan) if 0 < a_pan < 1 else (pan if a_pan >= 1 else bg)
         kare = kare.copy()
         # 2) öğeler
@@ -211,7 +211,7 @@ def hareketli_reel(metin, zemin, out_path, kaynak=None, date=None, ses_girdi=Non
             if a0 < 1:
                 tam = Image.blend(kapak_img, tam, a0)
         else:   # başta karanlıktan açılış
-            a0 = _ease(tt / 1.0)
+            a0 = _ease(tt / 0.4)
             if a0 < 1:
                 tam = Image.blend(siyah, tam, a0)
         p.stdin.write(tam.tobytes())

@@ -38,9 +38,10 @@ def hareketli(dua, tur, zemin, klasor, out, vakit=None, date=None, muzik_bas=47)
     """Kapak → kart animasyonu (yazılar soluktan belirir) → yazı ekranda kalır."""
     import animasyon
     konu, kart, sayfa, kapak = hazirla(dua, tur, zemin, klasor, vakit, date)
-    mp4, sure = animasyon.hareketli_reel(dua["metin"], zemin, out, kaynak=dua.get("kaynak"), date=date,
-                                         ses_anahtar=os.path.basename(out),
-                                         ust_katman=ust_katman(konu), bekle=4.0)   # kapak sadece ızgarada
+    with montserrat():
+        mp4, sure = animasyon.hareketli_reel(dua["metin"], zemin, out, kaynak=dua.get("kaynak"), date=date,
+                                             ses_anahtar=os.path.basename(out),
+                                             ust_katman=ust_katman(konu), bekle=4.0)   # kapak sadece ızgarada
     return konu, kapak, mp4, sure
 
 
@@ -57,7 +58,21 @@ def _ust_baslik(path, metin):
     return path
 
 
+class montserrat:
+    """with montserrat(): ... → kart, kapak ve animasyon Montserrat ile çizilir."""
+    def __enter__(self):
+        self.eski, brand.FONT_AILE = brand.FONT_AILE, "montserrat"
+
+    def __exit__(self, *a):
+        brand.FONT_AILE = self.eski
+
+
 def hazirla(dua, tur, zemin, klasor, vakit=None, date=None):
+    with montserrat():
+        return _hazirla(dua, tur, zemin, klasor, vakit, date)
+
+
+def _hazirla(dua, tur, zemin, klasor, vakit=None, date=None):
     os.makedirs(klasor, exist_ok=True)
     konu = konu_bul(dua, tur, vakit)
     kart = brand.make_photo_card(os.path.join(klasor, "kart.jpg"), dua["metin"], zemin,

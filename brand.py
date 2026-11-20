@@ -26,7 +26,13 @@ AYLAR = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz",
          "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
 
 
+FONT_AILE = "cormorant"   # dua Reels'i için "montserrat" yapılır (beyaz formatla aynı yazı tipi)
+_MONT = {"semibold": 500, "medium": 500, "italic": 500, "bold": 700}
+
+
 def font(style, size):
+    if FONT_AILE == "montserrat":
+        return ImageFont.truetype(os.path.join(FONTS, f"Montserrat-{_MONT.get(style, 500)}.ttf"), max(10, int(size * 0.8)))
     files = {"semibold": "CormorantGaramond-600-normal.ttf",
              "medium": "CormorantGaramond-500-normal.ttf",
              "italic": "CormorantGaramond-500-italic.ttf",

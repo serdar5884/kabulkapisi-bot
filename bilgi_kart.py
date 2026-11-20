@@ -1,31 +1,32 @@
-"""Bilgi serisi kartları: açık krem zemin, kahve tonlar, sade düzen (Nunito)."""
+"""Bilgi serisi kartları: krem zemin (#FDF6E3), füme metin (#333333), zümrüt vurgu (#2E8B57), Montserrat."""
 import math, os
 from PIL import Image, ImageDraw, ImageFont, ImageFilter as _IF
 from brand import W, H, _wrap, HANDLE
 
 NUNITO = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fonts", "Nunito.ttf")
-KREM = (248, 241, 230)
-KART = (255, 252, 247)
-KAHVE = (74, 44, 24)        # başlık
-METIN = (70, 54, 42)        # gövde
-ALTIN = (168, 116, 52)      # vurgu
-CIZGI = (226, 210, 186)
+KREM = (253, 246, 227)      # #FDF6E3
+KART = (255, 252, 244)
+KAHVE = (51, 51, 51)        # #333333 başlık
+METIN = (51, 51, 51)        # #333333 gövde
+ALTIN = (46, 139, 87)       # #2E8B57 zümrüt vurgu
+ZUMRUT = (46, 139, 87)
+CIZGI = (214, 226, 210)
 
-SERI = {   # seri: (etiket, vurgu rengi)
-    "adab":      ("DUANIN ADABI",           (150, 98, 44)),
-    "vakit":     ("KABUL VAKİTLERİ",        (60, 110, 120)),
-    "esma":      ("ESMÂ-ÜL HÜSNÂ",           (128, 72, 104)),
-    "peygamber": ("PEYGAMBERLERİN DUALARI", (140, 92, 40)),
-    "teselli":   ("TESELLİ AYETLERİ",       (82, 86, 140)),
-    "gunluk":    ("GÜNLÜK HAYAT DUALARI",   (92, 118, 60)),
+SERI = {   # seri: (etiket, vurgu) — vurgu bütün kartlarda sabit zümrüt
+    "adab":      ("DUANIN ADABI", ZUMRUT),
+    "vakit":     ("KABUL VAKİTLERİ", ZUMRUT),
+    "esma":      ("ESMÂ-ÜL HÜSNÂ", ZUMRUT),
+    "peygamber": ("PEYGAMBERLERİN DUALARI", ZUMRUT),
+    "teselli":   ("TESELLİ AYETLERİ", ZUMRUT),
+    "gunluk":    ("GÜNLÜK HAYAT DUALARI", ZUMRUT),
 }
-_AG = {"black": "Black", "bold": "ExtraBold", "semibold": "Bold", "medium": "Medium", "regular": "Regular"}
+_AG = {"black": 800, "bold": 700, "semibold": 700, "medium": 500, "regular": 500}
+_FD = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fonts")
+_OLC = {"black": 0.9, "bold": 0.9, "semibold": 0.9, "medium": 0.88, "regular": 0.88}
 
 
 def nf(stil, boyut):
-    f = ImageFont.truetype(NUNITO, boyut)
-    f.set_variation_by_name(_AG.get(stil, "Regular"))
-    return f
+    return ImageFont.truetype(os.path.join(_FD, f"Montserrat-{_AG.get(stil, 500)}.ttf"), int(boyut * _OLC.get(stil, 0.9)))
 
 
 def _orta(d, y, metin, f, renk):
@@ -47,7 +48,7 @@ def zemin(seri=None):
     img = Image.new("RGB", (W, H), KREM)
     g = Image.new("L", (W, H), 0)
     ImageDraw.Draw(g).ellipse([-200, -300, W + 200, H * 0.75], fill=255)
-    img = Image.composite(Image.new("RGB", (W, H), (252, 248, 240)), img, g.filter(_IF.GaussianBlur(160)))
+    img = Image.composite(Image.new("RGB", (W, H), (255, 250, 236)), img, g.filter(_IF.GaussianBlur(160)))
     return img.convert("RGBA")
 
 

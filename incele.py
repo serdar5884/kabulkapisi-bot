@@ -9,3 +9,12 @@ r = requests.get(f"{insta.API}/{insta._user_id() if hasattr(insta,'_user_id') el
 print(r.status_code)
 open("incele.json", "w").write(r.text)
 print(r.text[:300])
+try:
+    d = r.json()
+    b = d["business_discovery"]
+    print("PROFIL", json.dumps({k: b.get(k) for k in ("username", "name", "biography", "followers_count", "follows_count", "media_count", "website")}, ensure_ascii=False))
+    for m in b["media"]["data"]:
+        c = (m.get("caption") or "").replace("\n", " / ")
+        print(f"GONDERI {m['timestamp'][5:16]} {m.get('media_product_type')} {m['media_type']} L{m.get('like_count')} C{m.get('comments_count')} | {c[:400]}")
+except Exception as e:
+    print("ozet yok:", e)

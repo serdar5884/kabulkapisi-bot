@@ -198,6 +198,22 @@ def bilgi(gun):
     return yollar, mp4, "\n\n".join(p for p in parcalar if p)
 
 
+def liste_gonderi(gun):
+    """17:00 liste Reels'i: merak kapağı + tek uzun kaynaklı liste görseli."""
+    import liste_kart
+    with open(os.path.join(HERE, "listeler.json"), encoding="utf-8") as f:
+        posts = json.load(f)
+    p = posts[(gun - BILGI_BASLANGIC).days % len(posts)]
+    k = os.path.join(brand.OUT_DIR, f"liste_{gun}")
+    os.makedirs(k, exist_ok=True)
+    lst = liste_kart.liste(os.path.join(k, "liste.jpg"), p["ust"], p["baslik"], p["maddeler"], p.get("dipnot"))
+    kap = liste_kart.kapak(os.path.join(k, "kapak.jpg"), p["ust"], p["kapak"], p.get("soru", "Hangileri?"))
+    mp4 = liste_kart.reel(lst, kap, os.path.join(k, "liste.mp4"), muzik_bas=[47, 64, 86, 99][gun.toordinal() % 4])
+    tags = (["#kabulkapisi"] + p.get("etiket", []) + ["#dua", "#amin"])[:5]
+    cap = "\n\n".join([p["acilis"], "📌 Kaydet, ihtiyacı olana gönder. Kaynaklar görselde.", p["yorum"], " ".join(tags)])
+    return kap, lst, mp4, cap
+
+
 def hikaye(kart_path, zemin):
     if os.getenv("STORY", "1") != "1":
         return
@@ -327,7 +343,21 @@ def main():
         print(f"{gun} {vakit} paylaşımı zaten yapıldı, tekrar paylaşılmıyor.")
         return
 
-    if vakit == "ikindi" and os.getenv("BILGI", "1") == "1":   # 17:00: bilgi gönderisi (carousel + Reels)
+    if vakit == "ikindi" and os.getenv("LISTE", "1") == "1" and os.path.exists(os.path.join(HERE, "listeler.json")):
+        kap, lst, mp4, cap = liste_gonderi(gun)   # 17:00: kapak + liste Reels'i
+        print(f"--- {gun} {vakit} [liste] ---\n{cap}\n---")
+        if DRY_RUN:
+            print("DRY_RUN=1 -> paylaşılmadı:", mp4)
+            return
+        if not insta.enabled():
+            sys.exit(1)
+        insta.publish_reel(mp4, cap, kap)
+        if os.getenv("STORY", "1") == "1":
+            try:
+                insta.publish_story(lst)   # liste zaten 9:16
+            except Exception as e:
+                print("[insta] hikâye paylaşılamadı:", e)
+    elif vakit == "ikindi" and os.getenv("BILGI", "1") == "1":   # 17:00: bilgi gönderisi (carousel + Reels)
         yollar, mp4, cap = bilgi(gun)
         print(f"--- {gun} {vakit} [bilgi] ---\n{cap}\n---")
         if DRY_RUN:

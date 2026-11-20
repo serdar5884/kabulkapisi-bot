@@ -28,25 +28,30 @@ def _kutu(img, box, r=26):
 
 def _zengin(d, x, y, parcalar, f_ince, f_kalin, renk, en):
     """**kalın** işaretli metni satırlara bölüp çizer; son y'yi döner."""
-    kelimeler = []
+    kelimeler = []   # (kelime, kalın, önceki kelimeye yapışık)
+    onceki = ""
     for i, p in enumerate(parcalar.split("**")):
-        for k in p.split():
-            kelimeler.append((k, i % 2 == 1))
+        for j, k in enumerate(p.split()):
+            yap = j == 0 and bool(kelimeler) and p[:1] not in (" ", "") and onceki[-1:] not in (" ", "")
+            kelimeler.append((k, i % 2 == 1, yap))
+        onceki = p if p else onceki
     satir, sw, lh = [], 0, int(f_ince.size * 1.32)
     bos = d.textlength(" ", font=f_ince)
 
     def bas(satir, y):
         xx = x
-        for k, kalin in satir:
+        for n, (k, kalin, yap) in enumerate(satir):
             f = f_kalin if kalin else f_ince
+            if yap and n:
+                xx -= bos
             d.text((xx, y), k, font=f, fill=renk)
             xx += d.textlength(k, font=f) + bos
 
-    for k, kalin in kelimeler:
+    for k, kalin, yap in kelimeler:
         w = d.textlength(k, font=f_kalin if kalin else f_ince)
-        if satir and sw + w > en:
+        if satir and sw + w > en and not yap:
             bas(satir, y); y += lh; satir, sw = [], 0
-        satir.append((k, kalin)); sw += w + bos
+        satir.append((k, kalin, yap)); sw += w + bos
     if satir:
         bas(satir, y); y += lh
     return y
@@ -59,7 +64,11 @@ def liste(path, ust, baslik, maddeler, dipnot=None):
     _orta(d, 110, _ust(ust), nf("bold", 32), ZUMRUT)
     ft = nf("black", 70)
     y = 175
-    for ln in _wrap(d, _ust(baslik), ft, W - 140):
+    en = W - 140
+    n0 = len(_wrap(d, _ust(baslik), ft, en))
+    while en > 500 and len(_wrap(d, _ust(baslik), ft, en - 20)) == n0:
+        en -= 20
+    for ln in _wrap(d, _ust(baslik), ft, en):
         _orta(d, y, ln, ft, METIN)
         y += 80
     _sus(d, y + 22, 170, ZUMRUT)

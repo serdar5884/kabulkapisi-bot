@@ -1,0 +1,20 @@
+name: Hesap incele
+on:
+  workflow_dispatch:
+    inputs:
+      hesap:
+        default: duasensin
+jobs:
+  incele:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install requests
+      - run: python incele.py "${{ inputs.hesap }}"
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+      - uses: actions/upload-artifact@v4
+        with: {name: incele, path: incele.json}

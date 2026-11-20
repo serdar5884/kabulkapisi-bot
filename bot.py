@@ -243,8 +243,10 @@ def gunun_ozeti():
                              tarih, zs[(gun - BASLANGIC).days % len(zs)], buton=f"{len(ozet_vakit)} DUA BİR ARADA", ok=False)
     kartlar, ozet_satir, sureler = [kapak], [], []
     simge = {"sabah": "🌅", "ogle": "📖", "ikindi": "🤲", "aksam": "🌙"}
+    gun_tag = []
     for i, v in enumerate(ozet_vakit, 1):
         dua, tur, baslik, tags = sec(gun, v)
+        gun_tag.extend(t for t in tags if t in ("#borçduası", "#şifaduası", "#sıkıntıduası", "#evlatduası", "#aileduası"))
         p = os.path.join(brand.OUT_DIR, f"ozet_{gun}_{i}.jpg")
         kart(gun, dua, tur, baslik, p, v)
         kartlar.append(p)
@@ -255,7 +257,8 @@ def gunun_ozeti():
     cap = "\n\n".join([f"🌙 Bugünün duaları bir arada · {tarih}", "\n".join(ozet_satir),
                         "Gün içinde kaçırdıysan hepsini tek videoda izle. Hangisine âmin dersin? 🤲",
                         "Duaya ihtiyacı olan birini etiketle 👇",
-                        "#dua #gününduaları #amin #akşamduası #kabulkapisi"])
+                        " ".join(list(dict.fromkeys(["#kabulkapisi", "#borçduası", "#şifaduası"] + gun_tag +
+                                                    ["#gününduaları", "#dua"]))[:5])])
     print(cap)
     if DRY_RUN:
         print("DRY_RUN=1 -> özet paylaşılmadı:", mp4); return

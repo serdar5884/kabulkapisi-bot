@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "post (bu vaktin duasi) | onizleme | kontrol | reels_test | sabit | yorum"
+        description: "post (bu vaktin duasi) | liste | onizleme | kontrol | reels_test | sabit | yorum"
         default: "post"
       dry_run:
         description: "1 = sadece test (paylasma), 0 = paylas"
@@ -18,6 +18,9 @@ on:
         default: "0"
       tarih:
         description: "Test icin tarih (YYYY-AA-GG), bos = bugun"
+        default: ""
+      liste:
+        description: "mode=liste icin liste basligindan bir parca"
         default: ""
 
 jobs:
@@ -49,6 +52,7 @@ jobs:
           TARIH: ${{ github.event.inputs.tarih }}
           VAKIT: ${{ github.event.inputs.vakit }}
           ZORLA: ${{ github.event.inputs.zorla }}
+          LISTE_SEC: ${{ github.event.inputs.liste }}
         run: python bot.py
       - name: Kartları indirilebilir yap
         if: always()

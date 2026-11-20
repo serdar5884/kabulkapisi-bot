@@ -198,18 +198,23 @@ def bilgi(gun):
     return yollar, mp4, "\n\n".join(p for p in parcalar if p)
 
 
-def liste_gonderi(gun):
-    """17:00 liste Reels'i: merak kapağı + tek uzun kaynaklı liste görseli."""
+def liste_gonderi(gun, secim=None):
+    """Liste Reels'i: merak kapağı + tek uzun kaynaklı liste görseli. secim: başlıktan bir parça."""
     import liste_kart
     with open(os.path.join(HERE, "listeler.json"), encoding="utf-8") as f:
         posts = json.load(f)
     p = posts[(gun - BILGI_BASLANGIC).days % len(posts)]
+    if secim:
+        uy = [x for x in posts if secim.lower() in x["baslik"].lower()]
+        if not uy:
+            raise SystemExit(f"Liste bulunamadı: {secim}")
+        p = uy[0]
     k = os.path.join(brand.OUT_DIR, f"liste_{gun}")
     os.makedirs(k, exist_ok=True)
     lst = liste_kart.liste(os.path.join(k, "liste.jpg"), p["ust"], p["baslik"], p["maddeler"], p.get("dipnot"))
     kap = liste_kart.kapak(os.path.join(k, "kapak.jpg"), p["ust"], p["kapak"], p.get("soru", "Hangileri?"))
     mp4 = liste_kart.reel(lst, kap, os.path.join(k, "liste.mp4"), muzik_bas=[47, 64, 86, 99][gun.toordinal() % 4])
-    tags = (["#kabulkapisi"] + p.get("etiket", []) + ["#dua", "#amin"])[:5]
+    tags = list(dict.fromkeys(["#kabulkapisi"] + p.get("etiket", []) + ["#dua", "#amin"]))[:5]
     cap = "\n\n".join([p["acilis"], "Yetişemediysen durdurup oku 👆\n📌 Kaydet, ihtiyacı olana gönder. Kaynaklar görselde.", p["yorum"], " ".join(tags)])
     return kap, lst, mp4, cap
 
@@ -322,6 +327,15 @@ def main():
         return
     if MODE == "post" and vakit_bul() == "ozet":
         return gunun_ozeti()
+    if MODE == "liste":   # tek bir listeyi elle Reels olarak paylaş (LISTE_SEC: başlıktan parça)
+        kap, lst, mp4, cap = liste_gonderi(bugun(), os.getenv("LISTE_SEC", "").strip())
+        print(f"--- liste ---\n{cap}\n---")
+        if DRY_RUN:
+            print("DRY_RUN=1 -> paylaşılmadı:", mp4); return
+        if not insta.enabled():
+            sys.exit(1)
+        insta.publish_reel(mp4, cap, kap)
+        return
     if MODE == "reels_test":   # videoyu yükler ama YAYINLAMAZ
         gun = bugun(); dua, tur, baslik, tags = sec(gun, "sabah")
         out = os.path.join(brand.OUT_DIR, "test.jpg"); z = kart(gun, dua, tur, baslik, out, "sabah")

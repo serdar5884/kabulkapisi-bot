@@ -429,19 +429,17 @@ def main():
         cap = caption(dua, tur, baslik, tags)
         print(f"--- {gun} {vakit} [{tur}] ---\n{cap}\n---")
         mp4 = None
-        reels_vakit = os.getenv("REELS_VAKITLER", "sabah,aksam").split(",")
+        reels_vakit = os.getenv("REELS_VAKITLER", "sabah,ogle,ikindi,aksam").split(",")
         kapak_reel = out
-        if os.getenv("REELS", "1") == "1" and vakit in reels_vakit and os.getenv("DUA_REEL", "0") == "1":
-            try:   # konu kapağı + 8 sn döngülü dua sayfası (gece/altın tasarım)
+        if os.getenv("REELS", "1") == "1" and vakit in reels_vakit and os.getenv("DUA_REEL", "1") == "1":
+            try:   # konu kapağı (ızgara) + hareketli kart, üstte konu başlığı
                 import dua_reel
-                k = out.replace(".jpg", "_reel")
-                konu, _, sayfa, kapak_reel = dua_reel.hazirla(dua, tur, zemin, k, vakit=vakit,
-                                                              date=datetime(gun.year, gun.month, gun.day))
-                mp4 = dua_reel.reel(sayfa, out.replace(".jpg", ".mp4"),
-                                    muzik_bas=[47, 15, 64, 33, 86, 75, 99, 110][gun.toordinal() % 8])
+                konu, kapak_reel, mp4, _ = dua_reel.hareketli(dua, tur, zemin, out.replace(".jpg", "_reel"),
+                                                             out.replace(".jpg", ".mp4"), vakit=vakit,
+                                                             date=datetime(gun.year, gun.month, gun.day))
                 cap = f"🤲 {konu}\n\n" + cap
             except Exception as e:
-                print("[dua_reel] olmadı, hareketli karta dönülüyor:", e)
+                print("[dua_reel] olmadı, eski hareketli karta dönülüyor:", e)
                 kapak_reel, mp4 = out, None
         if not mp4 and os.getenv("REELS", "1") == "1" and vakit in reels_vakit:   # 13:00 ve 17:00 normal fotoğraf
             try:

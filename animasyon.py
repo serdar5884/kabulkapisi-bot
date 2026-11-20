@@ -117,18 +117,23 @@ def _yerlestir(hedef, katman, a, dy=0):
     hedef.alpha_composite(k, (0, int(dy)))
 
 
-def hareketli_reel(metin, zemin, out_path, kaynak=None, date=None, ses_girdi=None, ses_filtre=None, ses_anahtar=None):
+def hareketli_reel(metin, zemin, out_path, kaynak=None, date=None, ses_girdi=None, ses_filtre=None, ses_anahtar=None,
+                   kapak=None, kapak_sure=1.6, ust_katman=None, bekle=6.0):
+    """kapak: önce gösterilecek 9:16 görsel (sonra animasyona yumuşak geçiş). ust_katman: 9:16 RGBA (konu başlığı)."""
     bg, pan, sus, satirlar, kay, but, alt, par, bpar = katmanlar(metin, zemin, kaynak, date)
     import math
-    # zaman çizelgesi (sn)
-    t_pan, t_sus, t_sat = 1.0, 1.9, 2.3
+    t0 = kapak_sure if kapak else 0.0
+    # zaman çizelgesi (sn) — kapaktan sonra başlar
+    t_pan, t_sus, t_sat = (0.2, 0.8, 1.1) if kapak else (1.0, 1.9, 2.3)
     adim = 1.0          # satırlar arası
     belirme = 2.2       # bir satırın soluktan nete geçiş süresi
     t_kay = t_sat + adim * (len(satirlar) - 1) + belirme * 0.8
     t_but = t_kay + (0.5 if kay else 0.0)
     t_alt = t_but + 0.4
-    sure = max(10.0, t_alt + 6.0)   # sonda yazı tam hâliyle 6 sn kalır
+    sure_anim = max(10.0 - t0, t_alt + bekle)   # sonda yazı tam hâliyle 'bekle' sn kalır
+    sure = t0 + sure_anim
     n = int(sure * FPS)
+    kapak_img = Image.open(kapak).convert("RGB").resize((VW, VH)) if kapak else None
 
     # 9:16 arka zemin (bulanık), bir kez
     s = max(VW / bg.width, VH / bg.height)
@@ -136,6 +141,8 @@ def hareketli_reel(metin, zemin, out_path, kaynak=None, date=None, ses_girdi=Non
     l, t = (ark.width - VW) // 2, (ark.height - VH) // 2
     ark = ImageEnhance.Brightness(ark.crop((l, t, l + VW, t + VH)).filter(ImageFilter.GaussianBlur(28))).enhance(0.55)
     oy = (VH - H) // 2
+    if ust_katman is not None:
+        ark = ark.convert("RGBA"); ark.alpha_composite(ust_katman); ark = ark.convert("RGB")
 
     if ses_anahtar and not ses_girdi:
         import video
@@ -149,7 +156,11 @@ def hareketli_reel(metin, zemin, out_path, kaynak=None, date=None, ses_girdi=Non
     p = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     siyah = Image.new("RGB", (VW, VH), (0, 0, 0))
     for i in range(n):
-        tt = i / FPS
+        tg = i / FPS
+        if kapak_img is not None and tg < t0:
+            p.stdin.write(kapak_img.tobytes()); continue
+        tt = tg - t0
+        sure_k = sure_anim
         # 1) arka plan + paneli karıştır
         a_pan = _ease((tt - t_pan) / 0.8)
         kare = Image.blend(bg, pan, a_pan) if 0 < a_pan < 1 else (pan if a_pan >= 1 else bg)
@@ -183,22 +194,26 @@ def hareketli_reel(metin, zemin, out_path, kaynak=None, date=None, ses_girdi=Non
             _yerlestir(kare, bpar[0], gir * max(0.0, math.sin(faz)) ** 2)
             _yerlestir(kare, bpar[1], gir * max(0.0, -math.sin(faz)) ** 2)
         # son 3 saniye: çerçeve parlar (yumuşak nabız)
-        kalan = sure - tt
+        kalan = sure_k - tt if kapak_img is not None else sure - tt
         if kalan <= 3.0:
             giris = _ease((3.0 - kalan) / 0.6)
             nabiz = 0.6 + 0.4 * math.sin((3.0 - kalan) * 2 * math.pi / 1.5 - math.pi / 2) ** 2
             _yerlestir(kare, par, giris * nabiz)
         # 3) yavaş yakınlaşma (tüm kart)
-        z = 1.0 + 0.035 * (tt / sure)
+        z = 1.0 + 0.035 * (tt / (sure_anim if kapak_img is not None else sure))
         if z > 1.001:
             zw, zh = int(W * z), int(H * z)
             kare = kare.resize((zw, zh), Image.BILINEAR).crop(((zw - W) // 2, (zh - H) // 2, (zw - W) // 2 + W, (zh - H) // 2 + H))
         tam = ark.copy()
         tam.paste(kare.convert("RGB"), (0, oy))
-        # başta karanlıktan açılış
-        a0 = _ease(tt / 1.0)
-        if a0 < 1:
-            tam = Image.blend(siyah, tam, a0)
+        if kapak_img is not None:   # kapaktan yumuşak geçiş
+            a0 = _ease(tt / 0.7)
+            if a0 < 1:
+                tam = Image.blend(kapak_img, tam, a0)
+        else:   # başta karanlıktan açılış
+            a0 = _ease(tt / 1.0)
+            if a0 < 1:
+                tam = Image.blend(siyah, tam, a0)
         p.stdin.write(tam.tobytes())
     p.stdin.close()
     p.wait()

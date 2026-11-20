@@ -23,6 +23,27 @@ def konu_bul(dua, tur, vakit=None):
     return {"sabah": "Sabah Duası", "aksam": "Akşam Duası"}.get(vakit, "Günün Duası")
 
 
+def ust_katman(metin):
+    """9:16 saydam katman: üst boşlukta altın konu başlığı."""
+    img = Image.new("RGBA", (1080, 1920), (0, 0, 0, 0))
+    f = brand.font("bold", 64)
+    t = metin.replace("i", "İ").replace("ı", "I").upper()
+    tl = brand._gold_text(None, t, f)
+    y = (1920 - 1350) // 2 - tl.height - 40
+    img.alpha_composite(tl, ((1080 - tl.width) // 2, max(150, y)))
+    return img
+
+
+def hareketli(dua, tur, zemin, klasor, out, vakit=None, date=None, muzik_bas=47):
+    """Kapak → kart animasyonu (yazılar soluktan belirir) → yazı ekranda kalır."""
+    import animasyon
+    konu, kart, sayfa, kapak = hazirla(dua, tur, zemin, klasor, vakit, date)
+    mp4, sure = animasyon.hareketli_reel(dua["metin"], zemin, out, kaynak=dua.get("kaynak"), date=date,
+                                         ses_anahtar=os.path.basename(out),
+                                         ust_katman=ust_katman(konu), bekle=4.0)   # kapak sadece ızgarada
+    return konu, kapak, mp4, sure
+
+
 def _ust_baslik(path, metin):
     """9:16 görselin üst boşluğuna altın konu başlığı yazar."""
     img = Image.open(path).convert("RGBA")

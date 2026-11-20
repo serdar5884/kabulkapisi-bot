@@ -23,6 +23,11 @@ on:
         description: "mode=liste icin liste basligindan bir parca"
         default: ""
 
+# Yorum cevapları dakikada bir tetiklenir: aynı anda iki yorum işi çalışıp aynı yoruma iki kez cevap vermesin
+concurrency:
+  group: kabul-${{ github.event.inputs.mode == 'yorum' && 'yorum' || github.run_id }}
+  cancel-in-progress: false
+
 jobs:
   post:
     runs-on: ubuntu-latest

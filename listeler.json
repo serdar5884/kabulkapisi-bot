@@ -15,35 +15,35 @@
   "maddeler": [
    [
     "**Faiz** yiyene, yedirene, yazana ve şahitlik edene",
-    "Müslim, Müsâkât"
+    "Müslim, Müsâkât, 1598"
    ],
    [
     "**Rüşvet** alana ve verene",
-    "Ebû Dâvûd, Akdiye; Tirmizî, Ahkâm"
+    "Ebû Dâvûd, Akdiye, 3580; Tirmizî, Ahkâm, 1337"
    ],
    [
     "**İçki** içene, sunana, satana, taşıyana",
-    "Ebû Dâvûd, Eşribe"
+    "Ebû Dâvûd, Eşribe, 3674"
    ],
    [
     "**Anne babasına** lanet edene",
-    "Müslim, Edâhî"
+    "Müslim, Edâhî, 1978"
    ],
    [
     "Kadınlara **benzemeye çalışan** erkeklere, erkeklere benzemeye çalışan kadınlara",
-    "Buhârî, Libâs"
+    "Buhârî, Libâs, 5886"
    ],
    [
     "**Dövme** yapana ve yaptırana",
-    "Buhârî, Libâs; Müslim, Libâs"
+    "Buhârî, Libâs, 5931"
    ],
    [
     "Canlı bir hayvanı **nişan tahtası** yapana",
-    "Buhârî, Zebâih; Müslim, Sayd"
+    "Buhârî, Zebâih, 5515; Müslim, Sayd, 1958"
    ],
    [
     "Hayvanın **yüzünü dağlayana**",
-    "Müslim, Libâs"
+    "Müslim, Libâs, 2117"
    ]
   ]
  },
@@ -63,37 +63,37 @@
   "maddeler": [
    [
     "Yatağı **silkelemek** ve besmele çekmek",
-    "Buhârî, Daavât"
+    "Buhârî, Daavât, 6320"
    ],
    [
     "**Abdestli** olarak yatmak",
-    "Buhârî, Vudû"
+    "Buhârî, Vudû, 247"
    ],
    [
     "**Sağ yan** üzerine yatmak",
-    "Buhârî, Vudû"
+    "Buhârî, Vudû, 247"
    ],
    [
     "**İhlâs, Felak ve Nâs** okuyup ellere üflemek, bedeni meshetmek",
-    "Buhârî, Fezâilü'l-Kur'ân"
+    "Buhârî, Fezâilü'l-Kur'ân, 5017"
    ],
    [
     "**Âyetel Kürsî** okumak",
-    "Buhârî, Vekâle"
+    "Buhârî, Vekâle, 2311"
    ],
    [
     "**Bakara suresinin son iki ayetini** okumak",
-    "Buhârî, Fezâilü'l-Kur'ân"
+    "Buhârî, Fezâilü'l-Kur'ân, 5009"
    ],
    [
     "**33 Sübhânallah, 33 Elhamdülillah, 34 Allâhu ekber** demek",
-    "Buhârî, Nafakât; Müslim, Zikir"
+    "Buhârî, Nafakât, 5361"
    ]
   ]
  },
  {
   "ust": "Sahih hadislere göre",
-  "baslik": "Duanın kabul olduğu 8 an",
+  "baslik": "Duanın kabul olduğu 6 an",
   "kapak": "Duanın kabul olduğu anlar",
   "soru": "Hangileri?",
   "acilis": "🤲 Duaların geri çevrilmediği anlar var. Peygamberimiz (s.a.v.) bunları tek tek haber verdi.",
@@ -107,35 +107,27 @@
   "maddeler": [
    [
     "**Gecenin son üçte biri**",
-    "Buhârî, Teheccüd; Müslim, Müsâfirîn"
+    "Buhârî, Teheccüd, 1145"
    ],
    [
     "**Secde** hâli",
-    "Müslim, Salât"
+    "Müslim, Salât, 482"
    ],
    [
     "**Ezan ile kamet** arası",
-    "Ebû Dâvûd, Salât; Tirmizî, Salât"
+    "Ebû Dâvûd, Salât, 521; Tirmizî, Salât, 212"
    ],
    [
     "**Cuma günü** içindeki bir saat",
-    "Buhârî, Cum'a; Müslim, Cum'a"
-   ],
-   [
-    "**Arefe günü**",
-    "Tirmizî, Daavât"
-   ],
-   [
-    "**Oruçlunun** duası",
-    "Tirmizî, Daavât"
+    "Buhârî, Cum'a, 935"
    ],
    [
     "**Yolcunun, mazlumun ve babanın** evladına duası",
-    "Tirmizî, Birr; Ebû Dâvûd, Vitr"
+    "Tirmizî, Birr, 1905"
    ],
    [
     "Din kardeşine **gıyabında** yapılan dua",
-    "Müslim, Zikir"
+    "Müslim, Zikir, 2732"
    ]
   ]
  },
@@ -151,41 +143,41 @@
    "#hadis",
    "#dinibilgiler"
   ],
-  "dipnot": "Kaynak: Buhârî, Vesâyâ; Müslim, Îmân. Rabbim bizi muhafaza eylesin.",
+  "dipnot": "Kaynak: Buhârî, Vesâyâ, 2766; Müslim, Îmân, 89. Rabbim bizi muhafaza eylesin.",
   "maddeler": [
    [
     "Allah'a **şirk** koşmak",
-    "Buhârî, Vesâyâ"
+    "Buhârî, Vesâyâ, 2766"
    ],
    [
     "**Sihir** yapmak",
-    "Buhârî, Vesâyâ"
+    "Buhârî, Vesâyâ, 2766"
    ],
    [
     "Allah'ın haram kıldığı **cana haksız yere kıymak**",
-    "Buhârî, Vesâyâ"
+    "Buhârî, Vesâyâ, 2766"
    ],
    [
     "**Faiz** yemek",
-    "Buhârî, Vesâyâ"
+    "Buhârî, Vesâyâ, 2766"
    ],
    [
     "**Yetim malı** yemek",
-    "Buhârî, Vesâyâ"
+    "Buhârî, Vesâyâ, 2766"
    ],
    [
     "Savaş günü **cepheden kaçmak**",
-    "Buhârî, Vesâyâ"
+    "Buhârî, Vesâyâ, 2766"
    ],
    [
     "İffetli mümin kadınlara **zina iftirası** atmak",
-    "Buhârî, Vesâyâ"
+    "Buhârî, Vesâyâ, 2766"
    ]
   ]
  },
  {
   "ust": "Cuma günü",
-  "baslik": "Cuma gününün 7 sünneti",
+  "baslik": "Cuma gününün 6 sünneti",
   "kapak": "Cuma günü bunları unutma",
   "soru": "Neler?",
   "acilis": "🕌 Haftanın bayramı Cuma. Peygamberimiz (s.a.v.) bu günü nasıl değerlendirmemizi tavsiye etti?",
@@ -199,31 +191,27 @@
   "maddeler": [
    [
     "**Gusül** abdesti almak",
-    "Buhârî, Cum'a"
+    "Buhârî, Cum'a, 877"
    ],
    [
     "**Temiz elbise** giyip güzel koku sürmek",
-    "Buhârî, Cum'a"
+    "Buhârî, Cum'a, 883"
    ],
    [
     "Camiye **erken** gitmek",
-    "Buhârî, Cum'a"
+    "Buhârî, Cum'a, 929"
    ],
    [
     "Hutbeyi **sessizce** dinlemek",
-    "Buhârî, Cum'a"
+    "Buhârî, Cum'a, 934"
    ],
    [
     "Peygamberimize **çokça salavat** getirmek",
-    "Ebû Dâvûd, Salât"
-   ],
-   [
-    "**Kehf suresini** okumak",
-    "Hâkim, Müstedrek"
+    "Ebû Dâvûd, Salât, 1047"
    ],
    [
     "Duanın kabul olduğu **saati** gözetmek",
-    "Buhârî, Cum'a; Müslim, Cum'a"
+    "Buhârî, Cum'a, 935"
    ]
   ]
  },
@@ -243,35 +231,35 @@
   "maddeler": [
    [
     "**İlmin kalkması**, cehaletin artması",
-    "Buhârî, İlim"
+    "Buhârî, İlim, 80"
    ],
    [
     "**Emanetin** ehli olmayana verilmesi",
-    "Buhârî, İlim"
+    "Buhârî, İlim, 59"
    ],
    [
     "Yalınayak çobanların **yüksek bina** yarışına girmesi",
-    "Müslim, Îmân"
+    "Müslim, Îmân, 8"
    ],
    [
     "**Zamanın** kısalması, öldürmenin çoğalması",
-    "Buhârî, Fiten"
+    "Buhârî, Fiten, 7121"
    ],
    [
     "**İçkinin** ve zinanın yayılması",
-    "Buhârî, İlim"
+    "Buhârî, İlim, 80"
    ],
    [
     "**Deccâl**'ın çıkması",
-    "Müslim, Fiten"
+    "Müslim, Fiten, 2901"
    ],
    [
     "**Ye'cûc ve Me'cûc**'ün çıkması",
-    "Müslim, Fiten"
+    "Müslim, Fiten, 2901"
    ],
    [
     "**Güneşin batıdan** doğması",
-    "Buhârî, Rikâk; Müslim, Fiten"
+    "Buhârî, Rikâk, 6506; Müslim, Fiten, 2901"
    ]
   ]
  },
@@ -291,35 +279,35 @@
   "maddeler": [
    [
     "**Selamı** yaymak",
-    "Tirmizî, Kıyâmet; İbn Mâce, İkâme"
+    "Tirmizî, Kıyâmet, 2485; İbn Mâce, Et'ime, 3251"
    ],
    [
     "**Yemek** yedirmek",
-    "Tirmizî, Kıyâmet"
+    "Tirmizî, Kıyâmet, 2485"
    ],
    [
     "**Akrabayı** gözetmek",
-    "Tirmizî, Kıyâmet"
+    "Tirmizî, Kıyâmet, 2485"
    ],
    [
     "İnsanlar uyurken **gece namazı** kılmak",
-    "Tirmizî, Kıyâmet"
+    "Tirmizî, Kıyâmet, 2485"
    ],
    [
     "**İlim** öğrenmek için yola çıkmak",
-    "Müslim, Zikir"
+    "Müslim, Zikir, 2699"
    ],
    [
     "**Yetime** sahip çıkmak",
-    "Buhârî, Edeb"
+    "Buhârî, Edeb, 6005"
    ],
    [
     "**Dilini ve iffetini** korumak",
-    "Buhârî, Rikâk"
+    "Buhârî, Rikâk, 6474"
    ],
    [
     "Abdestten sonra **kelime-i şehadet** getirmek",
-    "Müslim, Tahâret"
+    "Müslim, Tahâret, 234"
    ]
   ]
  },

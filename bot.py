@@ -166,6 +166,38 @@ def derleme(gun):
     return yollar, cap
 
 
+BILGI_BASLANGIC = date(2026, 11, 20)
+BILGI_TAG = {"adab": ["#duanınadabı", "#dua"], "vakit": ["#duavakitleri", "#dua"], "esma": ["#esmaülhüsna", "#esma"],
+             "peygamber": ["#peygamberlerinduaları", "#dua"], "teselli": ["#ayet", "#teselli"],
+             "gunluk": ["#günlükdualar", "#dua"]}
+
+
+def bilgi(gun):
+    """17:00 bilgi gönderisi: kaynaklı seri (adab, esmâ, peygamberler, teselli, vakitler, günlük dualar)."""
+    import bilgi_kart
+    with open(os.path.join(HERE, "bilgi.json"), encoding="utf-8") as f:
+        posts = json.load(f)
+    post = posts[(gun - BILGI_BASLANGIC).days % len(posts)]
+    klasor = os.path.join(brand.OUT_DIR, f"bilgi_{gun}")
+    yollar = bilgi_kart.hepsi(post, klasor)
+    mp4 = None
+    if os.getenv("REELS", "1") == "1":
+        try:
+            _, mp4 = bilgi_kart.reel(post, klasor, os.path.join(klasor, "bilgi.mp4"))
+        except Exception as e:
+            print("[bilgi] Reels üretilemedi:", e)
+    kaynaklar = []
+    for k in post["kartlar"]:
+        if k.get("kaynak") and k["kaynak"] not in kaynaklar:
+            kaynaklar.append(k["kaynak"])
+    tags = ["#kabulkapisi"] + BILGI_TAG.get(post["seri"], ["#dua"]) + ["#amin"]
+    parcalar = [f"📚 {post['baslik']}", post.get("ozet", "")]
+    if kaynaklar:
+        parcalar.append("📖 Kaynaklar:\n" + "\n".join("• " + k for k in kaynaklar))
+    parcalar += ["Kaydet, dua ederken hatırla 🤲\nİhtiyacı olan birine gönder 👇", " ".join(tags[:5])]
+    return yollar, mp4, "\n\n".join(p for p in parcalar if p)
+
+
 def hikaye(kart_path, zemin):
     if os.getenv("STORY", "1") != "1":
         return
@@ -177,7 +209,7 @@ def hikaye(kart_path, zemin):
 
 
 def gunun_ozeti():
-    """Akşam: o gün paylaşılan 4 duanın hepsi tek Reels'te (22:30)."""
+    """Akşam: o gün paylaşılan duaların hepsi tek Reels'te (22:30)."""
     gun = bugun()
     anahtar = f"{gun.isoformat()}_ozet"
     hist = gecmis_oku()
@@ -186,15 +218,17 @@ def gunun_ozeti():
     zs = brand.zeminler()
     tarih = f"{gun.day} {brand.AYLAR[gun.month - 1]} {gun.year}"
     kapak = brand.make_cover(os.path.join(brand.OUT_DIR, f"ozet_{gun}_0.jpg"), "Bugünün Duaları",
-                             tarih, zs[(gun - BASLANGIC).days % len(zs)], buton="4 DUA BİR ARADA", ok=False)
+                             tarih, zs[(gun - BASLANGIC).days % len(zs)], buton="3 DUA BİR ARADA", ok=False)
     kartlar, ozet_satir, sureler = [kapak], [], []
-    for i, v in enumerate(("sabah", "ogle", "ikindi", "aksam"), 1):
+    ozet_vakit = [v for v in VAKITLER if not (v == "ikindi" and os.getenv("BILGI", "1") == "1")]
+    simge = {"sabah": "🌅", "ogle": "📖", "ikindi": "🤲", "aksam": "🌙"}
+    for i, v in enumerate(ozet_vakit, 1):
         dua, tur, baslik, tags = sec(gun, v)
         p = os.path.join(brand.OUT_DIR, f"ozet_{gun}_{i}.jpg")
         kart(gun, dua, tur, baslik, p, v)
         kartlar.append(p)
         sureler.append(video.okuma_suresi(dua["metin"]))
-        ozet_satir.append(f"{['🌅', '📖', '🤲', '🌙'][i - 1]} {dua['metin'][:60].rsplit(' ', 1)[0]}…")
+        ozet_satir.append(f"{simge[v]} {dua['metin'][:60].rsplit(' ', 1)[0]}…")
     mp4 = video.ozet_reel(kartlar, zs[0], os.path.join(brand.OUT_DIR, f"ozet_{gun}.mp4"), sureler_kart=sureler)
     print("[özet] kart süreleri (sn):", sureler)
     cap = "\n\n".join([f"🌙 Bugünün duaları bir arada · {tarih}", "\n".join(ozet_satir),
@@ -293,7 +327,22 @@ def main():
         print(f"{gun} {vakit} paylaşımı zaten yapıldı, tekrar paylaşılmıyor.")
         return
 
-    if vakit == "ikindi" and gun.weekday() == 6 and os.getenv("DERLEME", "1") == "1":   # Pazar: haftalık derleme
+    if vakit == "ikindi" and os.getenv("BILGI", "1") == "1":   # 17:00: bilgi gönderisi (carousel + Reels)
+        yollar, mp4, cap = bilgi(gun)
+        print(f"--- {gun} {vakit} [bilgi] ---\n{cap}\n---")
+        if DRY_RUN:
+            print("DRY_RUN=1 -> paylaşılmadı:", yollar, mp4)
+            return
+        if not insta.enabled():
+            sys.exit(1)
+        insta.publish_carousel(yollar, cap)
+        if mp4:
+            try:
+                insta.publish_reel(mp4, cap, yollar[0])
+            except Exception as e:
+                print("[insta] bilgi Reels'i paylaşılamadı (carousel yayında):", e)
+        hikaye(yollar[0], None)
+    elif vakit == "ikindi" and gun.weekday() == 6 and os.getenv("DERLEME", "1") == "1":   # Pazar: haftalık derleme
         yollar, cap = derleme(gun)
         print(f"--- {gun} {vakit} [derleme] ---\n{cap}\n---")
         if DRY_RUN:

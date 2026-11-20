@@ -120,7 +120,7 @@ def liste(path, ust, baslik, maddeler, dipnot=None):
     return path
 
 
-def kapak(path, ust, baslik, soru="Hangileri?", cagri="Detaylar Reels'te"):
+def kapak(path, ust, baslik, soru="Hangileri?", cagri="Detaylar Reels'te", filigran="?"):
     """Profil ızgarasında görünen merak kapağı (ortadaki 1080x1440 alan güvenli bölge)."""
     img = _zemin()
     d = ImageDraw.Draw(img, "RGBA")
@@ -129,7 +129,12 @@ def kapak(path, ust, baslik, soru="Hangileri?", cagri="Detaylar Reels'te"):
     kat = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     kd = ImageDraw.Draw(kat)
     l, t, r, b = kd.textbbox((0, 0), "?", font=fq)
-    kd.text(((W - (r - l)) / 2 - l, 560 - t), "?", font=fq, fill=ZUMRUT + (26,))
+    if filigran == "?":
+        kd.text(((W - (r - l)) / 2 - l, 560 - t), "?", font=fq, fill=ZUMRUT + (26,))
+    elif filigran == "hilal":
+        cx, cy, r0 = W / 2, 860, 380
+        kd.ellipse([cx - r0, cy - r0, cx + r0, cy + r0], fill=ZUMRUT + (26,))
+        kd.ellipse([cx - r0 + 150, cy - r0 - 60, cx + r0 + 150, cy + r0 - 60], fill=(0, 0, 0, 0))
     img.alpha_composite(kat)
     d = ImageDraw.Draw(img, "RGBA")
     _orta(d, 360, _ust(ust), nf("bold", 40), ZUMRUT)
@@ -177,3 +182,68 @@ def reel(liste_jpg, kapak_jpg, out, sure=9, muzik_bas=47):
            "-movflags", "+faststart", out]
     subprocess.run(cmd, check=True)
     return out
+
+
+KONU = {"borç": "Borçlu için dua", "hasta": "Hasta için şifa duası", "dert": "Sıkıntılı kalpler için dua",
+        "çocuk": "Evlat için dua", "aile": "Aile için dua"}
+
+
+def dua_sayfa(path, konu, metin, kaynak=None, okunus=None):
+    """Dua Reels'i için 9:16 sayfa: konu başlığı, beyaz kutuda dua, okunuş, kaynak."""
+    img = _zemin()
+    d = ImageDraw.Draw(img, "RGBA")
+    ft = nf("black", 74)
+    # önce yükseklikleri hesapla, sonra ortala
+    en0 = W - 160
+    bas_sat = _wrap(d, _ust(konu), ft, en0)
+    for sz in range(64, 33, -2):
+        mf = nf("medium", sz)
+        sat = _wrap(d, metin, mf, W - 280)
+        lh = int(sz * 1.42)
+        of = nf("medium", int(sz * 0.62)) if okunus else None
+        osat = _wrap(d, okunus, of, W - 300) if okunus else []
+        olh = int(sz * 0.62 * 1.4) if okunus else 0
+        top = len(sat) * lh + (len(osat) * olh + 50 if okunus else 0) + (80 if kaynak else 0)
+        if top <= 1100:
+            break
+    blok = 60 + len(bas_sat) * 86 + 80 + top + 120 + 100
+    y0 = max(250, (H - 200 - blok) // 2 + 60)
+    _orta(d, y0, "KABUL KAPISI", nf("bold", 30), ZUMRUT)
+    y = y0 + 60
+    en = W - 160
+    n0 = len(_wrap(d, _ust(konu), ft, en))
+    while en > 500 and len(_wrap(d, _ust(konu), ft, en - 20)) == n0:
+        en -= 20
+    for ln in _wrap(d, _ust(konu), ft, en):
+        _orta(d, y, ln, ft, METIN); y += 86
+    _sus(d, y + 24, 170, ZUMRUT)
+    kutu_ust = y + 80
+    kutu_alt = kutu_ust + top + 120
+    _kutu(img, (80, kutu_ust, W - 80, kutu_alt))
+    d = ImageDraw.Draw(img, "RGBA")
+    ty = kutu_ust + 60
+    for ln in sat:
+        _orta(d, ty, ln, mf, METIN); ty += lh
+    if okunus:
+        ty += 20
+        d.line([(W / 2 - 60, ty), (W / 2 + 60, ty)], fill=CIZGI, width=2)
+        ty += 30
+        for ln in osat:
+            _orta(d, ty, ln, of, (110, 110, 110)); ty += olh
+    if kaynak:
+        _orta(d, ty + 30, kaynak, nf("semibold", int(sz * 0.62)), ZUMRUT)
+    # Âmin + alt çağrı
+    _orta(d, kutu_alt + 60, "Âmin de, ihtiyacı olana gönder", nf("bold", 40), METIN)
+    f1, f2 = nf("medium", 30), nf("black", 30)
+    parcalar = [("KAYDET", f2), (", her gün oku  ·  sevdiklerine ", f1), ("GÖNDER", f2)]
+    tw = sum(d.textlength(t, font=f) for t, f in parcalar)
+    x = (W - tw - 46) / 2
+    yb = H - 122
+    d.polygon([(x, yb), (x + 26, yb), (x + 26, yb + 34), (x + 13, yb + 25), (x, yb + 34)], fill=ZUMRUT)
+    x += 46
+    for t, f in parcalar:
+        d.text((x, yb), t, font=f, fill=ZUMRUT if f is f2 else METIN)
+        x += d.textlength(t, font=f)
+    _orta(d, H - 72, HANDLE, nf("bold", 26), ZUMRUT)
+    img.convert("RGB").save(path, "JPEG", quality=94)
+    return path

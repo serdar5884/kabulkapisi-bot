@@ -327,6 +327,32 @@ def main():
         return
     if MODE == "post" and vakit_bul() == "ozet":
         return gunun_ozeti()
+    if MODE == "dua_reel":   # yeni dua Reels formatını tek bir duayla dener (LISTE_SEC: tema, örn. borç)
+        import dua_reel
+        with open(os.path.join(HERE, "dualar.json"), encoding="utf-8") as f:
+            havuz = json.load(f)
+        tema = os.getenv("LISTE_SEC", "").strip() or "borç"
+        aday = [("hadis", e) for e in havuz["hadis"] if e.get("tema") == tema] + \
+               [("ozel", e) for e in havuz["ozel"] if e.get("tema") == tema]
+        tur, dua = aday[0]
+        gun = bugun()
+        zs = brand.zeminler()
+        k = os.path.join(brand.OUT_DIR, f"dua_reel_{gun}")
+        konu, _, sayfa, kap = dua_reel.hazirla(dua, tur, zs[gun.toordinal() % len(zs)], k,
+                                              date=datetime(gun.year, gun.month, gun.day))
+        mp4 = dua_reel.reel(sayfa, os.path.join(k, "dua.mp4"))
+        tags = {"borç": "#borçduası", "hasta": "#şifaduası", "dert": "#sıkıntıduası",
+                "çocuk": "#evlatduası", "aile": "#aileduası"}.get(tema, "#dua")
+        cap = (f"🤲 {konu}\n\n{dua['metin']}\n\n📖 {dua.get('kaynak', '')}\n\n"
+               "Âmin yazmayı unutma 🤲\nDuaya ihtiyacı olan birini etiketle 👇\n\n"
+               f"#kabulkapisi #dua {tags} #amin #duaistegi")
+        print(f"--- dua_reel ---\n{cap}\n---")
+        if DRY_RUN:
+            print("DRY_RUN=1 -> paylaşılmadı:", mp4); return
+        if not insta.enabled():
+            sys.exit(1)
+        insta.publish_reel(mp4, cap, kap)
+        return
     if MODE == "liste":   # tek bir listeyi elle Reels olarak paylaş (LISTE_SEC: başlıktan parça)
         kap, lst, mp4, cap = liste_gonderi(bugun(), os.getenv("LISTE_SEC", "").strip())
         print(f"--- liste ---\n{cap}\n---")
@@ -404,9 +430,22 @@ def main():
         print(f"--- {gun} {vakit} [{tur}] ---\n{cap}\n---")
         mp4 = None
         reels_vakit = os.getenv("REELS_VAKITLER", "sabah,aksam").split(",")
-        if os.getenv("REELS", "1") == "1" and vakit in reels_vakit:   # 13:00 ve 17:00 normal fotoğraf
+        kapak_reel = out
+        if os.getenv("REELS", "1") == "1" and vakit in reels_vakit and os.getenv("DUA_REEL", "0") == "1":
+            try:   # konu kapağı + 8 sn döngülü dua sayfası (gece/altın tasarım)
+                import dua_reel
+                k = out.replace(".jpg", "_reel")
+                konu, _, sayfa, kapak_reel = dua_reel.hazirla(dua, tur, zemin, k, vakit=vakit,
+                                                              date=datetime(gun.year, gun.month, gun.day))
+                mp4 = dua_reel.reel(sayfa, out.replace(".jpg", ".mp4"),
+                                    muzik_bas=[47, 15, 64, 33, 86, 75, 99, 110][gun.toordinal() % 8])
+                cap = f"🤲 {konu}\n\n" + cap
+            except Exception as e:
+                print("[dua_reel] olmadı, hareketli karta dönülüyor:", e)
+                kapak_reel, mp4 = out, None
+        if not mp4 and os.getenv("REELS", "1") == "1" and vakit in reels_vakit:   # 13:00 ve 17:00 normal fotoğraf
             try:
-                try:   # hareketli kart: arka plan -> panel -> yazılar soluktan nete -> parlayan buton
+                try:   # hareketli kart (arşiv/yedek): arka plan -> panel -> yazılar soluktan nete -> parlayan buton
                     mp4, _ = animasyon.hareketli_reel(dua["metin"], zemin, out.replace(".jpg", ".mp4"),
                                                       kaynak=dua.get("kaynak"), date=datetime(gun.year, gun.month, gun.day),
                                                       ses_anahtar=os.path.basename(out))
@@ -423,7 +462,7 @@ def main():
         paylasildi = False
         if mp4:
             try:
-                insta.publish_reel(mp4, cap, out)   # kapak: yazıların tam olduğu kart
+                insta.publish_reel(mp4, cap, kapak_reel)   # ızgara kapağı
                 paylasildi = True
             except Exception as e:
                 print("[insta] Reels başarısız, görsel gönderiye dönülüyor:", e)

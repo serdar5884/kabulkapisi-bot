@@ -70,29 +70,49 @@ def sec(gun, vakit):
     if vakit == "sabah" and gun.weekday() == 4:   # Cuma sabahı
         cuma = DB["cuma"]
         return cuma[(gecen // 7) % len(cuma)], "cuma", "Hayırlı Cumalar", ["#hayırlıcumalar", "#cumamesajları"]
-    zit = {"sabah": ("aksam",), "ikindi": ("sabah", "aksam"), "aksam": ("sabah",)}.get(vakit, ())
-    havuz = [e for e in DB[VAKIT_HAVUZ[vakit]] if e.get("vakit") not in zit]
-    if VAKIT_HAVUZ[vakit] == "ozel":   # günde 2 özel dua: sabah çift, ikindi tek sıradaki
+    zit = {"sabah": ("aksam",), "ikindi": ("sabah", "aksam"), "aksam": ("sabah",), "ogle": ("sabah", "aksam")}.get(vakit, ())
+    havuz_adi = VAKIT_HAVUZ[vakit]
+    if vakit in ("ogle", "aksam"):   # gün aşırı yer değiştirir: çift gün öğle Kur'an/akşam hadis, tek gün tersi
+        havuz_adi = ("kuran", "hadis")[(gecen + (vakit == "aksam")) % 2]
+    if havuz_adi in ("kuran", "hadis"):   # sıra her gün bir ilerler; öğleye akşam duası düşerse sonrakine geç
+        liste = DB[havuz_adi]
+        i = gecen % len(liste)
+        while liste[i].get("vakit") in zit:
+            i = (i + 1) % len(liste)
+        dua = liste[i]
+        havuz = None
+    else:
+        havuz = [e for e in DB[havuz_adi] if e.get("vakit") not in zit]
+    if havuz is None:
+        pass
+    elif havuz_adi == "ozel":   # günde 2 özel dua: sabah çift, ikindi tek sıradaki
         dua = havuz[(gecen * 2 + (1 if vakit == "ikindi" else 0)) % len(havuz)]
     else:
         dua = havuz[gecen % len(havuz)]
     tema_tag = {"borç": ["#borçduası"], "hasta": ["#şifaduası"], "dert": ["#sıkıntıduası"],
                 "çocuk": ["#evlatduası"], "aile": ["#aileduası"]}.get(dua.get("tema"), [])
     vtag = VAKIT_TAG[vakit]
-    if vakit == "aksam" and dua.get("tur") != "hadis":
-        vtag = ["#akşamduası", "#duaistegi"]
-    return dua, vakit, VAKIT_BASLIK[vakit], tema_tag + vtag + ["#amin"]
+    baslik = VAKIT_BASLIK[vakit]
+    if havuz_adi == "kuran":
+        vtag, baslik = ["#kuran", "#ayet"], "Kur'an'dan Bir Dua"
+    elif havuz_adi == "hadis":
+        vtag = (["#hadis"] if dua.get("tur") == "hadis" else ["#duaistegi"]) + (["#akşamduası"] if vakit == "aksam" else [])
+        baslik = "Hadislerden Bir Dua" if dua.get("tur") == "hadis" else VAKIT_BASLIK["sabah"]
+    tur = havuz_adi if havuz_adi in ("kuran", "hadis") else vakit
+    return dua, tur, baslik, tema_tag + vtag + ["#amin"]
 
 
 def caption(dua, tur, baslik, tags):
     acilis = {"sabah": "🌅 Hayırlı sabahlar, bu satırları okuyan sana bir dua var",
               "ikindi": "🤲 Bu satırları okuyan sana bir dua var",
               "ogle": "📖 Kur'an-ı Kerim'den bir dua, bu satırları okuyan herkes için",
-              "aksam": "🌙 Hayırlı akşamlar, Peygamber Efendimizin dualarından biri sana",
+              "aksam": "🌙 Hayırlı akşamlar, bu satırları okuyan sana bir dua var",
+              "kuran": "📖 Kur'an-ı Kerim'den bir dua, bu satırları okuyan herkes için",
+              "hadis": "🤲 Peygamber Efendimizin dualarından biri, bu satırları okuyan sana",
               "cuma": "🕌 Hayırlı Cumalar",
               "kandil": f"✨ {baslik} mübarek olsun"}[tur]
-    if tur == "aksam" and dua.get("tur") != "hadis":
-        acilis = "🌙 Hayırlı akşamlar, bu satırları okuyan sana bir dua var"
+    if tur == "hadis" and dua.get("tur") != "hadis":
+        acilis = "🤲 Bu satırları okuyan sana bir dua var"
     parts = [acilis]
     if dua.get("okunus"):
         parts.append(f"🕋 Okunuşu: {dua['okunus']}")

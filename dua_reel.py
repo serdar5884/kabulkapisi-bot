@@ -14,7 +14,7 @@ def konu_bul(dua, tur, vakit=None):
         return KONU[dua["tema"]]
     if tur == "kuran":
         return "Kur'an'dan Bir Dua"
-    if tur in ("hadis", "dua"):
+    if tur in ("hadis", "dua") and dua.get("tur") == "hadis":
         return "Peygamberimizin Duası"
     if tur == "cuma":
         return "Cuma Duası"

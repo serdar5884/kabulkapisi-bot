@@ -462,8 +462,7 @@ def make_photo_card(path, metin, zemin, baslik="Günün Duası", kaynak=None, da
     img.alpha_composite(dug)
     img.alpha_composite(cag)
     d = ImageDraw.Draw(img, "RGBA")
-    tarih = f"{date.day} {AYLAR[date.month - 1]} {date.year}"
-    _center(d, alt_y, f"{HANDLE}   ·   {tarih}", font("semibold", 28), GOLD_HI)
+    _center(d, alt_y, HANDLE, font("semibold", 30), GOLD_HI)   # tarih yazılmaz: gönderi eskimiş görünmesin
 
     img.convert("RGB").save(path, "JPEG", quality=93)
     return path

@@ -97,8 +97,7 @@ def katmanlar(metin, zemin, kaynak=None, date=None):
     bpar = (par_k, par_g)
 
     alt = _katman()
-    tarih = f"{date.day} {AYLAR[date.month - 1]} {date.year}"
-    _center(ImageDraw.Draw(alt, "RGBA"), alt_y, f"{HANDLE}   ·   {tarih}", font("semibold", 28), GOLD_HI)
+    _center(ImageDraw.Draw(alt, "RGBA"), alt_y, HANDLE, font("semibold", 30), GOLD_HI)   # tarih yok
     return bg, pan, sus, satirlar, kay, but, alt, par, bpar
 
 

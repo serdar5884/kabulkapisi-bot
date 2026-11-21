@@ -239,8 +239,8 @@ def gunun_ozeti():
     ozet_vakit = [v for v in VAKITLER if not (v == "ikindi" and (os.getenv("BILGI", "0") == "1" or os.getenv("LISTE", "0") == "1"))]
     zs = brand.zeminler()
     tarih = f"{gun.day} {brand.AYLAR[gun.month - 1]} {gun.year}"
-    kapak = brand.make_cover(os.path.join(brand.OUT_DIR, f"ozet_{gun}_0.jpg"), "Bugünün Duaları",
-                             tarih, zs[(gun - BASLANGIC).days % len(zs)], buton=f"{len(ozet_vakit)} DUA BİR ARADA", ok=False)
+    kapak = brand.make_cover(os.path.join(brand.OUT_DIR, f"ozet_{gun}_0.jpg"), "Günün Duaları",
+                             "Sabah · Öğle · İkindi · Akşam", zs[(gun - BASLANGIC).days % len(zs)], buton=f"{len(ozet_vakit)} DUA BİR ARADA", ok=False)
     kartlar, ozet_satir, sureler = [kapak], [], []
     simge = {"sabah": "🌅", "ogle": "📖", "ikindi": "🤲", "aksam": "🌙"}
     gun_tag = []
@@ -254,7 +254,7 @@ def gunun_ozeti():
         ozet_satir.append(f"{simge[v]} {dua['metin'][:60].rsplit(' ', 1)[0]}…")
     mp4 = video.ozet_reel(kartlar, zs[0], os.path.join(brand.OUT_DIR, f"ozet_{gun}.mp4"), sureler_kart=sureler)
     print("[özet] kart süreleri (sn):", sureler)
-    cap = "\n\n".join([f"🌙 Bugünün duaları bir arada · {tarih}", "\n".join(ozet_satir),
+    cap = "\n\n".join(["🌙 Günün duaları bir arada", "\n".join(ozet_satir),
                         "Gün içinde kaçırdıysan hepsini tek videoda izle. Hangisine âmin dersin? 🤲",
                         "Duaya ihtiyacı olan birini etiketle 👇",
                         " ".join(list(dict.fromkeys(["#kabulkapisi", "#borçduası", "#şifaduası"] + gun_tag +

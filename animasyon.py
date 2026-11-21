@@ -9,7 +9,7 @@ from datetime import datetime
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter
 
 import brand
-from brand import (AYLAR, GOLD, GOLD_HI, HANDLE, W, H, _center, _ornament, _tokens, _wrap_tokens, font)
+from brand import (AYLAR, GOLD, GOLD_HI, HANDLE, W, H, _center, _ornament, _tokens, _wrap_tokens, font, brand_sigdir)
 
 VW, VH = 1080, 1920
 FPS = 30
@@ -88,7 +88,7 @@ def katmanlar(metin, zemin, kaynak=None, date=None):
     kay = None
     if kaynak:
         kay = _katman()
-        _center(ImageDraw.Draw(kay, "RGBA"), cy + 14, "— " + kaynak, font("italic", 36), GOLD_HI)
+        _center(ImageDraw.Draw(kay, "RGBA"), cy + 14, "— " + kaynak, brand_sigdir("— " + kaynak, 36, W - 220), GOLD_HI)
 
     # alt bölüm: KAYDET / GÖNDER düğmeleri + çağrı satırı
     dug, cag, par_k, par_g, alt_y = brand.cta_katmanlari(py2)

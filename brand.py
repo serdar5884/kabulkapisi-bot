@@ -404,6 +404,14 @@ def yerlesim(metin, kaynak=None):
     return (x1, y1, x2, y2), f, lines, lh, y1 + ust_bosluk
 
 
+def brand_sigdir(metin, boyut, en, stil="italic"):
+    """Tek satırlık metni verilen genişliğe sığana kadar küçültür."""
+    olc = ImageDraw.Draw(Image.new("RGB", (1, 1)))
+    while boyut > 20 and olc.textlength(metin, font=font(stil, boyut)) > en:
+        boyut -= 2
+    return font(stil, boyut)
+
+
 def make_photo_card(path, metin, zemin, baslik="Günün Duası", kaynak=None, date=None, kandil=False):
     date = date or datetime.now()
     img = Image.open(zemin).convert("RGB").resize((W, H), Image.LANCZOS).convert("RGBA")
@@ -455,7 +463,7 @@ def make_photo_card(path, metin, zemin, baslik="Günün Duası", kaynak=None, da
     img.alpha_composite(layer)
     d = ImageDraw.Draw(img, "RGBA")
     if kaynak:
-        _center(d, cy + 14, "— " + kaynak, font("italic", 36), GOLD_HI)
+        _center(d, cy + 14, "— " + kaynak, brand_sigdir("— " + kaynak, 36, W - 220), GOLD_HI)
 
     # alt bölüm: KAYDET / GÖNDER + çağrı + @hesap
     dug, cag, _, _, alt_y = cta_katmanlari(py2)

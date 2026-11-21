@@ -12,7 +12,8 @@ from datetime import datetime, timedelta, timezone
 import insta
 
 HESAP = "kabulkapisi"
-EN_FAZLA = 25          # bir çalışmada en fazla cevap
+EN_FAZLA = 8           # bir çalışmada en fazla cevap (otomasyon işareti almamak için düşük)
+BEKLE = (20, 60)       # cevaplar arası rastgele bekleme (sn)
 GUN = 7                # son kaç günün gönderilerine bakılır
 
 # ---------------------------------------------------------------- Türkçe ekler
@@ -127,7 +128,9 @@ DUALAR = {
               "Âmin. Rabbim {k_y} sağlık, huzur ve bereket versin 🤲",
               "Rabbim dualarını kabul etsin, {k_y} hayırlı kapılar açsın 🤲"],
     "amin": ["Âmin 🤲 Rabbim kabul etsin.", "Ecmain, Rabbim kabul etsin 🤲", "Âmin, Rabbim cümlemizin dualarını kabul etsin 💛",
-             "Âmin âmin âmin 🤲", "Rabbim senin dualarını da kabul etsin 🤲"],
+             "Âmin âmin âmin 🤲", "Rabbim senin dualarını da kabul etsin 🤲", "Âmin, dualarda buluşmak dileğiyle 🤍",
+             "Rabbim âmin diyen dilleri mahrum bırakmasın 🌿", "Âmin, Allah razı olsun 💛", "Ecmain 🤲 hayırlı günler",
+             "Âmin, Rabbim gönlündeki hayırlı her muradı versin 🤍"],
 }
 
 # beddua, hakaret, reklam: cevap verilmez
@@ -157,7 +160,9 @@ def cevap_yaz(metin, seed=None):
     istek = any(k in t for k in ["dua", "için", "icin", "inşallah", "rabbim", "allah"])
     if not konu and not istek:
         # dua isteği olmayan sıradan yorum: kısa teşekkür
-        return r.choice(["Rabbim razı olsun 💛", "Allah razı olsun, dualarda buluşalım 🤲", "Teşekkürler, Rabbim kabul etsin 🤲"])
+        return r.choice(["Rabbim razı olsun 💛", "Allah razı olsun, dualarda buluşalım 🤲", "Teşekkürler, Rabbim kabul etsin 🤲",
+                         "Çok teşekkür ederiz, hayırlı günler 🌿", "Allah razı olsun, selam ve dua ile 🤍",
+                         "Güzel sözlerin için teşekkürler, Rabbim seni de hayırla ansın 💛"])
     ad, ad_y = hedef_bul(metin)
     sablon = r.choice(DUALAR[konu or "genel"])
     k_n = "senin" if ad == "sen" else ad + ("'in" if ad[0].isupper() else "in")
@@ -170,6 +175,9 @@ def cevap_yaz(metin, seed=None):
         k_n = ad + {"a": "ın", "ı": "ın", "o": "un", "u": "un", "e": "in", "i": "in", "ö": "ün", "ü": "ün"}[u]
     k_b = "Ailesine" if ad == "sen" else "Sana ve ailene"
     metin_c = sablon.format(k_y=ad_y, k_n=k_n, k_b=k_b)
+    metin_c = metin_c.replace(" 🤲", " " + r.choice(["🤲", "🤲", "🤍", "💛", "🌿", "🤲🏻"]))
+    if konu != "vefat" and r.random() < 0.3:
+        metin_c += r.choice([" Selam ve dua ile.", " Hayırlı günler.", " Dualarımızdasın."])
     return metin_c[0].upper() + metin_c[1:]
 
 
@@ -181,6 +189,11 @@ def _get(path, **params):
 
 
 def calistir(dry_run=False):
+    import os, time
+    dk = datetime.now(timezone.utc).minute
+    if not dry_run and os.getenv("YORUM_HER_TUR", "0") != "1" and 15 <= dk < 45:
+        print("[yorum] yarım saat turu atlandı (saatte bir kontrol ediliyor)")
+        return 0
     uid = insta._user_id()
     sinir = datetime.now(timezone.utc) - timedelta(days=GUN)
     medya = _get(f"{uid}/media", fields="id,timestamp,comments_count", limit=25).get("data", [])
@@ -206,6 +219,8 @@ def calistir(dry_run=False):
                 continue
             print(f"[yorum] @{y.get('username')}: {metin[:70]!r}\n        -> {cevap}")
             if not dry_run:
+                if cevaplanan:
+                    time.sleep(random.uniform(*BEKLE))   # insan hızında
                 r = insta.requests.post(f"{insta.API}/{y['id']}/replies", timeout=30,
                                         data={"message": cevap, "access_token": insta.IG_TOKEN})
                 insta._check(r, "yorum cevabı")

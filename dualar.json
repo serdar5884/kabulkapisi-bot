@@ -716,6 +716,257 @@
    "tur": "ozgun",
    "metin": "Gün sona ererken Rabbim seni hayırla anılanlardan, dualarda hatırlananlardan, rahmetle kuşatılanlardan eylesin. Hayırlı geceler.",
    "vakit": "aksam"
+  },
+  {
+   "metin": "Allah'ım; içimizdeki ağırlığı hafiflet, nefesimizi daraltan her şeyi katından gelen bir ferahlıkla çöz.",
+   "tema": "dert",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; kalbimize öyle bir sükûnet ver ki dışarıdaki fırtınalar içimizdeki huzuru bozamasın.",
+   "tema": "dert",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; uyuyamayan gözlere huzur, dinlenemeyen zihinlere sükûnet, yorgun kalplere sekinet indir.",
+   "tema": "dert",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; içimizde büyüyen sebepsiz sıkıntıları gider, yerini derin bir güven ve ferahlıkla doldur.",
+   "tema": "dert",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; kaygının esiri olmaktan bizi koru, her nefesimizde seninle olmanın emniyetini hissettir.",
+   "tema": "dert",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; kalbimizdeki darlığı genişliğe, yorgunluğumuzu umuda, kırgınlığımızı tebessüme çevir.",
+   "tema": "dert",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; günümüzü gerginlikten uzak, sakin, bereketli ve iç açıcı kıl.",
+   "tema": "dert",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; zihnimizi boğan düşünceleri durult, kararlarımızda bize berraklık ver.",
+   "tema": "dert",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; helalinden bereketli kapılar aç, emeğimizi zayi etme, beklemediğimiz yerden hayırlı kolaylıklar ihsan et.",
+   "konu": "Rızık Duası",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; nasibimizde olanı gecikmeden ve kalbimizi yormadan, en hayırlı vakitte önümüze ser.",
+   "konu": "Rızık Duası",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; kazancımıza bereket, elimize kanaat, soframıza şükür ve bolluk ver.",
+   "konu": "Rızık Duası",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; kapalı görünen kapılardan hangisi hakkımızda hayırlıysa onu aç, hayırsız olanı kalbimizden uzaklaştır.",
+   "konu": "Rızık Duası",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; yeni başlangıçlarımızı hayırlı, attığımız her adımı bereketli ve sonuçlarını güzel eyle.",
+   "konu": "Rızık Duası",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; darlıkta bunalan kullarına genişlik, yol arayanlara aydınlık bir istikamet nasip et.",
+   "konu": "Rızık Duası",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; rızkımızı helal dairesinde çoğalt, haramın kıyısına bile yaklaştırma.",
+   "konu": "Rızık Duası",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; \"neden\" diye sorduğumuz yerde hikmetini göster, \"ne zaman\" dediğimiz yerde sabrımızı büyüt.",
+   "tema": "dert",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; vaktinden önce acele edip kalbimizi kırmaktan bizi koru, her şeyi senin rızana ayarlı kıl.",
+   "tema": "dert",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; bekleyişimizi isyana değil teslimiyete, umutlarımızı kırgınlığa değil duaya dönüştür.",
+   "tema": "dert",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; anlamlandıramadığımız imtihanlarda sabrımızı ayakta tut, sonunu güzellikle bağla.",
+   "tema": "dert",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; \"olmadı\" sandığımız şeylerin ardındaki hayrı görmeyi, \"bitti\" dediğimiz yerden yeni bir başlangıç kurmayı öğret.",
+   "tema": "dert",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; kalbimize sabr-ı cemil ver; sızlanmadan, kırılmadan, en güzel şekilde bekleyebilelim.",
+   "tema": "dert",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; aceleci yanımızı terbiye et, vakti gelmeden koparmaya çalıştığımız dalları senin eline bırakalım.",
+   "tema": "dert",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; gücümüzün tükendiğini sandığımız anlarda senin kudretine sığınmayı nasip et.",
+   "tema": "dert",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; bedenimize afiyet, zihnimize berraklık, hanemize görünür görünmez her kötülükten eminlik ver.",
+   "tema": "hasta",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; dilimize kırıcı söz, kalbimize kin ve haset düşürme; bizi iyilikte sabit kıl.",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; şifa bekleyen her hastaya katından tam bir şifa, acı çeken her bedene hafiflik ver.",
+   "tema": "hasta",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; bizi nazarın, hasedin, gıybetin ve kötü niyetin her türlüsünden muhafaza eyle.",
+   "konu": "Nazardan Korunma Duası",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; yollarda olanları kazalardan, evlerde olanları belalardan, kalpleri kederden koru.",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; ruhumuza sükûnet, bedenimize dinçlik, ömrümüze sağlık ve afiyet lütfeyle.",
+   "tema": "hasta",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; farkında olmadan kırdığımız kalpleri onarmayı, kırıldığımız yerlerden şifalanmayı nasip et.",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; dilimizi yalandan ve incitmekten, gözümüzü haramdan, kulağımızı boş sözden koru.",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; gönlümüzden geçen ve dilimize dökemediğimiz tüm güzel dilekleri, sevdiklerimiz için de hayra çevir.",
+   "tema": "aile",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; yuvamıza muhabbet, büyüklerimize sağlık, küçüklere güzel bir yol nasip eyle.",
+   "tema": "aile",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; dostluğumuzu samimiyette, kardeşliğimizi vefada, birlikteliğimizi hayırda sabit tut.",
+   "tema": "aile",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; bizden dua bekleyen ama adını bile bilmediğimiz tüm kardeşlerimizin de dualarını kabul eyle.",
+   "tema": "aile",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; yeni güne bismillah diyerek başlıyoruz; günümüzü hayırla aç, hayırla kapat.",
+   "vakit": "sabah",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; bu akşam evlerimize huzur, yastıklarımıza rahatlık, yarınlarımıza güzel haberler getir.",
+   "vakit": "aksam",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; gün içinde karşımıza çıkacak hayırlı insanlarla yolumuzu kesiştir, kötü niyetlilerden uzak tut.",
+   "vakit": "sabah",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; bugünü elimizden gelen en güzel iyiliklerle doldurmayı, sonunda şükürle başımızı yastığa koymayı nasip et.",
+   "vakit": "aksam",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; zihnimizdeki karmaşayı gider, bildiğimizi unutturma, en doğru cevaba ve en hayırlı karara ulaştır.",
+   "konu": "Sınav ve İş İçin Dua",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; emek veren kulunun alın terini boşa çıkarma, stresini sükûnete, telaşını güvene çevir.",
+   "konu": "Sınav ve İş İçin Dua",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; iş hayatımızda dürüstlük, bereket ve dirayet ver; bizi haksız rekabetten ve tükenmişlikten koru.",
+   "konu": "Sınav ve İş İçin Dua",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; omuzlarımızdaki yükü hafiflet, zor görünen işleri katından gelen bir kolaylıkla yoluna koy.",
+   "konu": "Sınav ve İş İçin Dua",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; belirsizlik içinde bunalan kalplere netlik, yarın kaygısı taşıyanlara sağlam bir dayanak ver.",
+   "konu": "Sınav ve İş İçin Dua",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; yaptığımız her işte niyetimizi halis, emeğimizi kıymetli, sonucunu hayırlı eyle.",
+   "konu": "Sınav ve İş İçin Dua",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; hasret çeken gönüllere sabır, kavuşmayı bekleyen kalplere hayırlı bir vuslat nasip et.",
+   "konu": "Hasret Çekenler İçin Dua",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; mesafeler aramıza girse de dualarımızı birbirine ulaştır, muhabbetimizi eksiltme.",
+   "konu": "Hasret Çekenler İçin Dua",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; ayrılığın bıraktığı sızıyı rahmetinle yumuşat, yokluğu derin bir teslimiyete çevir.",
+   "konu": "Hasret Çekenler İçin Dua",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; özlemini çektiğimiz sevdiklerimizi her türlü zarardan koru, en güzel vakitte yüzümüzü güldür.",
+   "konu": "Hasret Çekenler İçin Dua",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; yarım kalan vedaların, eksik kalan cümlelerin yerini senin lütfunla doldur.",
+   "konu": "Hasret Çekenler İçin Dua",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; gönül yarasını en iyi bilen Sensin; sabrımızı koru, kavuşmamızı hayırlı kıl.",
+   "konu": "Hasret Çekenler İçin Dua",
+   "tur": "ozgun"
   }
  ],
  "kuran": [
@@ -1072,6 +1323,30 @@
   {
    "tur": "ozgun",
    "metin": "Allah'ım, bu Cuma günü bu satırları okuyanın evini nurlandır, ailesini birbirine sevgiyle bağla, yuvasını cennet bahçesi eyle."
+  },
+  {
+   "metin": "Allah'ım; Cuma gününün hürmetine kalplerimize nur, hanelerimize bereket, ömrümüze hayır indir.",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; bu mübarek günde edilen her samimi duayı geri çevirme, darda olanlara kapılar aç.",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; Cuma ferahlığıyla kırık kalpleri onar, dargın gönülleri barıştır, hastalarımıza şifa ver.",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; bu günün bereketini haftamızın tamamına yay; günahlarımızdan arınmış, gönlü ferah kullarından eyle.",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; Cuma vaktinde göğe yükselen tüm duaların içinde bizim de hayırlı muratlarımızı kabul buyur.",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Rabbim; dilimizi hamd ile, kalbimizi şükür ile, günümüzü rahmetinle doldur.",
+   "tur": "ozgun"
   }
  ],
  "kandil": {

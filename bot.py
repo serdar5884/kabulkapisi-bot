@@ -14,7 +14,7 @@ Ortam değişkenleri:
   VAKIT=sabah|ogle|ikindi|aksam|ozet  boşsa Türkiye saatine göre seçilir
 """
 import json
-import os
+import os, re
 import sys
 from datetime import date, datetime, timedelta, timezone
 
@@ -61,7 +61,21 @@ def vakit_bul():
     return "sabah" if saat < 11 else ("ogle" if saat < 15 else ("ikindi" if saat < 19 else "aksam"))
 
 
+def _tanri_yok(dua):
+    """Hiçbir duada 'tanrı' kelimesi geçmesin (Allah / ilah kullanılır)."""
+    if isinstance(dua, dict) and dua.get("metin"):
+        m = re.sub(r"\b[Tt]anrı", "ilah", dua["metin"])
+        if m != dua["metin"]:
+            dua = dict(dua, metin=m)
+    return dua
+
+
 def sec(gun, vakit):
+    r = _sec(gun, vakit)
+    return (_tanri_yok(r[0]),) + tuple(r[1:])
+
+
+def _sec(gun, vakit):
     """Günün ve vaktin duasını döndürür: (dua, tur, baslik, etiketler)."""
     kandil = DB.get("kandil_tarihleri", {}).get(gun.isoformat())
     if vakit == "aksam" and kandil and kandil in DB["kandil"]:

@@ -29,6 +29,7 @@ DRY_RUN = os.getenv("DRY_RUN", "0") == "1"
 ZORLA = os.getenv("ZORLA", "0") == "1"
 # elle paylaşılacak vakitler (bot bu vakitleri atlar): "YYYY-AA-GG_vakit"
 ELLE = set()   # elle paylaşılacak "YYYY-AA-GG_vakit" anahtarları (bot bunları atlar)
+ELLE_VAKITLER = set(filter(None, os.getenv("ELLE_VAKITLER", "aksam").split(",")))   # her gün elle paylaşılan vakitler (21:00 şablonlu Reels)
 MODE = (os.getenv("MODE") or "post").strip().lower()
 BASLANGIC = date(2026, 11, 11)          # sıralamanın başladığı gün
 HISTORY_FILE = os.path.join(HERE, "gecmis.json")
@@ -398,7 +399,7 @@ def main():
     gun = bugun()
     vakit = vakit_bul()
     anahtar = f"{gun.isoformat()}_{vakit}"
-    if anahtar in ELLE and not ZORLA:
+    if (anahtar in ELLE or vakit in ELLE_VAKITLER) and not ZORLA:
         print(f"{anahtar} elle paylaşılacak, bot atlıyor.")
         return
     hist = gecmis_oku()

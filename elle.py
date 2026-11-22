@@ -1,0 +1,28 @@
+"""Elle paylaşılacak akşam (21:00) duası için şablon görselleri üretir.
+Kullanım: python elle.py [YYYY-AA-GG] [vakit]  → cikti/elle_<tarih>/ içine 3 görsel + kapak + açıklama
+Instagram şablonu (3 klip x 4 sn) için: 3 görselde de dua ekranda kalır, döngü bozulmaz."""
+import os, sys
+from datetime import date, datetime
+from PIL import Image
+import bot, brand, dua_reel
+
+gun = date.fromisoformat(sys.argv[1]) if len(sys.argv) > 1 else bot.bugun()
+vakit = sys.argv[2] if len(sys.argv) > 2 else "aksam"
+dua, tur, baslik, tags = bot.sec(gun, vakit)
+zs = brand.zeminler()
+zemin = zs[((gun - bot.BASLANGIC).days * len(bot.VAKITLER) + bot.VAKITLER.index(vakit)) % len(zs)]
+k = os.path.join(os.path.dirname(os.path.abspath(__file__)), "cikti", f"elle_{gun}")
+os.makedirs(k, exist_ok=True)
+konu, kart, sayfa, kapak = dua_reel.hazirla(dua, tur, zemin, os.path.join(k, "_"), vakit=vakit)
+s = Image.open(sayfa).convert("RGB")
+s.save(os.path.join(k, "1.jpg"), quality=95)
+z = 1.05   # 2. klip: hafif yakınlaşma (dua yine tam görünür)
+w, h = s.size
+s.resize((int(w * z), int(h * z))).crop((int(w * (z - 1) / 2), int(h * (z - 1) / 2),
+                                         int(w * (z - 1) / 2) + w, int(h * (z - 1) / 2) + h)).save(os.path.join(k, "2.jpg"), quality=95)
+s.save(os.path.join(k, "3.jpg"), quality=95)
+Image.open(kapak).convert("RGB").save(os.path.join(k, "kapak.jpg"), quality=95)
+cap = f"🤲 {konu}\n\n" + bot.caption(dua, tur, baslik, tags)
+open(os.path.join(k, "aciklama.txt"), "w", encoding="utf-8").write(cap)
+print(k)
+print(cap)

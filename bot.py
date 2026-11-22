@@ -28,7 +28,7 @@ TR_TZ = timezone(timedelta(hours=3))
 DRY_RUN = os.getenv("DRY_RUN", "0") == "1"
 ZORLA = os.getenv("ZORLA", "0") == "1"
 # elle paylaşılacak vakitler (bot bu vakitleri atlar): "YYYY-AA-GG_vakit"
-ELLE = set()   # elle paylaşılacak "YYYY-AA-GG_vakit" anahtarları (bot bunları atlar)
+ELLE = {"2026-11-22_ozet"}   # elle paylaşılacak "YYYY-AA-GG_vakit" anahtarları (bot bunları atlar)
 ELLE_VAKITLER = set(filter(None, os.getenv("ELLE_VAKITLER", "aksam").split(",")))   # her gün elle paylaşılan vakitler (21:00 şablonlu Reels)
 MODE = (os.getenv("MODE") or "post").strip().lower()
 BASLANGIC = date(2026, 11, 11)          # sıralamanın başladığı gün
@@ -364,6 +364,9 @@ def main():
             print("[insta] hikâye paylaşılamadı:", e)
         return
     if MODE == "post" and vakit_bul() == "ozet":
+        if f"{bugun().isoformat()}_ozet" in ELLE and not ZORLA:
+            print("Bugünün özeti atlanıyor (ELLE).")
+            return
         return gunun_ozeti()
     if MODE == "dua_reel":   # yeni dua Reels formatını tek bir duayla dener (LISTE_SEC: tema, örn. borç)
         import dua_reel

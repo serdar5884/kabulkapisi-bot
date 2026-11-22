@@ -475,9 +475,11 @@ def main():
         if os.getenv("REELS", "1") == "1" and vakit in reels_vakit and os.getenv("DUA_REEL", "1") == "1":
             try:   # konu kapağı (ızgara) + hareketli kart, üstte konu başlığı
                 import dua_reel
-                konu, kapak_reel, mp4, _ = dua_reel.hareketli(dua, tur, zemin, out.replace(".jpg", "_reel"),
-                                                             out.replace(".jpg", ".mp4"), vakit=vakit,
-                                                             date=datetime(gun.year, gun.month, gun.day))
+                yap = dua_reel.hareketli if os.getenv("ANIMASYON", "0") == "1" else dua_reel.sabit
+                konu, kapak_reel, mp4, _ = yap(dua, tur, zemin, out.replace(".jpg", "_reel"),
+                                              out.replace(".jpg", ".mp4"), vakit=vakit,
+                                              date=datetime(gun.year, gun.month, gun.day),
+                                              muzik_bas=[47, 15, 64, 33, 86, 75, 99, 110][(gun.toordinal() + VAKITLER.index(vakit)) % 8])
                 cap = f"🤲 {konu}\n\n" + cap
             except Exception as e:
                 print("[dua_reel] olmadı, eski hareketli karta dönülüyor:", e)

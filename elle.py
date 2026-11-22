@@ -16,10 +16,7 @@ os.makedirs(k, exist_ok=True)
 konu, kart, sayfa, kapak = dua_reel.hazirla(dua, tur, zemin, os.path.join(k, "_"), vakit=vakit)
 s = Image.open(sayfa).convert("RGB")
 s.save(os.path.join(k, "1.jpg"), quality=95)
-z = 1.05   # 2. klip: hafif yakınlaşma (dua yine tam görünür)
-w, h = s.size
-s.resize((int(w * z), int(h * z))).crop((int(w * (z - 1) / 2), int(h * (z - 1) / 2),
-                                         int(w * (z - 1) / 2) + w, int(h * (z - 1) / 2) + h)).save(os.path.join(k, "2.jpg"), quality=95)
+s.save(os.path.join(k, "2.jpg"), quality=95)   # 3 klip de aynı: başa sarınca da aynı görünür
 s.save(os.path.join(k, "3.jpg"), quality=95)
 Image.open(kapak).convert("RGB").save(os.path.join(k, "kapak.jpg"), quality=95)
 cap = f"🤲 {konu}\n\n" + bot.caption(dua, tur, baslik, tags)

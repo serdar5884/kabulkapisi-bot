@@ -88,3 +88,23 @@ def _hazirla(dua, tur, zemin, klasor, vakit=None, date=None):
 def reel(sayfa, out, sure=8, muzik_bas=47):
     import liste_kart
     return liste_kart.reel(sayfa, None, out, sure=sure, muzik_bas=muzik_bas)
+
+
+def sabit(dua, tur, zemin, klasor, out, vakit=None, date=None, muzik_bas=47, parca=3, sure=4.0):
+    """Animasyonsuz: aynı dua sayfası 3 parça x 4 sn (duasensin/şablon düzeni). Başa sarınca da aynısı görünür."""
+    import subprocess
+    konu, kart, sayfa, kapak = hazirla(dua, tur, zemin, klasor, vakit, date)
+    muzik = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ses", "muzik.mp3")
+    toplam = parca * sure
+    girdiler, filtre = [], ""
+    for i in range(parca):
+        girdiler += ["-loop", "1", "-framerate", "30", "-t", str(sure), "-i", sayfa]
+        filtre += f"[{i}:v]scale=1080:1920,format=yuv420p,setsar=1[v{i}];"
+    filtre += "".join(f"[v{i}]" for i in range(parca)) + f"concat=n={parca}:v=1:a=0[v]"
+    cmd = ["ffmpeg", "-loglevel", "error", "-y", *girdiler, "-ss", str(muzik_bas), "-t", str(toplam), "-i", muzik,
+           "-filter_complex", filtre, "-map", "[v]", "-map", f"{parca}:a", "-t", str(toplam),
+           "-c:v", "libx264", "-preset", "veryfast", "-tune", "stillimage", "-crf", "20",
+           "-force_key_frames", ",".join(str(i * sure) for i in range(parca)),
+           "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", out]
+    subprocess.run(cmd, check=True)
+    return konu, kapak, out, toplam

@@ -364,6 +364,9 @@ def main():
             print("[insta] hikâye paylaşılamadı:", e)
         return
     if MODE == "post" and vakit_bul() == "ozet":
+        if os.getenv("OZET", "0") != "1":   # günün özeti kaldırıldı (etkileşim düşük); OZET=1 ile geri açılır
+            print("Günün özeti kapalı.")
+            return
         if f"{bugun().isoformat()}_ozet" in ELLE and not ZORLA:
             print("Bugünün özeti atlanıyor (ELLE).")
             return

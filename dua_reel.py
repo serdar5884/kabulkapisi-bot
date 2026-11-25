@@ -93,7 +93,13 @@ def reel(sayfa, out, sure=8, muzik_bas=47):
 def sabit(dua, tur, zemin, klasor, out, vakit=None, date=None, muzik_bas=47, parca=3, sure=4.0):
     """Animasyonsuz: aynı dua sayfası 3 parça x 4 sn (duasensin/şablon düzeni). Başa sarınca da aynısı görünür."""
     import subprocess
-    konu, kart, sayfa, kapak = hazirla(dua, tur, zemin, klasor, vakit, date)
+    if os.getenv("TAM_EKRAN", "0") == "1":   # bulanık bantsız tam ekran sayfa + konu/kanca kapağı
+        os.makedirs(klasor, exist_ok=True)
+        konu = konu_bul(dua, tur, vakit)
+        sayfa = tam_ekran_sayfa(dua, zemin, os.path.join(klasor, "sayfa.jpg"), konu)
+        kapak = tam_ekran_kapak(dua, zemin, os.path.join(klasor, "kapak.jpg"), konu)
+    else:
+        konu, kart, sayfa, kapak = hazirla(dua, tur, zemin, klasor, vakit, date)
     muzik = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ses", "muzik.mp3")
     toplam = parca * sure
     girdiler, filtre = [], ""
@@ -108,3 +114,66 @@ def sabit(dua, tur, zemin, klasor, out, vakit=None, date=None, muzik_bas=47, par
            "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", out]
     subprocess.run(cmd, check=True)
     return konu, kapak, out, toplam
+
+
+TEMA_KANCA = {"çocuk": "Evladın için 10 saniyeni ayır", "hasta": "Hastan için bir âmin de", "borç": "Borcu olan biri için oku",
+              "dert": "İçin daralıyorsa bunu oku", "aile": "Ailen için oku, âmin de"}
+
+
+def kanca(dua):
+    return TEMA_KANCA.get(dua.get("tema"), "10 saniyeni ayır, âmin de")
+
+
+def _tam_zemin(zemin):
+    """Zemin fotoğrafını 9:16 tam ekrana kırpar (büyük logo dışarıda), küçük yuvarlak logo ekler; geçici dosya yolu döner."""
+    import tempfile
+    z = Image.open(zemin).convert("RGB")
+    s = 1920 / z.height
+    z = z.resize((int(z.width * s), 1920), Image.LANCZOS).crop((0, 0, 1080, 1920))
+    lp = os.path.join(os.path.dirname(os.path.abspath(__file__)), "gorseller", "logo.png")
+    if os.path.exists(lp):
+        lg = Image.open(lp).convert("RGBA").resize((150, 150), Image.LANCZOS)
+        m = Image.new("L", (150, 150), 0)
+        ImageDraw.Draw(m).ellipse([0, 0, 149, 149], fill=255)
+        z.paste(lg, ((1080 - 150) // 2, 290), m)
+    tmp = tempfile.NamedTemporaryFile(suffix=".jpg", delete=False).name
+    z.save(tmp, quality=95)
+    return tmp
+
+
+def tam_ekran_kapak(dua, zemin, out, konu):
+    tmp = _tam_zemin(zemin)
+    eski = brand.H
+    brand.H = 1920
+    try:
+        with montserrat():
+            brand.make_cover(out, konu, kanca(dua), tmp, buton="ÂMİN DE", ok=False, box=(80, 660, 1000, 1180))
+    finally:
+        brand.H = eski
+        os.remove(tmp)
+    return out
+
+
+def tam_ekran_sayfa(dua, zemin, out, konu):
+    """Bulanık bantsız 9:16 dua sayfası: fotoğraf ekranı tam kaplar, panel ortada, yazı daha büyük."""
+    tmp = _tam_zemin(zemin)
+    eski = (brand.H, brand.PANEL, brand.PANEL_EN_UST, brand.PANEL_EN_ALT)
+    brand.H, brand.PANEL = 1920, (60, 640, 1020, 1520)
+    brand.PANEL_EN_UST, brand.PANEL_EN_ALT = 560, 1600
+    try:
+        with montserrat():
+            brand.make_photo_card(out, dua["metin"], tmp, kaynak=dua.get("kaynak"))
+            img = Image.open(out).convert("RGBA")
+            f = brand.font("bold", 60)
+            t = konu.replace("i", "İ").replace("ı", "I").upper()
+            tl = brand._gold_text(None, t, f)
+            kat = Image.new("RGBA", img.size, (0, 0, 0, 0))
+            ImageDraw.Draw(kat).rounded_rectangle([(1080 - tl.width) // 2 - 40, 462, (1080 + tl.width) // 2 + 40, 482 + tl.height + 22],
+                                                  radius=40, fill=(16, 20, 30, 170))
+            img.alpha_composite(kat)
+            img.alpha_composite(tl, ((1080 - tl.width) // 2, 480))
+            img.convert("RGB").save(out, quality=94)
+    finally:
+        brand.H, brand.PANEL, brand.PANEL_EN_UST, brand.PANEL_EN_ALT = eski
+        os.remove(tmp)
+    return out

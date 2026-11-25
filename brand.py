@@ -477,10 +477,10 @@ def make_photo_card(path, metin, zemin, baslik="Günün Duası", kaynak=None, da
 
 
 
-def make_cover(path, baslik, alt, zemin, buton="KAYDIR", ok=True):
+def make_cover(path, baslik, alt, zemin, buton="KAYDIR", ok=True, box=None):
     """Haftalık derleme (kaydırmalı gönderi) kapağı: büyük altın başlık + 'Kaydır' butonu."""
     img = Image.open(zemin).convert("RGB").resize((W, H), Image.LANCZOS).convert("RGBA")
-    box = (90, 470, W - 90, 1110)
+    box = box or (90, 470, W - 90, 1110)
     blur = img.crop(box).filter(_IF.GaussianBlur(14))
     m = Image.new("L", blur.size, 0)
     ImageDraw.Draw(m).rounded_rectangle([0, 0, blur.width, blur.height], radius=34, fill=255)

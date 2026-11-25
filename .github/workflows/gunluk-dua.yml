@@ -23,9 +23,9 @@ on:
         description: "mode=liste icin liste basligindan bir parca"
         default: ""
 
-# Yorum cevapları dakikada bir tetiklenir: aynı anda iki yorum işi çalışıp aynı yoruma iki kez cevap vermesin
+# Yorum işleri tek sırada, paylaşım işleri de tek sırada çalışır (aynı vakit iki kez tetiklenirse çift paylaşım olmasın)
 concurrency:
-  group: kabul-${{ github.event.inputs.mode == 'yorum' && 'yorum' || github.run_id }}
+  group: kabul-${{ github.event.inputs.mode == 'yorum' && 'yorum' || 'post' }}
   cancel-in-progress: false
 
 jobs:
@@ -76,7 +76,8 @@ jobs:
           path: gorseller/onizleme/
           if-no-files-found: ignore
       - name: Paylaşım geçmişini kaydet
-        if: always()
+        # yorum koşuları geçmişi değiştirmez; bayat kaydın yeni kaydı ezmesini önler
+        if: always() && github.event.inputs.mode != 'yorum'
         continue-on-error: true
         uses: actions/cache/save@v4
         with:

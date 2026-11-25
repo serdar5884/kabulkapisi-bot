@@ -93,41 +93,65 @@ KONULAR = [
 ]
 
 DUALAR = {
-    "vefat": ["Allah rahmet eylesin, mekânı cennet olsun. {k_b} sabır ve metanet versin Rabbim 🤲",
+    "vefat": [
+              "Allah rahmet eylesin, kabrini nurlandırsın, geride kalanlara sabır versin 🤲", "Rabbim mağfiret eylesin, cennetiyle şereflendirsin. Başınız sağ olsun 🤲",
+              "Allah rahmet eylesin, mekânı cennet olsun. {k_b} sabır ve metanet versin Rabbim 🤲",
               "Rabbim rahmetiyle muamele etsin, kabrini nurla doldursun. Başınız sağ olsun 🤲",
               "Allah rahmet eylesin, mekânı cennet, makamı âli olsun. Âmin 🤲"],
-    "sifa": ["Âmin, Rabbim {k_y} acil şifalar versin, her ağrısını dindirsin 🤲",
+    "sifa": [
+              "Allah şifa versin, acılarını hafifletsin, en kısa zamanda sağlığına kavuştursun 🤲", "Şifayı veren Allah'tır; {k_y} şifa, huzur ve sabır versin inşallah 🤲", "Âmin. Rabbim hastalığı rahmete, ağrıyı afiyete çevirsin 🤲",
+              "Âmin, Rabbim {k_y} acil şifalar versin, her ağrısını dindirsin 🤲",
              "Rabbim {k_y} şifa versin, tedavisini kolaylaştırsın, sağlıkla kavuştursun inşallah 🤲",
              "Âmin. Şifayı veren Rabbim {k_y} öyle bir şifa versin ki geride hiçbir hastalık bırakmasın 🤲"],
-    "borc": ["Âmin, Rabbim {k_y} kimseye muhtaç etmeden borçlarını ödemeyi nasip etsin 🤲",
+    "borc": [
+              "Rabbim {k_y} helalinden öyle bir kapı açsın ki borçlarını huzurla ödesin 🤲", "Âmin, Allah darlıktan çıkarsın, {k_y} beklemediği yerden ferahlık versin 🤲", "Rabbim borcun yükünü kaldırsın, kalbine ferahlık, rızkına bereket versin 🤲",
+              "Âmin, Rabbim {k_y} kimseye muhtaç etmeden borçlarını ödemeyi nasip etsin 🤲",
              "Rabbim {k_y} helalinden bol rızık versin, bütün borçlarını kolaylıkla kapattırsın 🤲",
              "Âmin. Rabbim darlığı genişliğe çevirsin, {k_y} beklemediği yerden rızık versin 🤲"],
-    "sinav": ["Âmin, Rabbim {k_y} zihin açıklığı versin, emeğinin karşılığını en güzel şekilde alsın 🤲",
+    "sinav": [
+              "Rabbim {k_y} gayretinin en hayırlı sonucunu nasip etsin, kalbine güven versin 🤲", "Âmin. Allah emeğini zayi etmesin, {k_y} hayırlısıyla başarı nasip etsin 🤲", "Rabbim sınav günü aklını ve kalbini açsın, işini kolaylaştırsın 🤲",
+              "Âmin, Rabbim {k_y} zihin açıklığı versin, emeğinin karşılığını en güzel şekilde alsın 🤲",
               "Rabbim {k_y} hayırlı bir başarı nasip etsin, kalbine sükûnet versin inşallah 🤲",
               "Âmin. Rabbim {k_y} sınavında kolaylık, sonucunda sevinç nasip etsin 🤲"],
-    "is": ["Âmin, Rabbim {k_y} hayırlı, helal ve bereketli bir iş nasip etsin 🤲",
+    "is": [
+              "Rabbim {k_y} helal rızıkla dolu hayırlı bir kapı açsın 🤲", "Âmin. Allah emeğini bereketlendirsin, {k_y} hayırlı bir iş nasip etsin 🤲", "Rabbim iş yolunu açık etsin, rızkını helalinden bol etsin 🤲",
+              "Âmin, Rabbim {k_y} hayırlı, helal ve bereketli bir iş nasip etsin 🤲",
            "Rabbim {k_y} hayırlı kapılar açsın, emeğini bereketlendirsin inşallah 🤲",
            "Âmin. Rabbim {k_y} kimseye muhtaç etmeyecek hayırlı bir rızık kapısı açsın 🤲"],
-    "kismet": ["Âmin, Rabbim {k_y} dinine ve gönlüne uygun hayırlı bir kısmet nasip etsin 🤲",
+    "kismet": [
+              "Rabbim {k_y} gönlüne uygun, dinine uygun hayırlı bir yol göstersin 🤲", "Âmin. Allah hayırlı bir eş, huzurlu bir yuva nasip etsin 🤲", "Rabbim kısmetini hayırla açsın, yoluna güzel insanlar çıkarsın 🤲",
+              "Âmin, Rabbim {k_y} dinine ve gönlüne uygun hayırlı bir kısmet nasip etsin 🤲",
                "Rabbim {k_y} huzurlu ve mutlu bir yuva nasip etsin inşallah 🤲",
                "Âmin. Rabbim hayırlısıyla karşılaştırsın, kuracağı yuvayı mübarek kılsın 🤲"],
-    "evlat": ["Âmin, Rabbim {k_y} hayırlı ve salih bir evlat nasip etsin 🤲",
+    "evlat": [
+              "Rabbim {k_y} sağlıklı, hayırlı, gözünün nuru bir evlat nasip etsin 🤲", "Âmin. Allah beklediği müjdeyi en güzel zamanda nasip etsin 🤲", "Rabbim umudunu yeşertsin, kucağını hayırlı bir evlatla doldursun 🤲",
+              "Âmin, Rabbim {k_y} hayırlı ve salih bir evlat nasip etsin 🤲",
               "Rabbim {k_y} gözünü aydınlatacak sağlıklı bir evlat versin inşallah 🤲",
               "Âmin. Rabbim kucağını hayırlı bir evlatla doldursun 🤲"],
-    "huzur": ["Âmin, Rabbim {k_y} gönül ferahlığı versin, bütün dertlerini kolaylaştırsın 🤲",
+    "huzur": [
+              "Rabbim {k_y} kalbine sükûnet, gönlüne genişlik versin 🤲", "Âmin. Allah sıkıntıyı kolaylığa çevirsin, {k_y} huzur versin 🤲", "Rabbim yüreğindeki ağırlığı hafifletsin, günlerini ferahlıkla doldursun 🤲",
+              "Âmin, Rabbim {k_y} gönül ferahlığı versin, bütün dertlerini kolaylaştırsın 🤲",
               "Rabbim {k_n} kalbindeki yükü kaldırsın, yerine huzur ve sevinç koysun 🤲",
               "Âmin. Rabbim {k_y} öyle bir ferahlık versin ki bu günleri şükürle ansın 🤲"],
-    "hidayet": ["Âmin, Rabbim {k_y} hidayet versin, kalbini iyiliğe ve hayra yöneltsin 🤲",
+    "hidayet": [
+              "Rabbim {k_y} doğru yolda sabitlesin, kalbini hayra yöneltsin 🤲", "Âmin. Allah hidayetini artırsın, {k_y} hayırlı insanlarla karşılaştırsın 🤲",
+              "Âmin, Rabbim {k_y} hidayet versin, kalbini iyiliğe ve hayra yöneltsin 🤲",
                 "Rabbim {k_n} kalbini yumuşatsın, onu doğru yoldan ayırmasın inşallah 🤲",
                 "Âmin. Rabbim {k_y} hayırlı arkadaşlar ve hayırlı bir yol nasip etsin 🤲"],
-    "yol": ["Âmin, Rabbim {k_y} selamet versin, sağ salim sevdiklerine kavuştursun 🤲",
+    "yol": [
+              "Rabbim yolunu açık, yol arkadaşını hayırlı etsin, selametle ulaştırsın 🤲", "Âmin. Allah {k_y} sağ salim kavuştursun, her kötülükten korusun 🤲",
+              "Âmin, Rabbim {k_y} selamet versin, sağ salim sevdiklerine kavuştursun 🤲",
             "Rabbim yolunu açık etsin, her türlü kazadan beladan muhafaza etsin 🤲",
             "Âmin. Rabbim {k_y} hayırlı yolculuklar nasip etsin, hayırla döndürsün 🤲"],
-    "genel": ["Âmin, Rabbim {k_y} gönlünden geçen bütün hayırlı dilekleri nasip etsin 🤲",
+    "genel": [
+              "Rabbim {k_y} hayırlı bir gün, huzurlu bir gönül nasip etsin 🤲", "Âmin. Allah gönlündeki bütün hayırlı dilekleri en güzel zamanda versin 🤲", "Rabbim duanı kabul etsin, {k_y} hayır kapılarını açsın 🤲",
+              "Âmin, Rabbim {k_y} gönlünden geçen bütün hayırlı dilekleri nasip etsin 🤲",
               "Rabbim {k_y} hayırlısını versin, dualarını kabul etsin inşallah 🤲",
               "Âmin. Rabbim {k_y} sağlık, huzur ve bereket versin 🤲",
               "Rabbim dualarını kabul etsin, {k_y} hayırlı kapılar açsın 🤲"],
-    "amin": ["Âmin 🤲 Rabbim kabul etsin.", "Ecmain, Rabbim kabul etsin 🤲", "Âmin, Rabbim cümlemizin dualarını kabul etsin 💛",
+    "amin": [
+              "Âmin, Rabbim kabul etsin 🤲", "Allah razı olsun, birlikte âmin 🤲", "Âmin, dualarımız kabul olsun inşallah 💛",
+              "Âmin 🤲 Rabbim kabul etsin.", "Ecmain, Rabbim kabul etsin 🤲", "Âmin, Rabbim cümlemizin dualarını kabul etsin 💛",
              "Âmin âmin âmin 🤲", "Rabbim senin dualarını da kabul etsin 🤲", "Âmin, dualarda buluşmak dileğiyle 🤍",
              "Rabbim âmin diyen dilleri mahrum bırakmasın 🌿", "Âmin, Allah razı olsun 💛", "Ecmain 🤲 hayırlı günler",
              "Âmin, Rabbim gönlündeki hayırlı her muradı versin 🤍"],
@@ -155,11 +179,16 @@ def cevap_yaz(metin, seed=None):
     if any(a in t for a in ATLA) or REKLAM.search(metin):
         return None
     if SIKCA_AMIN.match(metin.strip()):
+        if r.random() < 0.5:
+            return None   # her "âmin"e cevap vermek yapay durur
         return r.choice(DUALAR["amin"])
     konu = konu_bul(metin)
     istek = any(k in t for k in ["dua", "için", "icin", "inşallah", "rabbim", "allah"])
     if not konu and not istek:
         # dua isteği olmayan sıradan yorum: kısa teşekkür
+        if r.random() < 0.3:
+            return r.choice(["Allah razı olsun 🤍 Hangi duayı görmek istersin?",
+                             "Teşekkürler 💛 Bir sonraki duada hangi konuyu görmek istersin?"])
         return r.choice(["Rabbim razı olsun 💛", "Allah razı olsun, dualarda buluşalım 🤲", "Teşekkürler, Rabbim kabul etsin 🤲",
                          "Çok teşekkür ederiz, hayırlı günler 🌿", "Allah razı olsun, selam ve dua ile 🤍",
                          "Güzel sözlerin için teşekkürler, Rabbim seni de hayırla ansın 💛"])
@@ -221,9 +250,18 @@ def calistir(dry_run=False):
             if not dry_run:
                 if cevaplanan:
                     time.sleep(random.uniform(*BEKLE))   # insan hızında
-                r = insta.requests.post(f"{insta.API}/{y['id']}/replies", timeout=30,
-                                        data={"message": cevap, "access_token": insta.IG_TOKEN})
-                insta._check(r, "yorum cevabı")
+                if y.get("username") and random.Random(y["id"] + "u").random() < 0.4:
+                    cevap = f"@{y['username']} {cevap}"
+                try:
+                    r = insta.requests.post(f"{insta.API}/{y['id']}/replies", timeout=30,
+                                            data={"message": cevap, "access_token": insta.IG_TOKEN})
+                    insta._check(r, "yorum cevabı")
+                except Exception as e:
+                    print(f"[yorum] cevap verilemedi: {e}")
+                    if any(k in str(e).lower() for k in ("limit", "spam", "(#4)", "(#17)", "(#32)", "(#613)", "429")):
+                        print("[yorum] hız sınırı sezildi, tur bitiriliyor")
+                        return cevaplanan
+                    continue
             cevaplanan += 1
     print(f"[yorum] {cevaplanan} yoruma cevap {'hazırlandı (DRY_RUN)' if dry_run else 'verildi'}")
     return cevaplanan

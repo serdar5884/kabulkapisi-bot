@@ -111,7 +111,10 @@ def _sec(gun, vakit):
     else:
         dua = havuz[gecen % len(havuz)]
     tema_tag = {"borç": ["#borçduası"], "hasta": ["#şifaduası"], "dert": ["#sıkıntıduası"],
-                "çocuk": ["#evlatduası"], "aile": ["#aileduası"]}.get(dua.get("tema"), [])
+                "çocuk": ["#evlatduası"], "aile": ["#aileduası"], "rızık": ["#rızıkduası"],
+                "sınav": ["#sınavduası"], "yolculuk": ["#yolculukduası"], "kısmet": ["#kısmetduası"],
+                "hasret": ["#hasretduası"], "gece": ["#geceduası"], "sabah": ["#sabahduası"],
+                "şükür": ["#şükür"]}.get(dua.get("tema"), [])
     vtag = VAKIT_TAG[vakit]
     baslik = VAKIT_BASLIK[vakit]
     if havuz_adi == "kuran":
@@ -124,8 +127,10 @@ def _sec(gun, vakit):
 
 
 GONDER = {"borç": "borcu olan", "hasta": "hastası olan", "dert": "içi daralan", "çocuk": "evladı olan",
-          "aile": "ailesini seven"}
-DOLGU_TAG = ["#dua", "#amin", "#kabulkapisi", "#dualar", "#duaisteği"]
+          "aile": "ailesi için dua isteyen", "rızık": "rızık derdi olan", "sınav": "sınava hazırlanan",
+          "yolculuk": "yola çıkacak", "kısmet": "kısmetini bekleyen", "hasret": "özlem çeken",
+          "gece": "uykusu kaçan", "sabah": "güne bu duayla başlayacak", "şükür": "şükretmeyi seven"}
+DOLGU_TAG = ["#dua", "#dualar", "#duaisteği", "#islam"]
 
 
 def caption(dua, tur, baslik, tags, konu=None):
@@ -139,6 +144,9 @@ def caption(dua, tur, baslik, tags, konu=None):
               "kandil": f"✨ {baslik} mübarek olsun"}[tur]
     if tur == "hadis" and dua.get("tur") != "hadis":
         acilis = "Bu satırları okuyan sana bir dua var"
+    h = sum(map(ord, dua.get("metin", "")))   # aynı duada hep aynı kalıp, duadan duaya farklı
+    if tur in ("sabah", "ikindi", "aksam") or (tur == "hadis" and dua.get("tur") != "hadis"):
+        acilis = [acilis, "Bu duayı kime okumak isterdin?", "Şimdi içinden bir kişiyi an ve oku 🤍"][h % 3] if konu else acilis
     parts = [f"🤲 {konu}\n{acilis}" if konu else acilis]
     if dua.get("okunus"):
         parts.append(f"🕋 Okunuşu: {dua['okunus']}")
@@ -146,12 +154,14 @@ def caption(dua, tur, baslik, tags, konu=None):
     if dua.get("kaynak"):
         parts.append(f"📖 {dua['kaynak']}")
     kime = GONDER.get(dua.get("tema"), "sevdiğin")
-    parts.append(f"Âmin yaz ve bu duayı {kime} birine gönder 💌")
+    parts.append([f"Âmin yaz ve bu duayı {kime} birine gönder 💌",
+                  f"🔖 İhtiyacın olduğunda aç, kaydet. Âmin yaz, {kime} birine gönder 💌",
+                  f"Bu dua kimin için? Aklına gelene gönder, âmin yaz 💌"][(h // 3) % 3])
     alltags = []
-    for t in tags + insta.BASE_TAGS + DOLGU_TAG:
-        if t.lower() not in [a.lower() for a in alltags]:
+    for t in [t for t in tags if t.lower() != "#amin"] + insta.BASE_TAGS + DOLGU_TAG:   # #amin zaten çağrıda geçiyor
+        if t.lower() not in [a.lower() for a in alltags] + ["#kabulkapisi"]:
             alltags.append(t)
-    parts.append(" ".join(alltags[:5]))   # Instagram sınırı: en fazla 5 etiket
+    parts.append(" ".join(alltags[:4] + ["#kabulkapisi"]))   # Instagram sınırı 5: marka etiketi her zaman var
     return "\n\n".join(parts)[:2150]
 
 
@@ -304,7 +314,7 @@ def hikaye(kart_path, zemin):
         dikey = video.dikey_kare(kart_path, zemin, kart_path.replace(".jpg", "_story.jpg"))
         insta.publish_story(dikey)
     except Exception as e:
-        print("[insta] hikâye paylaşılamadı (gönderi yine de yayında):", e)
+        print("::warning::[insta] hikâye paylaşılamadı (gönderi yine de yayında):", e)
 
 
 def gunun_ozeti():
@@ -404,7 +414,7 @@ def main():
         try:
             insta.publish_story(video.dikey_kare(os.path.join(d, "sabit_kart.jpg"), None, os.path.join(d, "story.jpg")))
         except Exception as e:
-            print("[insta] hikâye paylaşılamadı:", e)
+            print("::warning::[insta] hikâye paylaşılamadı:", e)
         return
     if MODE == "post" and vakit_bul() == "ozet":
         if os.getenv("OZET", "0") != "1":   # günün özeti kaldırıldı (etkileşim düşük); OZET=1 ile geri açılır
@@ -490,7 +500,7 @@ def main():
         try:
             insta.publish_story(kart_yol)
         except Exception as e:
-            print("[insta] hikâye paylaşılamadı:", e)
+            print("::warning::[insta] hikâye paylaşılamadı:", e)
         son = (hist.get("paylasilanlar", []) + [anahtar])[-30:]
         with open(HISTORY_FILE, "w", encoding="utf-8") as f:
             json.dump({"paylasilanlar": son}, f)
@@ -508,7 +518,7 @@ def main():
             try:
                 insta.publish_story(lst)   # liste zaten 9:16
             except Exception as e:
-                print("[insta] hikâye paylaşılamadı:", e)
+                print("::warning::[insta] hikâye paylaşılamadı:", e)
     elif vakit == "ikindi" and os.getenv("BILGI", "0") == "1":   # 17:00: bilgi gönderisi (carousel + Reels)
         yollar, mp4, cap = bilgi(gun)
         print(f"--- {gun} {vakit} [bilgi] ---\n{cap}\n---")
@@ -577,15 +587,20 @@ def main():
                 insta.publish_reel(mp4, cap, kapak_reel)   # ızgara kapağı
                 paylasildi = True
             except Exception as e:
-                print("[insta] Reels başarısız, görsel gönderiye dönülüyor:", e)
+                print("[insta] Reels başarısız:", e)
+                if insta.yakinda_paylasildi(cap):
+                    print("[insta] gönderi aslında yayında, görsel gönderiye dönülmüyor")
+                    paylasildi = True
         if not paylasildi:
             insta.publish_carousel([out], cap)
         hikaye(out, zemin)
     son = (hist.get("paylasilanlar", []) + [anahtar])[-30:]
     with open(HISTORY_FILE, "w", encoding="utf-8") as f:
         json.dump({"paylasilanlar": son}, f)
-    if vakit == "aksam":
-        insta.refresh_token()
+    if vakit == "sabah" and gun.toordinal() % 7 == 0 and not DRY_RUN:   # haftada bir (24 saat kuralına takılmaz)
+        if insta.refresh_token() is False:
+            print("::error::Instagram anahtarı yenilenemedi; 60 gün dolmadan elle yenile")
+            sys.exit(1)
 
 
 if __name__ == "__main__":

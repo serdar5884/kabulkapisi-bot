@@ -4,7 +4,10 @@ from PIL import Image, ImageDraw
 import brand, video
 
 KONU = {"borç": "Borçlu İçin Dua", "hasta": "Hasta İçin Şifa Duası", "dert": "Sıkıntılı Kalpler İçin Dua",
-        "çocuk": "Evlat İçin Dua", "aile": "Aile İçin Dua"}
+        "çocuk": "Evlat İçin Dua", "aile": "Aile İçin Dua", "rızık": "Rızık İçin Dua",
+        "sınav": "Sınav İçin Dua", "yolculuk": "Yolculuk Duası", "kısmet": "Hayırlı Kısmet Duası",
+        "hasret": "Hasret Çekenler İçin Dua", "gece": "Gece Duası", "sabah": "Güne Başlama Duası",
+        "şükür": "Şükür Duası"}
 
 
 def konu_bul(dua, tur, vakit=None):
@@ -118,7 +121,11 @@ def sabit(dua, tur, zemin, klasor, out, vakit=None, date=None, muzik_bas=47, par
 
 
 TEMA_KANCA = {"çocuk": "Evladın için 10 saniyeni ayır", "hasta": "Hastan için bir âmin de", "borç": "Borcu olan biri için oku",
-              "dert": "İçin daralıyorsa bunu oku", "aile": "Ailen için oku, âmin de"}
+              "dert": "İçin daralıyorsa bunu oku", "aile": "Ailen için oku, âmin de",
+              "rızık": "Rızkı daralan biri için oku", "sınav": "Sınavı olan birine gönder",
+              "yolculuk": "Yola çıkacak birine gönder", "kısmet": "Kısmetini bekleyen biri için âmin de",
+              "hasret": "Özlediğin biri için âmin de", "gece": "Uyumadan önce 10 saniyeni ayır",
+              "sabah": "Güne bu duayla başla", "şükür": "Şükretmek isteyen biri için oku"}
 
 
 def kanca(dua):

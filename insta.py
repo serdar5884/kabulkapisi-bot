@@ -130,10 +130,10 @@ def make_caption(head, items, tags, foot="Özet Haberler için Takip Et & 🔔 B
 def refresh_token():
     """Instagram anahtarını yeniler (60 gün daha) ve GH_PAT varsa GitHub Secret'ını günceller."""
     if SYSTEM_TOKEN:
-        return   # sistem kullanıcısı anahtarı süresiz, yenilemeye gerek yok
+        return True   # sistem kullanıcısı anahtarı süresiz, yenilemeye gerek yok
     if not GH_PAT:
         print("[insta] GH_PAT yok: Instagram anahtarını 60 günde bir elle yenilemen gerekir")
-        return
+        return False
     try:
         r = requests.get("https://graph.instagram.com/refresh_access_token", timeout=30,
                          params={"grant_type": "ig_refresh_token", "access_token": IG_TOKEN})
@@ -149,10 +149,11 @@ def refresh_token():
                          headers=h, json={"encrypted_value": enc, "key_id": k["key_id"]}, timeout=30)
         if r.status_code in (201, 204):
             print("[insta] 🔑 Instagram anahtarı yenilendi (60 gün daha geçerli)")
-        else:
-            print(f"[insta] anahtar GitHub'a kaydedilemedi: {r.status_code} {r.text[:200]}")
+            return True
+        print(f"[insta] anahtar GitHub'a kaydedilemedi: {r.status_code} {r.text[:200]}")
     except Exception as e:
         print(f"[insta] anahtar yenilenemedi: {e}")
+    return False
 
 
 # ---------------------------------------------------------------------------
@@ -195,6 +196,22 @@ def reel_container(video_path, caption, cover_path=None):
     return cid
 
 
+def yakinda_paylasildi(caption, dakika=30):
+    """Son birkaç gönderide aynı açıklama son `dakika` içinde var mı? (zaman aşımına rağmen yayınlanmış olabilir)"""
+    try:
+        from datetime import datetime, timedelta, timezone
+        r = requests.get(f"{API}/{_user_id()}/media", timeout=30, params={
+            "fields": "id,caption,timestamp", "limit": 6, "access_token": IG_TOKEN})
+        sinir = datetime.now(timezone.utc) - timedelta(minutes=dakika)
+        for m in _check(r, "son gönderiler").get("data", []):
+            ts = datetime.strptime(m["timestamp"][:19], "%Y-%m-%dT%H:%M:%S").replace(tzinfo=timezone.utc)
+            if ts >= sinir and (m.get("caption") or "")[:80] == caption[:80]:
+                return m["id"]
+    except Exception as e:
+        print("[insta] son gönderi kontrolü yapılamadı:", e)
+    return None
+
+
 def publish_reel(video_path, caption, cover_path=None, deneme=3):
     uid = _user_id()
     for i in range(deneme):   # Instagram bazen geçici "ProcessingFailedError" veriyor: yeniden dene
@@ -206,9 +223,21 @@ def publish_reel(video_path, caption, cover_path=None, deneme=3):
                 raise
             print(f"[insta] video yüklenemedi ({e}); {20 * (i + 1)} sn sonra yeniden denenecek")
             time.sleep(20 * (i + 1))
-    r = requests.post(f"{API}/{uid}/media_publish", timeout=60,
-                      data={"creation_id": cid, "access_token": IG_TOKEN})
-    mid = _check(r, "reels yayınlama")["id"]
+    for i in range(2):   # yayınlama zaman aşımına uğrarsa önce gerçekten yayınlanıp yayınlanmadığına bak
+        try:
+            r = requests.post(f"{API}/{uid}/media_publish", timeout=60,
+                              data={"creation_id": cid, "access_token": IG_TOKEN})
+            mid = _check(r, "reels yayınlama")["id"]
+            break
+        except Exception as e:
+            time.sleep(20)
+            var = yakinda_paylasildi(caption)
+            if var:
+                print(f"[insta] yayınlama hata verdi ama gönderi yayında ({var}); tekrar paylaşılmayacak")
+                return var
+            if i == 1:
+                raise
+            print(f"[insta] yayınlama hatası ({e}); bir kez daha denenecek")
     print(f"[insta] ✅ Reels paylaşıldı (medya id: {mid})")
     return mid
 

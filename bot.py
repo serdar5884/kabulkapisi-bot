@@ -252,8 +252,8 @@ LISTE_GUNLER = {int(x) for x in os.getenv("LISTE_GUNLER", "0,2,4").split(",") if
 def dua_reel_sabit_video(gorsel, out, gun, parca=3, sure=4.0):
     """Tek görseli 3 parça x 4 sn müzikli Reels yapar."""
     import subprocess
-    muzik = os.path.join(HERE, "ses", "muzik.mp3")
-    bas = [47, 15, 64, 33, 86, 75, 99, 110][gun.toordinal() % 8]
+    import muzik as _mz
+    muzik, bas = _mz.sec(gun.toordinal())
     gir, f = [], ""
     for i in range(parca):
         gir += ["-loop", "1", "-framerate", "30", "-t", str(sure), "-i", gorsel]
@@ -291,7 +291,7 @@ def liste_gonderi(gun, secim=None):
     os.makedirs(k, exist_ok=True)
     lst = liste_kart.liste(os.path.join(k, "liste.jpg"), p["ust"], p["baslik"], p["maddeler"], p.get("dipnot"))
     kap = liste_kart.kapak(os.path.join(k, "kapak.jpg"), p["ust"], p["kapak"], p.get("soru", "Hangileri?"))
-    mp4 = liste_kart.reel(lst, kap, os.path.join(k, "liste.mp4"), muzik_bas=[47, 64, 86, 99][gun.toordinal() % 4])
+    mp4 = liste_kart.reel(lst, kap, os.path.join(k, "liste.mp4"), muzik_bas=gun.toordinal())
     tags = list(dict.fromkeys(["#kabulkapisi"] + p.get("etiket", []) + ["#dua", "#amin"]))[:5]
     cap = "\n\n".join([p["acilis"], "Yetişemediysen durdurup oku 👆\n📌 Kaydet, ihtiyacı olana gönder. Kaynaklar görselde.", p["yorum"], " ".join(tags)])
     return kap, lst, mp4, cap
@@ -550,7 +550,7 @@ def main():
                 konu, kapak_reel, mp4, _ = yap(dua, tur, zemin, out.replace(".jpg", "_reel"),
                                               out.replace(".jpg", ".mp4"), vakit=vakit,
                                               date=datetime(gun.year, gun.month, gun.day),
-                                              muzik_bas=[47, 15, 64, 33, 86, 75, 99, 110][(gun.toordinal() + VAKITLER.index(vakit)) % 8])
+                                              muzik_bas=(gun.toordinal() + VAKITLER.index(vakit)))
                 cap = caption(dua, tur, baslik, tags, konu=konu)
             except Exception as e:
                 print("[dua_reel] olmadı, eski hareketli karta dönülüyor:", e)

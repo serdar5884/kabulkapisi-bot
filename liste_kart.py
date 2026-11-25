@@ -173,7 +173,8 @@ def kapak(path, ust, baslik, soru="Hangileri?", cagri="Detaylar Reels'te", filig
 def reel(liste_jpg, kapak_jpg, out, sure=9, muzik_bas=47):
     """Döngü için kısa Reels: doğrudan listeyle açılır, solma yok (kapak sadece profil kapağı olarak gider)."""
     import subprocess
-    muzik = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ses", "muzik.mp3")
+    import muzik as _mz
+    muzik, muzik_bas = _mz.sec(muzik_bas)
     cmd = ["ffmpeg", "-loglevel", "error", "-y",
            "-loop", "1", "-framerate", "30", "-t", str(sure), "-i", liste_jpg,
            "-ss", str(muzik_bas), "-t", str(sure), "-i", muzik,

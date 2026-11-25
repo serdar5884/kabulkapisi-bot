@@ -100,7 +100,8 @@ def sabit(dua, tur, zemin, klasor, out, vakit=None, date=None, muzik_bas=47, par
         kapak = tam_ekran_kapak(dua, zemin, os.path.join(klasor, "kapak.jpg"), konu)
     else:
         konu, kart, sayfa, kapak = hazirla(dua, tur, zemin, klasor, vakit, date)
-    muzik = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ses", "muzik.mp3")
+    import muzik as _mz
+    muzik, muzik_bas = _mz.sec(muzik_bas)
     toplam = parca * sure
     girdiler, filtre = [], ""
     for i in range(parca):

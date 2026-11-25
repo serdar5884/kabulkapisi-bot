@@ -48,86 +48,42 @@
   ]
  },
  {
-  "ust": "Yatmadan önce",
-  "baslik": "Peygamberimizin yatarken yaptığı 7 sünnet",
-  "kapak": "Yatmadan önce bunları yap",
+  "ust": "Cuma günü",
+  "baslik": "Cuma gününün 6 sünneti",
+  "kapak": "Cuma günü bunları unutma",
   "soru": "Neler?",
-  "acilis": "🌙 Peygamberimiz (s.a.v.) yatmadan önce neler yapardı? Bu gece sen de dene.",
-  "yorum": "Sen bunlardan hangisini yapıyorsun? Yorumlara yaz 👇",
+  "acilis": "🕌 Haftanın bayramı Cuma. Peygamberimiz (s.a.v.) bu günü nasıl değerlendirmemizi tavsiye etti?",
+  "yorum": "Hayırlı Cumalar 🤍 Sen hangisini yapıyorsun?",
   "etiket": [
-   "#yatmadanönce",
-   "#sünnet",
-   "#geceduası"
+   "#hayırlıcumalar",
+   "#cuma",
+   "#sünnet"
   ],
-  "dipnot": "Rabbim gecemizi huzurlu, sabahımızı hayırlı eylesin. Âmin.",
+  "dipnot": "Rabbim Cumamızı bereketli, dualarımızı makbul eylesin. Âmin.",
   "maddeler": [
    [
-    "Yatağı **silkelemek** ve besmele çekmek",
-    "Buhârî, Daavât, 6320"
+    "**Gusül** abdesti almak",
+    "Buhârî, Cum'a, 877"
    ],
    [
-    "**Abdestli** olarak yatmak",
-    "Buhârî, Vudû, 247"
+    "**Temiz elbise** giyip güzel koku sürmek",
+    "Buhârî, Cum'a, 883"
    ],
    [
-    "**Sağ yan** üzerine yatmak",
-    "Buhârî, Vudû, 247"
+    "Camiye **erken** gitmek",
+    "Buhârî, Cum'a, 929"
    ],
    [
-    "**İhlâs, Felak ve Nâs** okuyup ellere üflemek, bedeni meshetmek",
-    "Buhârî, Fezâilü'l-Kur'ân, 5017"
+    "Hutbeyi **sessizce** dinlemek",
+    "Buhârî, Cum'a, 934"
    ],
    [
-    "**Âyetel Kürsî** okumak",
-    "Buhârî, Vekâle, 2311"
+    "Peygamberimize **çokça salavat** getirmek",
+    "Ebû Dâvûd, Salât, 1047"
    ],
    [
-    "**Bakara suresinin son iki ayetini** okumak",
-    "Buhârî, Fezâilü'l-Kur'ân, 5009"
-   ],
-   [
-    "**33 Sübhânallah, 33 Elhamdülillah, 34 Allâhu ekber** demek",
-    "Buhârî, Nafakât, 5361"
-   ]
-  ]
- },
- {
-  "ust": "Sahih hadislere göre",
-  "baslik": "Duanın kabul olduğu 6 an",
-  "kapak": "Duanın kabul olduğu anlar",
-  "soru": "Hangileri?",
-  "acilis": "🤲 Duaların geri çevrilmediği anlar var. Peygamberimiz (s.a.v.) bunları tek tek haber verdi.",
-  "yorum": "Bu anlarda duana bizi de kat. Âmin yazmayı unutma 🤲",
-  "etiket": [
-   "#duavakti",
-   "#dua",
-   "#hadis"
-  ],
-  "dipnot": "Bu vakitlerde dua ederken bizi de unutma. Âmin.",
-  "maddeler": [
-   [
-    "**Gecenin son üçte biri**",
-    "Buhârî, Teheccüd, 1145"
-   ],
-   [
-    "**Secde** hâli",
-    "Müslim, Salât, 482"
-   ],
-   [
-    "**Ezan ile kamet** arası",
-    "Ebû Dâvûd, Salât, 521; Tirmizî, Salât, 212"
-   ],
-   [
-    "**Cuma günü** içindeki bir saat",
+    "Duanın kabul olduğu **saati** gözetmek",
     "Buhârî, Cum'a, 935"
-   ],
-   [
-    "**Yolcunun, mazlumun ve babanın** evladına duası",
-    "Tirmizî, Birr, 1905"
-   ],
-   [
-    "Din kardeşine **gıyabında** yapılan dua",
-    "Müslim, Zikir, 2732"
    ]
   ]
  },
@@ -176,42 +132,46 @@
   ]
  },
  {
-  "ust": "Cuma günü",
-  "baslik": "Cuma gününün 6 sünneti",
-  "kapak": "Cuma günü bunları unutma",
+  "ust": "Yatmadan önce",
+  "baslik": "Peygamberimizin yatarken yaptığı 7 sünnet",
+  "kapak": "Yatmadan önce bunları yap",
   "soru": "Neler?",
-  "acilis": "🕌 Haftanın bayramı Cuma. Peygamberimiz (s.a.v.) bu günü nasıl değerlendirmemizi tavsiye etti?",
-  "yorum": "Hayırlı Cumalar 🤍 Sen hangisini yapıyorsun?",
+  "acilis": "🌙 Peygamberimiz (s.a.v.) yatmadan önce neler yapardı? Bu gece sen de dene.",
+  "yorum": "Sen bunlardan hangisini yapıyorsun? Yorumlara yaz 👇",
   "etiket": [
-   "#hayırlıcumalar",
-   "#cuma",
-   "#sünnet"
+   "#yatmadanönce",
+   "#sünnet",
+   "#geceduası"
   ],
-  "dipnot": "Rabbim Cumamızı bereketli, dualarımızı makbul eylesin. Âmin.",
+  "dipnot": "Rabbim gecemizi huzurlu, sabahımızı hayırlı eylesin. Âmin.",
   "maddeler": [
    [
-    "**Gusül** abdesti almak",
-    "Buhârî, Cum'a, 877"
+    "Yatağı **silkelemek** ve besmele çekmek",
+    "Buhârî, Daavât, 6320"
    ],
    [
-    "**Temiz elbise** giyip güzel koku sürmek",
-    "Buhârî, Cum'a, 883"
+    "**Abdestli** olarak yatmak",
+    "Buhârî, Vudû, 247"
    ],
    [
-    "Camiye **erken** gitmek",
-    "Buhârî, Cum'a, 929"
+    "**Sağ yan** üzerine yatmak",
+    "Buhârî, Vudû, 247"
    ],
    [
-    "Hutbeyi **sessizce** dinlemek",
-    "Buhârî, Cum'a, 934"
+    "**İhlâs, Felak ve Nâs** okuyup ellere üflemek, bedeni meshetmek",
+    "Buhârî, Fezâilü'l-Kur'ân, 5017"
    ],
    [
-    "Peygamberimize **çokça salavat** getirmek",
-    "Ebû Dâvûd, Salât, 1047"
+    "**Âyetel Kürsî** okumak",
+    "Buhârî, Vekâle, 2311"
    ],
    [
-    "Duanın kabul olduğu **saati** gözetmek",
-    "Buhârî, Cum'a, 935"
+    "**Bakara suresinin son iki ayetini** okumak",
+    "Buhârî, Fezâilü'l-Kur'ân, 5009"
+   ],
+   [
+    "**33 Sübhânallah, 33 Elhamdülillah, 34 Allâhu ekber** demek",
+    "Buhârî, Nafakât, 5361"
    ]
   ]
  },
@@ -348,6 +308,46 @@
    [
     "Onlara **şükretmek**, dünyada iyi geçinmek",
     "Lokmân Suresi, 14-15. ayetler"
+   ]
+  ]
+ },
+ {
+  "ust": "Sahih hadislere göre",
+  "baslik": "Duanın kabul olduğu 6 an",
+  "kapak": "Duanın kabul olduğu anlar",
+  "soru": "Hangileri?",
+  "acilis": "🤲 Duaların geri çevrilmediği anlar var. Peygamberimiz (s.a.v.) bunları tek tek haber verdi.",
+  "yorum": "Bu anlarda duana bizi de kat. Âmin yazmayı unutma 🤲",
+  "etiket": [
+   "#duavakti",
+   "#dua",
+   "#hadis"
+  ],
+  "dipnot": "Bu vakitlerde dua ederken bizi de unutma. Âmin.",
+  "maddeler": [
+   [
+    "**Gecenin son üçte biri**",
+    "Buhârî, Teheccüd, 1145"
+   ],
+   [
+    "**Secde** hâli",
+    "Müslim, Salât, 482"
+   ],
+   [
+    "**Ezan ile kamet** arası",
+    "Ebû Dâvûd, Salât, 521; Tirmizî, Salât, 212"
+   ],
+   [
+    "**Cuma günü** içindeki bir saat",
+    "Buhârî, Cum'a, 935"
+   ],
+   [
+    "**Yolcunun, mazlumun ve babanın** evladına duası",
+    "Tirmizî, Birr, 1905"
+   ],
+   [
+    "Din kardeşine **gıyabında** yapılan dua",
+    "Müslim, Zikir, 2732"
    ]
   ]
  }

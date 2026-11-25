@@ -233,12 +233,26 @@ def bilgi(gun):
     return yollar, mp4, "\n\n".join(p for p in parcalar if p)
 
 
+LISTE_BASLANGIC = date(2026, 11, 25)
+LISTE_GUNLER = {int(x) for x in os.getenv("LISTE_GUNLER", "0,2,4").split(",") if x.strip()}   # Pzt, Çar, Cum
+
+
+def liste_gunu(gun):
+    return gun.weekday() in LISTE_GUNLER and gun >= LISTE_BASLANGIC
+
+
+def liste_sirasi(gun):
+    """Başlangıçtan bu güne kadar kaçıncı liste günü (sıra her liste gününde bir ilerler)."""
+    return sum(1 for i in range((gun - LISTE_BASLANGIC).days)
+               if (LISTE_BASLANGIC + timedelta(days=i)).weekday() in LISTE_GUNLER)
+
+
 def liste_gonderi(gun, secim=None):
     """Liste Reels'i: merak kapağı + tek uzun kaynaklı liste görseli. secim: başlıktan bir parça."""
     import liste_kart
     with open(os.path.join(HERE, "listeler.json"), encoding="utf-8") as f:
         posts = json.load(f)
-    p = posts[(gun - BILGI_BASLANGIC).days % len(posts)]
+    p = posts[liste_sirasi(gun) % len(posts)]
     if secim:
         uy = [x for x in posts if secim.lower() in x["baslik"].lower()]
         if not uy:
@@ -427,7 +441,7 @@ def main():
         print(f"{gun} {vakit} paylaşımı zaten yapıldı, tekrar paylaşılmıyor.")
         return
 
-    if vakit == "ikindi" and os.getenv("LISTE", "0") == "1" and os.path.exists(os.path.join(HERE, "listeler.json")):
+    if vakit == "ikindi" and os.getenv("LISTE", "1") == "1" and liste_gunu(gun) and os.path.exists(os.path.join(HERE, "listeler.json")):
         kap, lst, mp4, cap = liste_gonderi(gun)   # 17:00: kapak + liste Reels'i
         print(f"--- {gun} {vakit} [liste] ---\n{cap}\n---")
         if DRY_RUN:

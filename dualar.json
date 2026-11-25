@@ -985,6 +985,30 @@
    "metin": "Allah'ım! Bugünün hayrını, fethini, yardımını, nurunu, bereketini ve hidayetini senden isterim.",
    "kaynak": "Ebû Dâvûd, Edeb",
    "vakit": "sabah"
+  },
+  {
+   "metin": "Ya Rabbim! Sana açılan ellerimi boş çevirme. Hayallerimi rızanla, dualarımı nasibimle, ömrümü ise Senin yolunda harcanan güzel amellerle buluştur.",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Allah'ım; gönlümüze huzur, ömrümüze bereket, dualarımıza kabul, yolumuza hayır nasip eyle.",
+   "tur": "ozgun"
+  },
+  {
+   "metin": "Yâ Şâfi! Şifayı bekleyen tüm hastalara acil şifalar ihsan eyle. Bedenimize kuvvet, kalbimize huzur, ruhumuza ferahlık ver. Hastalıklarımızı günahlarımıza kefaret, sıkıntılarımızı rahmetine vesile kıl. Bizi dertlerimizle değil, lütfun ve şifanla sevindir.",
+   "tur": "ozgun",
+   "tema": "hasta"
+  },
+  {
+   "metin": "Rabbim, işlerimi kolaylaştır, zorlaştırma. Rabbim, hayırla tamamla. Gönlüme ferahlık, dilime açıklık ver; başladığım işleri hayırla tamamlamayı nasip eyle.",
+   "tur": "ozgun",
+   "okunus": "Rabbî yessir ve lâ tuassir, Rabbî temmim bi'l-hayr.",
+   "konu": "Rabbi Yessir Duası"
+  },
+  {
+   "metin": "Allah'ım! Bugünü dünden, yarını bugünden hayırlı eyle. Şer bildiğine uzak, hayırlı bildiğine yakın eyle.",
+   "tur": "ozgun",
+   "vakit": "sabah"
   }
  ],
  "kuran": [
@@ -1146,6 +1170,13 @@
    "tur": "ayet",
    "metin": "Rabbimiz! Bizden cehennem azabını uzaklaştır.",
    "kaynak": "Furkân Suresi, 65. ayet · Diyanet meali"
+  },
+  {
+   "metin": "Allah bize yeter. O ne güzel vekildir.",
+   "kaynak": "Âl-i İmrân Suresi, 173. ayet · Diyanet meali",
+   "tur": "ayet",
+   "konu": "Hasbünallah",
+   "okunus": "Hasbünallâhu ve ni'me'l-vekîl."
   }
  ],
  "hadis": [
@@ -1287,8 +1318,22 @@
   },
   {
    "tur": "hadis",
-   "metin": "Allah'ım! Dünya ve ahirette senden af ve afiyet isterim.",
-   "kaynak": "Ebû Dâvûd, Edeb; İbn Mâce"
+   "metin": "Allah'ım! Dünyada ve ahirette senden afiyet isterim. Allah'ım! Dinimde ve dünyamda, ailemde ve malımda afiyet dilerim. Allah'ım! Ayıplarımı ört ve beni korkularımdan emin kıl. Allah'ım! Önümden, arkamdan, sağımdan, solumdan ve üstümden beni koru. Altımdan gelebilecek tehlikelerden senin azametine sığınırım.",
+   "kaynak": "Ebû Dâvûd, Edeb, 5074; İbn Mâce, Dua, 3871",
+   "konu": "Af ve Afiyet Duası",
+   "okunus": "Allâhümme innî es'elüke'l-âfiyete fi'd-dünyâ ve'l-âhira..."
+  },
+  {
+   "metin": "Allah'ım! Rahmetini umarım. Göz açıp kapayıncaya kadar bile olsa beni nefsime bırakma. Bütün işlerimi ıslah et. Senden başka hakkıyla ibadete layık hiçbir ilah yoktur.",
+   "kaynak": "Ebû Dâvûd, Edeb, 5090",
+   "tur": "hadis",
+   "okunus": "Allâhümme rahmeteke ercû, felâ tekilnî ilâ nefsî tarfete aynin, ve aslih lî şe'nî küllehû, lâ ilâhe illâ ente."
+  },
+  {
+   "metin": "Allah'ım! Sen benim Rabbimsin. Senden başka ilah yoktur. Beni sen yarattın, ben senin kulunum. Gücüm yettiğince sana verdiğim söz üzerindeyim. Yaptıklarımın şerrinden sana sığınırım. Bana verdiğin nimetleri kabul ediyor, günahımı itiraf ediyorum. Beni bağışla; çünkü günahları ancak sen bağışlarsın.",
+   "kaynak": "Buhârî, Daavât, 6306",
+   "tur": "hadis",
+   "konu": "Seyyidü'l-İstiğfâr"
   }
  ],
  "cuma": [

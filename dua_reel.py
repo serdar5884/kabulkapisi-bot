@@ -93,7 +93,7 @@ def reel(sayfa, out, sure=8, muzik_bas=47):
 def sabit(dua, tur, zemin, klasor, out, vakit=None, date=None, muzik_bas=47, parca=3, sure=4.0):
     """Animasyonsuz: aynı dua sayfası 3 parça x 4 sn (duasensin/şablon düzeni). Başa sarınca da aynısı görünür."""
     import subprocess
-    if os.getenv("TAM_EKRAN", "0") == "1":   # bulanık bantsız tam ekran sayfa + konu/kanca kapağı
+    if os.getenv("TAM_EKRAN", "1") == "1":   # bulanık bantsız tam ekran sayfa + konu/kanca kapağı
         os.makedirs(klasor, exist_ok=True)
         konu = konu_bul(dua, tur, vakit)
         sayfa = tam_ekran_sayfa(dua, zemin, os.path.join(klasor, "sayfa.jpg"), konu)

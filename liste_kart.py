@@ -76,7 +76,7 @@ def liste(path, ust, baslik, maddeler, dipnot=None):
     alt_sinir = H - 230 if dipnot else H - 140
     n = len(maddeler)
     # boyut: hepsi sığana kadar küçült
-    for sz in range(46, 27, -1):
+    for sz in range(56, 27, -1):
         fi, fk, fs = nf("medium", sz), nf("black", sz), nf("semibold", int(sz * 0.72))
         yuks = []
         for m, k in maddeler:
@@ -85,6 +85,7 @@ def liste(path, ust, baslik, maddeler, dipnot=None):
         bosluk = 18
         if sum(yuks) + bosluk * (n - 1) <= alt_sinir - y:
             break
+    y += max(0, (alt_sinir - y - (sum(yuks) + bosluk * (n - 1))) // 2)   # kısa listeyi dikeyde ortala
     for i, ((m, k), hy) in enumerate(zip(maddeler, yuks)):
         box = (70, y, W - 70, y + hy)
         _kutu(img, box)

@@ -88,46 +88,122 @@
   ]
  },
  {
-  "ust": "Hadislerde geçen",
-  "baslik": "Helak eden 7 büyük günah",
-  "kapak": "İnsanı helak eden 7 günah",
-  "soru": "Nelerdir?",
-  "acilis": "⚠️ Peygamberimiz (s.a.v.) \"Helak edici yedi şeyden kaçının\" buyurdu. Peki nelerdir?",
-  "yorum": "Rabbim bizi bunlardan korusun. Âmin 🤲",
+  "ust": "Kur'an'da geçen",
+  "baslik": "Peygamberlerin 7 duası",
+  "kapak": "Peygamberlerin dualarını biliyor musun",
+  "soru": "Hangileri?",
+  "acilis": "📖 Peygamberler darda kaldıklarında Allah'a nasıl dua ettiler? Kur'an'dan 7 dua, kaynaklarıyla.",
+  "yorum": "Sen en çok hangisini okuyorsun? Yorumlara yaz 👇",
   "etiket": [
-   "#büyükgünahlar",
-   "#hadis",
-   "#dinibilgiler"
+   "#kuran",
+   "#peygamberlerinduası",
+   "#dua"
   ],
-  "dipnot": "Kaynak: Buhârî, Vesâyâ, 2766; Müslim, Îmân, 89. Rabbim bizi muhafaza eylesin.",
+  "dipnot": "Rabbim peygamberlerinin dualarını kabul ettiği gibi bizim dualarımızı da kabul eylesin. Âmin.",
   "maddeler": [
    [
-    "Allah'a **şirk** koşmak",
-    "Buhârî, Vesâyâ, 2766"
+    "**Hz. Âdem:** Rabbimiz! Kendimize yazık ettik; bizi bağışlamaz ve bize merhamet etmezsen kaybedenlerden oluruz.",
+    "A'râf Suresi, 23. ayet"
    ],
    [
-    "**Sihir** yapmak",
-    "Buhârî, Vesâyâ, 2766"
+    "**Hz. Nûh:** Rabbim! Beni, anamı, babamı ve inanan erkek ve kadınları bağışla.",
+    "Nûh Suresi, 28. ayet"
    ],
    [
-    "Allah'ın haram kıldığı **cana haksız yere kıymak**",
-    "Buhârî, Vesâyâ, 2766"
+    "**Hz. İbrahim:** Rabbim! Beni ve çocuklarımı namaz kılanlardan eyle; duamı kabul buyur.",
+    "İbrâhîm Suresi, 40. ayet"
    ],
    [
-    "**Faiz** yemek",
-    "Buhârî, Vesâyâ, 2766"
+    "**Hz. Mûsâ:** Rabbim! Doğrusu bana indireceğin hayra muhtacım.",
+    "Kasas Suresi, 24. ayet"
    ],
    [
-    "**Yetim malı** yemek",
-    "Buhârî, Vesâyâ, 2766"
+    "**Hz. Yûnus:** Senden başka ilah yoktur, Sen münezzehsin; ben haksızlık edenlerdenim.",
+    "Enbiyâ Suresi, 87. ayet"
    ],
    [
-    "Savaş günü **cepheden kaçmak**",
-    "Buhârî, Vesâyâ, 2766"
+    "**Hz. Eyyûb:** Başıma bir bela geldi; Sen merhametlilerin merhametlisisin.",
+    "Enbiyâ Suresi, 83. ayet"
    ],
    [
-    "İffetli mümin kadınlara **zina iftirası** atmak",
-    "Buhârî, Vesâyâ, 2766"
+    "**Hz. Zekeriyyâ:** Rabbim! Beni tek başıma bırakma; Sen varislerin en hayırlısısın.",
+    "Enbiyâ Suresi, 89. ayet"
+   ]
+  ]
+ },
+ {
+  "ust": "Kur'an'dan",
+  "baslik": "Ezberlenecek 6 Rabbenâ duası",
+  "kapak": "Her gün okunacak Rabbenâ duaları",
+  "soru": "Hangileri?",
+  "acilis": "🤲 Kur'an'daki \"Rabbenâ\" dualarından 6'sı, Diyanet mealiyle. Kaydet, namazdan sonra oku.",
+  "yorum": "Bu dualardan hangisini ezbere biliyorsun? 👇",
+  "etiket": [
+   "#rabbena",
+   "#kuran",
+   "#dua"
+  ],
+  "dipnot": "Diyanet meali. Rabbim dualarımızı kabul eylesin. Âmin.",
+  "maddeler": [
+   [
+    "Rabbimiz! Bize **dünyada iyiyi, ahirette de iyiyi** ver, bizi ateşin azabından koru.",
+    "Bakara Suresi, 201. ayet"
+   ],
+   [
+    "Rabbimiz! Bize **gücümüzün yetmeyeceği** şeyi taşıtma, bizi affet, bizi bağışla, bize acı.",
+    "Bakara Suresi, 286. ayet"
+   ],
+   [
+    "Rabbimiz! Bizi doğru yola erdirdikten sonra **kalplerimizi eğriltme.**",
+    "Âl-i İmrân Suresi, 8. ayet"
+   ],
+   [
+    "Rabbimiz! Günahlarımızı bağışla, kötülüklerimizi ört, **canımızı iyilerle beraber al.**",
+    "Âl-i İmrân Suresi, 193. ayet"
+   ],
+   [
+    "Rabbimiz! Bize **eşlerimizden ve çocuklarımızdan** gözümüzün aydınlığı olacak insanlar ihsan et.",
+    "Furkân Suresi, 74. ayet"
+   ],
+   [
+    "Rabbimiz! Bizi ve bizden önce inanmış kardeşlerimizi bağışla; **kalbimizde müminlere karşı kin** bırakma.",
+    "Haşr Suresi, 10. ayet"
+   ]
+  ]
+ },
+ {
+  "ust": "Ayet ve hadislerle",
+  "baslik": "Duanın 5 adabı",
+  "kapak": "Duan neden kabul olmuyor",
+  "soru": "Bunlara dikkat et",
+  "acilis": "🤲 Dua ederken nelere dikkat etmeli? Ayet ve sahih hadislerden duanın 5 adabı.",
+  "yorum": "Bunlardan hangisini bilmiyordun? Yorumlara yaz 👇",
+  "etiket": [
+   "#duanınadabı",
+   "#dua",
+   "#hadis"
+  ],
+  "dipnot": "Rabbim bizi dualarını kabul ettiği kullarından eylesin. Âmin.",
+  "maddeler": [
+   [
+    "Rabbine **gönülden ve gizlice** yalvar",
+    "A'râf Suresi, 55. ayet"
+   ],
+   [
+    "\"Dilersen ver\" deme, **kesin bir azimle** iste",
+    "Buhârî, Daavât, 6338"
+   ],
+   [
+    "**Acele etme;** \"Dua ettim de kabul olmadı\" deme",
+    "Buhârî, Daavât, 6340"
+   ],
+   [
+    "**Helal lokma** ye; Allah ancak temiz olanı kabul eder",
+    "Müslim, Zekât, 1015"
+   ],
+   [
+    "Din kardeşine **gıyabında dua et;** melek \"Sana da aynısı\" der",
+    "Müslim, Zikir, 2732"
    ]
   ]
  },
@@ -176,50 +252,70 @@
   ]
  },
  {
-  "ust": "Hadislerde geçen",
-  "baslik": "Kıyametin 8 alameti",
-  "kapak": "Kıyametin alametleri",
-  "soru": "Hangileri?",
-  "acilis": "⏳ Peygamberimiz (s.a.v.) kıyamet yaklaşırken görülecek alametleri haber verdi. Bugün kaçını görüyoruz?",
-  "yorum": "Sence bunların kaçı bugün görülüyor? Yorumlara yaz 👇",
+  "ust": "Sahih hadislere göre",
+  "baslik": "Reddedilmeyen 3 dua",
+  "kapak": "Asla geri çevrilmeyen dualar",
+  "soru": "Kimin duası?",
+  "acilis": "🤲 Peygamberimiz (s.a.v.) kabul olunacağında şüphe olmayan üç duayı haber verdi.",
+  "yorum": "Annene babana dua etmeyi unutma 🤍 Âmin yaz 👇",
   "etiket": [
-   "#kıyametalametleri",
+   "#dua",
    "#hadis",
-   "#dinibilgiler"
+   "#duakabulü"
   ],
-  "dipnot": "Rabbim bizi son nefeste imanla ölen kullarından eylesin. Âmin.",
+  "dipnot": "Kaynak: Tirmizî, Birr, 1905 (hasen). Rabbim mazlumların duasına bizi de kat. Âmin.",
   "maddeler": [
    [
-    "**İlmin kalkması**, cehaletin artması",
-    "Buhârî, İlim, 80"
+    "**Mazlumun** duası",
+    "Tirmizî, Birr, 1905"
    ],
    [
-    "**Emanetin** ehli olmayana verilmesi",
-    "Buhârî, İlim, 59"
+    "**Yolcunun** duası",
+    "Tirmizî, Birr, 1905"
    ],
    [
-    "Yalınayak çobanların **yüksek bina** yarışına girmesi",
-    "Müslim, Îmân, 8"
+    "**Babanın evladı için** yaptığı dua",
+    "Tirmizî, Birr, 1905"
+   ]
+  ]
+ },
+ {
+  "ust": "Kur'an'dan",
+  "baslik": "Zor günlerde okunacak 6 ayet",
+  "kapak": "Zor zamanlarda bunları oku",
+  "soru": "Hangi ayetler?",
+  "acilis": "🤍 İçin daraldığında Rabbimiz ne diyor? Teselli veren 6 ayet, Diyanet mealiyle.",
+  "yorum": "Bugün en çok hangisine ihtiyacın vardı? 👇",
+  "etiket": [
+   "#ayet",
+   "#kuran",
+   "#teselli"
+  ],
+  "dipnot": "Diyanet meali. Rabbim her darlığın ardından genişlik versin. Âmin.",
+  "maddeler": [
+   [
+    "Allah, muhakkak ki **sabredenlerle beraberdir.**",
+    "Bakara Suresi, 153. ayet"
    ],
    [
-    "**Zamanın** kısalması, öldürmenin çoğalması",
-    "Buhârî, Fiten, 7121"
+    "Elbette **güçlükle beraber** şüphesiz bir **kolaylık** vardır.",
+    "İnşirâh Suresi, 5. ayet"
    ],
    [
-    "**İçkinin** ve zinanın yayılması",
-    "Buhârî, İlim, 80"
+    "Allah, **güçlükten sonra kolaylık** verir.",
+    "Talâk Suresi, 7. ayet"
    ],
    [
-    "**Deccâl**'ın çıkması",
-    "Müslim, Fiten, 2901"
+    "Yalnız **sabredenlere, ecirleri sonsuz** olarak ödenecektir.",
+    "Zümer Suresi, 10. ayet"
    ],
    [
-    "**Ye'cûc ve Me'cûc**'ün çıkması",
-    "Müslim, Fiten, 2901"
+    "**Allah'ın rahmetinden** ümidinizi kesmeyin.",
+    "Yûsuf Suresi, 87. ayet"
    ],
    [
-    "**Güneşin batıdan** doğması",
-    "Buhârî, Rikâk, 6506; Müslim, Fiten, 2901"
+    "Allah'ın bize yazdığından başkası başımıza gelmez; **inananlar Allah'a güvensin.**",
+    "Tevbe Suresi, 51. ayet"
    ]
   ]
  },
@@ -348,6 +444,98 @@
    [
     "Din kardeşine **gıyabında** yapılan dua",
     "Müslim, Zikir, 2732"
+   ]
+  ]
+ },
+ {
+  "ust": "Hadislerde geçen",
+  "baslik": "Helak eden 7 büyük günah",
+  "kapak": "İnsanı helak eden 7 günah",
+  "soru": "Nelerdir?",
+  "acilis": "⚠️ Peygamberimiz (s.a.v.) \"Helak edici yedi şeyden kaçının\" buyurdu. Peki nelerdir?",
+  "yorum": "Rabbim bizi bunlardan korusun. Âmin 🤲",
+  "etiket": [
+   "#büyükgünahlar",
+   "#hadis",
+   "#dinibilgiler"
+  ],
+  "dipnot": "Kaynak: Buhârî, Vesâyâ, 2766; Müslim, Îmân, 89. Rabbim bizi muhafaza eylesin.",
+  "maddeler": [
+   [
+    "Allah'a **şirk** koşmak",
+    "Buhârî, Vesâyâ, 2766"
+   ],
+   [
+    "**Sihir** yapmak",
+    "Buhârî, Vesâyâ, 2766"
+   ],
+   [
+    "Allah'ın haram kıldığı **cana haksız yere kıymak**",
+    "Buhârî, Vesâyâ, 2766"
+   ],
+   [
+    "**Faiz** yemek",
+    "Buhârî, Vesâyâ, 2766"
+   ],
+   [
+    "**Yetim malı** yemek",
+    "Buhârî, Vesâyâ, 2766"
+   ],
+   [
+    "Savaş günü **cepheden kaçmak**",
+    "Buhârî, Vesâyâ, 2766"
+   ],
+   [
+    "İffetli mümin kadınlara **zina iftirası** atmak",
+    "Buhârî, Vesâyâ, 2766"
+   ]
+  ]
+ },
+ {
+  "ust": "Hadislerde geçen",
+  "baslik": "Kıyametin 8 alameti",
+  "kapak": "Kıyametin alametleri",
+  "soru": "Hangileri?",
+  "acilis": "⏳ Peygamberimiz (s.a.v.) kıyamet yaklaşırken görülecek alametleri haber verdi. Bugün kaçını görüyoruz?",
+  "yorum": "Sence bunların kaçı bugün görülüyor? Yorumlara yaz 👇",
+  "etiket": [
+   "#kıyametalametleri",
+   "#hadis",
+   "#dinibilgiler"
+  ],
+  "dipnot": "Rabbim bizi son nefeste imanla ölen kullarından eylesin. Âmin.",
+  "maddeler": [
+   [
+    "**İlmin kalkması**, cehaletin artması",
+    "Buhârî, İlim, 80"
+   ],
+   [
+    "**Emanetin** ehli olmayana verilmesi",
+    "Buhârî, İlim, 59"
+   ],
+   [
+    "Yalınayak çobanların **yüksek bina** yarışına girmesi",
+    "Müslim, Îmân, 8"
+   ],
+   [
+    "**Zamanın** kısalması, öldürmenin çoğalması",
+    "Buhârî, Fiten, 7121"
+   ],
+   [
+    "**İçkinin** ve zinanın yayılması",
+    "Buhârî, İlim, 80"
+   ],
+   [
+    "**Deccâl**'ın çıkması",
+    "Müslim, Fiten, 2901"
+   ],
+   [
+    "**Ye'cûc ve Me'cûc**'ün çıkması",
+    "Müslim, Fiten, 2901"
+   ],
+   [
+    "**Güneşin batıdan** doğması",
+    "Buhârî, Rikâk, 6506; Müslim, Fiten, 2901"
    ]
   ]
  }

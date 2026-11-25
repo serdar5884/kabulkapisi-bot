@@ -4,7 +4,8 @@
   {
    "tur": "ozgun",
    "metin": "Hayırlı sabahlar. Bu satırları okuyan kardeşim; Rabbim gününü bereketli, yolunu açık, işini kolay eylesin. Akşama kadar seni her türlü kötülükten korusun.",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "Bereketli Bir Gün İçin Dua"
   },
   {
    "tur": "ozgun",
@@ -37,7 +38,8 @@
   {
    "tur": "ozgun",
    "metin": "Rabbim bu sabah sana öyle bir ferahlık versin ki, gün boyu yüzündeki tebessüm hiç solmasın.",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "Ferahlık Duası"
   },
   {
    "tur": "ozgun",
@@ -47,12 +49,14 @@
   {
    "tur": "ozgun",
    "metin": "Allah'ım, bu sabah gözünü açan kardeşimin kalbini de huzura aç. Bugün ona sadece hayırlı haberler, hayırlı insanlar ve hayırlı kapılar nasip eyle.",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "Hayırlı Haber Duası"
   },
   {
    "tur": "ozgun",
    "metin": "Yeni bir gün, yeni bir rahmet. Rabbim bugün attığın her adımı hayra, kurduğun her cümleyi güzelliğe, kazandığın her kuruşu bereketli rızka çevirsin.",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "Yeni Gün Duası"
   },
   {
    "tur": "ozgun",
@@ -82,7 +86,8 @@
   {
    "tur": "ozgun",
    "metin": "Günaydın. Rabbim bu sabahı senin için kederlerin bittiği, sevinçlerin başladığı bir sabah eylesin.",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "Kederlerin Bittiği Sabah İçin"
   },
   {
    "tur": "ozgun",
@@ -92,7 +97,9 @@
   {
    "tur": "ozgun",
    "metin": "Allah'ım, işine giden kardeşimi koru, okuluna giden yavrumuzu muhafaza et, evinde kalanın gönlüne huzur ver. Hepimizi akşam sağ salim sevdiklerimize kavuştur.",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "Sevdiklerini Koruma Duası",
+   "tema": "aile"
   },
   {
    "tur": "ozgun",
@@ -107,7 +114,8 @@
   {
    "tur": "ozgun",
    "metin": "Bu sabah okuyan herkese: Rabbim gönlünden geçen işi kolaylaştırsın, önündeki zorluğu aşmayı nasip etsin, akşam olduğunda şükürle yastığa baş koydursun.",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "İşleri Kolaylaştırma Duası"
   },
   {
    "tur": "ozgun",
@@ -127,12 +135,14 @@
   {
    "tur": "ozgun",
    "metin": "Hayırlı sabahlar kardeşim. Allah bugün dilini zikirden, kalbini şükürden, elini hayırdan ayırmasın.",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "Şükür ve Zikir Duası"
   },
   {
    "tur": "ozgun",
    "metin": "Rabbim bu güne seni sevenlerin duasıyla başlamayı, seni sevindirecek haberlerle bitirmeyi nasip etsin.",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "Sevindirici Haber Duası"
   },
   {
    "tur": "ozgun",
@@ -162,7 +172,9 @@
   {
    "tur": "ozgun",
    "metin": "Allah'ım, bu sabahın hürmetine borçluya ödeme kolaylığı, işsize hayırlı iş, bekleyene müjde ver. Bu satırları okuyanı da sevindir.",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "Borçlu ve İşsiz İçin Dua",
+   "tema": "borç"
   },
   {
    "tur": "ozgun",
@@ -172,12 +184,15 @@
   {
    "tur": "ozgun",
    "metin": "Günün ilk ışığıyla gelen bu dua sana olsun: Rabbim seni korkudan emniyete, darlıktan genişliğe, yalnızlıktan güzel dostluklara ulaştırsın.",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "Korkudan Emniyete Dua",
+   "tema": "dert"
   },
   {
    "tur": "ozgun",
    "metin": "Hayırlı sabahlar. Allah bugün karşına çıkacak her insanı senin için hayır vesilesi, her olayı senin için güzel bir ders eylesin.",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "Hayırlı İnsanlar Duası"
   },
   {
    "tur": "ozgun",
@@ -207,7 +222,8 @@
   {
    "tur": "ozgun",
    "metin": "Rabbim sabahını nurlu, öğleni bereketli, akşamını huzurlu eylesin. Bugün kimseye muhtaç etmesin, kimseyi de kapından boş çevirtmesin.",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "Kimseye Muhtaç Etmeme Duası"
   },
   {
    "tur": "ozgun",
@@ -217,7 +233,9 @@
   {
    "tur": "ozgun",
    "metin": "Bu sabah bu satırları okuyan kardeşimin evine bereket, sofrasına bolluk, ailesine sağlık ve muhabbet dolsun.",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "Ev ve Aile Bereketi Duası",
+   "tema": "aile"
   },
   {
    "tur": "ozgun",
@@ -242,7 +260,8 @@
   {
    "tur": "ozgun",
    "metin": "Allah'ım, sabah namazına kalkanı mükâfatlandır, kalkamayanı bir sonraki sabaha uyandır. Hepimizi sana yönelen kullarından eyle.",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "Namaz İçin Dua"
   },
   {
    "tur": "ozgun",
@@ -252,7 +271,9 @@
   {
    "tur": "ozgun",
    "metin": "Günaydın kardeşim. Rabbim bugün içindeki o endişeyi alsın, yerine tevekkülün tatlı huzurunu koysun.",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "Endişeli Kalpler İçin Dua",
+   "tema": "dert"
   },
   {
    "tur": "ozgun",
@@ -262,7 +283,8 @@
   {
    "tur": "ozgun",
    "metin": "Rabbim bugün yolculuğa çıkanı selametle varacağı yere ulaştırsın, direksiyon başındakini kazadan, beladan, her türlü kötülükten muhafaza eylesin.",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "Yolcu Duası"
   },
   {
    "tur": "ozgun",
@@ -287,7 +309,8 @@
   {
    "tur": "ozgun",
    "metin": "Hayırlı sabahlar. Allah bugün dualarını kabul etmeye, hatalarını affetmeye, emeklerini bereketlendirmeye vesile kılsın.",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "Duaların Kabulü İçin"
   },
   {
    "tur": "ozgun",
@@ -297,7 +320,9 @@
   {
    "tur": "ozgun",
    "metin": "Allah'ım, bu sabah hastanede uyanan kardeşlerimize şifa, kapısını çalan derde deva, bekleyenlerine sabır ver.",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "Hastanedekiler İçin Şifa Duası",
+   "tema": "hasta"
   },
   {
    "tur": "ozgun",
@@ -317,7 +342,8 @@
   {
    "tur": "ozgun",
    "metin": "Bu satırları okuyan kardeşim; Rabbim bugün seni üzecek her şeyden uzak tutsun, seni güldürecek her şeyi sana yaklaştırsın.",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "Seni Üzen Her Şeyden Uzak"
   },
   {
    "tur": "ozgun",
@@ -332,7 +358,8 @@
   {
    "tur": "ozgun",
    "metin": "Günaydın. Rabbim bugün kalbine ilham, aklına isabet, işine bereket, yoluna aydınlık versin.",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "İlham ve Bereket Duası"
   },
   {
    "tur": "ozgun",
@@ -342,7 +369,8 @@
   {
    "tur": "ozgun",
    "metin": "Yeni günün mübarek olsun. Rabbim bu gün senin hayatında hayırlı bir dönüm noktası olsun, beklediğin kapı bugün aralansın.",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "Hayırlı Dönüm Noktası Duası"
   },
   {
    "tur": "ozgun",
@@ -366,7 +394,9 @@
   },
   {
    "tur": "ozgun",
-   "metin": "Bu satırları okuyan kardeşim; Rabbim bugün yüzünü güldürsün, kalbindeki düğümleri bir bir çözsün, beklediğin hayırlı haberi en güzel vaktinde sana ulaştırsın."
+   "metin": "Bu satırları okuyan kardeşim; Rabbim bugün yüzünü güldürsün, kalbindeki düğümleri bir bir çözsün, beklediğin hayırlı haberi en güzel vaktinde sana ulaştırsın.",
+   "konu": "Gönül Düğümlerini Çözme Duası",
+   "tema": "dert"
   },
   {
    "tur": "ozgun",
@@ -375,7 +405,8 @@
   },
   {
    "tur": "ozgun",
-   "metin": "Kim bunu okuyorsa, Allah onun gönlüne huzur, evine bereket, sofrasına şükür versin. Sevdiklerini sana bağışlasın, seni de onlara."
+   "metin": "Kim bunu okuyorsa, Allah onun gönlüne huzur, evine bereket, sofrasına şükür versin. Sevdiklerini sana bağışlasın, seni de onlara.",
+   "konu": "Huzur ve Bereket Duası"
   },
   {
    "tur": "ozgun",
@@ -384,7 +415,9 @@
   },
   {
    "tur": "ozgun",
-   "metin": "Rabbim, kimseye anlatamadığın yükü hafifletsin. Sessizce ettiğin duaları duyduğunu sana hissettirsin ve gönlüne ferahlık versin."
+   "metin": "Rabbim, kimseye anlatamadığın yükü hafifletsin. Sessizce ettiğin duaları duyduğunu sana hissettirsin ve gönlüne ferahlık versin.",
+   "konu": "Kimseye Anlatamadığın Yük İçin",
+   "tema": "dert"
   },
   {
    "tur": "ozgun",
@@ -408,7 +441,8 @@
   },
   {
    "tur": "ozgun",
-   "metin": "Bu duayı okuyan herkesin hastasına şifa, borçlusuna ferahlık, yalnızına dost, yolda olanına selamet olsun. Âmin."
+   "metin": "Bu duayı okuyan herkesin hastasına şifa, borçlusuna ferahlık, yalnızına dost, yolda olanına selamet olsun. Âmin.",
+   "konu": "Hasta, Borçlu ve Yalnızlar İçin"
   },
   {
    "tur": "ozgun",
@@ -417,7 +451,9 @@
   },
   {
    "tur": "ozgun",
-   "metin": "Allah'ım, bu satırları okuyanın kalbini kırık bırakma. Kapandığını sandığı kapıları ona rahmetinle aç, hayırlı olanı onun için kolaylaştır."
+   "metin": "Allah'ım, bu satırları okuyanın kalbini kırık bırakma. Kapandığını sandığı kapıları ona rahmetinle aç, hayırlı olanı onun için kolaylaştır.",
+   "konu": "Kapanan Kapılar İçin Dua",
+   "tema": "dert"
   },
   {
    "tur": "ozgun",
@@ -446,11 +482,14 @@
   },
   {
    "tur": "ozgun",
-   "metin": "Rabbim sana öyle bir gün nasip etsin ki, akşam olduğunda içinden sadece \"Elhamdülillah\" demek gelsin."
+   "metin": "Rabbim sana öyle bir gün nasip etsin ki, akşam olduğunda içinden sadece \"Elhamdülillah\" demek gelsin.",
+   "konu": "Elhamdülillah Dedirten Gün Duası"
   },
   {
    "tur": "ozgun",
-   "metin": "Bu satırlara gözü değen kardeşim; Allah anneni, babanı ve sevdiklerini rahmetiyle kuşatsın. Hayatta olanlara sağlık, ahirete göçenlere nur versin."
+   "metin": "Bu satırlara gözü değen kardeşim; Allah anneni, babanı ve sevdiklerini rahmetiyle kuşatsın. Hayatta olanlara sağlık, ahirete göçenlere nur versin.",
+   "konu": "Anne Baba İçin Dua",
+   "tema": "aile"
   },
   {
    "tur": "ozgun",
@@ -459,7 +498,9 @@
   },
   {
    "tur": "ozgun",
-   "metin": "Allah'ım, bu duayı okuyanın rızkını helalinden genişlet, emeğini boşa çıkarma, alın terinin karşılığını bereketle ver."
+   "metin": "Allah'ım, bu duayı okuyanın rızkını helalinden genişlet, emeğini boşa çıkarma, alın terinin karşılığını bereketle ver.",
+   "konu": "Rızık Duası",
+   "tema": "borç"
   },
   {
    "tur": "ozgun",
@@ -488,11 +529,14 @@
   },
   {
    "tur": "ozgun",
-   "metin": "Rabbim, içindeki korkuları emniyete, endişelerini tevekküle, gözyaşlarını sevince çevirsin. Seni sevdiklerinle hayırda buluştursun."
+   "metin": "Rabbim, içindeki korkuları emniyete, endişelerini tevekküle, gözyaşlarını sevince çevirsin. Seni sevdiklerinle hayırda buluştursun.",
+   "konu": "Korkuları Emniyete Çeviren Dua",
+   "tema": "dert"
   },
   {
    "tur": "ozgun",
-   "metin": "Bunu okuyan kim olursa olsun; Rabbim onu yalnız bırakmasın, yanlış insanlardan korusun, doğru insanlarla karşılaştırsın."
+   "metin": "Bunu okuyan kim olursa olsun; Rabbim onu yalnız bırakmasın, yanlış insanlardan korusun, doğru insanlarla karşılaştırsın.",
+   "konu": "Doğru İnsanlar İçin Dua"
   },
   {
    "tur": "ozgun",
@@ -511,7 +555,8 @@
   },
   {
    "tur": "ozgun",
-   "metin": "Allah'ım, bu satırları okuyan öğrencinin zihnini aç, çalışanın işini kolaylaştır, sınavda olanın kalbine sükûnet ver."
+   "metin": "Allah'ım, bu satırları okuyan öğrencinin zihnini aç, çalışanın işini kolaylaştır, sınavda olanın kalbine sükûnet ver.",
+   "konu": "Öğrenci ve Sınav Duası"
   },
   {
    "tur": "ozgun",
@@ -525,7 +570,8 @@
   },
   {
    "tur": "ozgun",
-   "metin": "Rabbim, gönlünden geçen o hayırlı dileği, senin için en güzel olduğu şekilde ve en güzel zamanda gerçekleştirsin."
+   "metin": "Rabbim, gönlünden geçen o hayırlı dileği, senin için en güzel olduğu şekilde ve en güzel zamanda gerçekleştirsin.",
+   "konu": "Gönülden Geçen Dilek İçin"
   },
   {
    "tur": "ozgun",
@@ -534,7 +580,9 @@
   },
   {
    "tur": "ozgun",
-   "metin": "Bu duayı okuyanın hastalarına acil şifa ver Allah'ım. Ameliyatta olana kolaylık, yoğun bakımda bekleyene umut, ailesine sabır ihsan eyle."
+   "metin": "Bu duayı okuyanın hastalarına acil şifa ver Allah'ım. Ameliyatta olana kolaylık, yoğun bakımda bekleyene umut, ailesine sabır ihsan eyle.",
+   "konu": "Ameliyattakiler İçin Şifa Duası",
+   "tema": "hasta"
   },
   {
    "tur": "ozgun",
@@ -563,11 +611,14 @@
   },
   {
    "tur": "ozgun",
-   "metin": "Allah'ım, bu satırları okuyanın kalbini kin ve hasetten temizle. Ona affetmenin hafifliğini, sevmenin genişliğini tattır."
+   "metin": "Allah'ım, bu satırları okuyanın kalbini kin ve hasetten temizle. Ona affetmenin hafifliğini, sevmenin genişliğini tattır.",
+   "konu": "Kalp Temizliği Duası"
   },
   {
    "tur": "ozgun",
-   "metin": "Rabbim, yuvanı huzurla doldursun. Evinde sevgi eksik olmasın, sofranda bereket, dilinde şükür, kalbinde kanaat olsun."
+   "metin": "Rabbim, yuvanı huzurla doldursun. Evinde sevgi eksik olmasın, sofranda bereket, dilinde şükür, kalbinde kanaat olsun.",
+   "konu": "Yuva Huzuru Duası",
+   "tema": "aile"
   },
   {
    "tur": "ozgun",
@@ -576,7 +627,8 @@
   },
   {
    "tur": "ozgun",
-   "metin": "Bu satırları okuyan kardeşim; Allah seni sevdiği ve razı olduğu işlerde kullansın, attığın her adımı hayra, söylediğin her sözü güzelliğe vesile kılsın."
+   "metin": "Bu satırları okuyan kardeşim; Allah seni sevdiği ve razı olduğu işlerde kullansın, attığın her adımı hayra, söylediğin her sözü güzelliğe vesile kılsın.",
+   "konu": "Hayırlı İşler İçin Dua"
   },
   {
    "tur": "ozgun",
@@ -605,7 +657,8 @@
   },
   {
    "tur": "ozgun",
-   "metin": "Allah'ım, bu duayı okuyanın yolunu aç. Yolculukta olanı selametle evine kavuştur, gurbette olanı sevdiklerine özlemle değil sevinçle buluştur."
+   "metin": "Allah'ım, bu duayı okuyanın yolunu aç. Yolculukta olanı selametle evine kavuştur, gurbette olanı sevdiklerine özlemle değil sevinçle buluştur.",
+   "konu": "Gurbettekiler ve Yolcular İçin"
   },
   {
    "tur": "ozgun",
@@ -615,107 +668,135 @@
   {
    "tur": "ozgun",
    "metin": "Hayırlı akşamlar. Bu satırları okuyan kardeşim; Rabbim gün boyu taşıdığın yükü hafifletsin, gecene huzur, uykuna rahat versin.",
-   "vakit": "aksam"
+   "vakit": "aksam",
+   "konu": "Yorgun Kalpler İçin Akşam Duası",
+   "tema": "dert"
   },
   {
    "tur": "ozgun",
    "metin": "Allah'ım, bu gece gözlerini yuman kardeşimi koru. Kalbindeki dertleri uykusuyla birlikte alsın, sabaha ferahlıkla uyandırsın.",
-   "vakit": "aksam"
+   "vakit": "aksam",
+   "konu": "Uyumadan Önce Dua"
   },
   {
    "tur": "ozgun",
    "metin": "Gün bitti, dua bitmedi. Rabbim bugün yaptığın iyilikleri kabul etsin, farkında olmadan yaptığın hataları affetsin.",
-   "vakit": "aksam"
+   "vakit": "aksam",
+   "konu": "Gün Biterken Dua"
   },
   {
    "tur": "ozgun",
    "metin": "Hayırlı geceler. Rabbim bu gece seni üzen her şeyi geride bıraktırsın, yarın sana yepyeni bir sayfa açsın.",
-   "vakit": "aksam"
+   "vakit": "aksam",
+   "konu": "Yepyeni Bir Sabah İçin"
   },
   {
    "tur": "ozgun",
    "metin": "Allah'ım, bu gece uykusu kaçanlara sükûnet, ağrısı olanlara şifa, gözü yolda olanlara kavuşma nasip eyle. Bu satırları okuyanı da rahmetinle sar.",
-   "vakit": "aksam"
+   "vakit": "aksam",
+   "konu": "Uykusu Kaçanlar İçin Dua"
   },
   {
    "tur": "ozgun",
    "metin": "Bu akşam evine dönen herkese: Rabbim yuvanı huzurla doldursun, sofranızı bereketli, sohbetinizi tatlı, gecenizi sakin eylesin.",
-   "vakit": "aksam"
+   "vakit": "aksam",
+   "konu": "Akşam Yuva Duası",
+   "tema": "aile"
   },
   {
    "tur": "ozgun",
    "metin": "Rabbim bu gece kurduğun hayırlı hayalleri yarın gerçeğe, ettiğin sessiz duaları yakında müjdeye çevirsin.",
-   "vakit": "aksam"
+   "vakit": "aksam",
+   "konu": "Hayallerin Gerçekleşmesi İçin"
   },
   {
    "tur": "ozgun",
    "metin": "Hayırlı akşamlar kardeşim. Allah bu gece anne babana sağlık, evlatlarına hidayet, eşine huzur, sana da gönül genişliği versin.",
-   "vakit": "aksam"
+   "vakit": "aksam",
+   "konu": "Aile İçin Gece Duası",
+   "tema": "aile"
   },
   {
    "tur": "ozgun",
    "metin": "Allah'ım, bu gece yetimlerin başını okşayacak birini gönder, garibin gönlünü hoş et, mazlumun duasını kabul eyle.",
-   "vakit": "aksam"
+   "vakit": "aksam",
+   "konu": "Yetim ve Mazlumlar İçin Dua"
   },
   {
    "tur": "ozgun",
    "metin": "Günün yorgunluğu sende kalmasın. Rabbim bu gece bedenine dinçlik, ruhuna dinginlik, kalbine kanaat versin.",
-   "vakit": "aksam"
+   "vakit": "aksam",
+   "konu": "Dinginlik Duası"
   },
   {
    "tur": "ozgun",
    "metin": "Bu satırları okuyan kardeşim; bu gece kimin için üzülüyorsan Rabbim onun derdini de senin derdini de bir anda gidersin.",
-   "vakit": "aksam"
+   "vakit": "aksam",
+   "konu": "Sevdiğinin Derdi İçin Dua",
+   "tema": "dert"
   },
   {
    "tur": "ozgun",
    "metin": "Hayırlı geceler. Rabbim bizi yatağa günahlarımızla değil, af ve mağfiretinle yatıran kullarından eylesin.",
-   "vakit": "aksam"
+   "vakit": "aksam",
+   "konu": "Af ve Mağfiret Duası"
   },
   {
    "tur": "ozgun",
    "metin": "Allah'ım, bu gece hasta yatağında yatanlara, yoğun bakımda nefes bekleyenlere, ameliyat sırası gelenlere şifa ve kolaylık ihsan eyle.",
-   "vakit": "aksam"
+   "vakit": "aksam",
+   "konu": "Yoğun Bakımdakiler İçin Şifa",
+   "tema": "hasta"
   },
   {
    "tur": "ozgun",
    "metin": "Akşamın sükûnetinde bu dua sana: Rabbim kalbini kırık bırakmasın, gözünü yaşlı koymasın, seni sevdiklerinden ayırmasın.",
-   "vakit": "aksam"
+   "vakit": "aksam",
+   "konu": "Kırık Kalpler İçin Dua",
+   "tema": "dert"
   },
   {
    "tur": "ozgun",
    "metin": "Hayırlı akşamlar. Rabbim bugün emeğinin karşılığını versin, alın terini bereketlendirsin, yarınını bugününden hayırlı kılsın.",
-   "vakit": "aksam"
+   "vakit": "aksam",
+   "konu": "Alın Teri Duası"
   },
   {
    "tur": "ozgun",
    "metin": "Bu gece gökyüzüne bakıp dua eden herkese selam olsun. Rabbim bu satırları okuyanın da duasını göğe yükseltsin, kabul eylesin.",
-   "vakit": "aksam"
+   "vakit": "aksam",
+   "konu": "Gece Duası"
   },
   {
    "tur": "ozgun",
    "metin": "Allah'ım, bu gece borcu olanın gönlünü rahatlat, kirası olanın yükünü hafiflet, rızık bekleyenin kapısını aç.",
-   "vakit": "aksam"
+   "vakit": "aksam",
+   "konu": "Borcu ve Kirası Olanlar İçin",
+   "tema": "borç"
   },
   {
    "tur": "ozgun",
    "metin": "Hayırlı geceler kardeşim. Rabbim rüyalarını güzel, uykunu derin, uyanışını ferah eylesin.",
-   "vakit": "aksam"
+   "vakit": "aksam",
+   "konu": "Huzurlu Uyku Duası"
   },
   {
    "tur": "ozgun",
    "metin": "Bu akşam aklına gelen herkese bir dua bırak. Rabbim onların da, bu satırları okuyan senin de yüzünü güldürsün.",
-   "vakit": "aksam"
+   "vakit": "aksam",
+   "konu": "Sevdiklerin İçin Dua"
   },
   {
    "tur": "ozgun",
    "metin": "Allah'ım, bu gecenin karanlığını gönüllerimizde nura, sessizliğini kalplerimizde huzura çevir.",
-   "vakit": "aksam"
+   "vakit": "aksam",
+   "konu": "Gece Nuru Duası"
   },
   {
    "tur": "ozgun",
    "metin": "Gün sona ererken Rabbim seni hayırla anılanlardan, dualarda hatırlananlardan, rahmetle kuşatılanlardan eylesin. Hayırlı geceler.",
-   "vakit": "aksam"
+   "vakit": "aksam",
+   "konu": "Rahmetle Kuşatılmak İçin"
   },
   {
    "metin": "Allah'ım; içimizdeki ağırlığı hafiflet, nefesimizi daraltan her şeyi katından gelen bir ferahlıkla çöz.",
@@ -839,7 +920,8 @@
   },
   {
    "metin": "Rabbim; dilimize kırıcı söz, kalbimize kin ve haset düşürme; bizi iyilikte sabit kıl.",
-   "tur": "ozgun"
+   "tur": "ozgun",
+   "konu": "Dil ve Kalp Temizliği Duası"
   },
   {
    "metin": "Allah'ım; şifa bekleyen her hastaya katından tam bir şifa, acı çeken her bedene hafiflik ver.",
@@ -853,7 +935,8 @@
   },
   {
    "metin": "Allah'ım; yollarda olanları kazalardan, evlerde olanları belalardan, kalpleri kederden koru.",
-   "tur": "ozgun"
+   "tur": "ozgun",
+   "konu": "Yolcular ve Evler İçin Koruma Duası"
   },
   {
    "metin": "Rabbim; ruhumuza sükûnet, bedenimize dinçlik, ömrümüze sağlık ve afiyet lütfeyle.",
@@ -862,11 +945,14 @@
   },
   {
    "metin": "Allah'ım; farkında olmadan kırdığımız kalpleri onarmayı, kırıldığımız yerlerden şifalanmayı nasip et.",
-   "tur": "ozgun"
+   "tur": "ozgun",
+   "konu": "Kırık Kalplerin Onarılması İçin",
+   "tema": "dert"
   },
   {
    "metin": "Rabbim; dilimizi yalandan ve incitmekten, gözümüzü haramdan, kulağımızı boş sözden koru.",
-   "tur": "ozgun"
+   "tur": "ozgun",
+   "konu": "Dilin ve Gözün Korunması Duası"
   },
   {
    "metin": "Allah'ım; gönlümüzden geçen ve dilimize dökemediğimiz tüm güzel dilekleri, sevdiklerimiz için de hayra çevir.",
@@ -891,22 +977,26 @@
   {
    "metin": "Allah'ım; yeni güne bismillah diyerek başlıyoruz; günümüzü hayırla aç, hayırla kapat.",
    "vakit": "sabah",
-   "tur": "ozgun"
+   "tur": "ozgun",
+   "konu": "Bismillah ile Güne Başlama Duası"
   },
   {
    "metin": "Rabbim; bu akşam evlerimize huzur, yastıklarımıza rahatlık, yarınlarımıza güzel haberler getir.",
    "vakit": "aksam",
-   "tur": "ozgun"
+   "tur": "ozgun",
+   "konu": "Akşam Huzur Duası"
   },
   {
    "metin": "Allah'ım; gün içinde karşımıza çıkacak hayırlı insanlarla yolumuzu kesiştir, kötü niyetlilerden uzak tut.",
    "vakit": "sabah",
-   "tur": "ozgun"
+   "tur": "ozgun",
+   "konu": "Hayırlı İnsanlarla Karşılaşma Duası"
   },
   {
    "metin": "Rabbim; bugünü elimizden gelen en güzel iyiliklerle doldurmayı, sonunda şükürle başımızı yastığa koymayı nasip et.",
    "vakit": "aksam",
-   "tur": "ozgun"
+   "tur": "ozgun",
+   "konu": "Şükürle Biten Gün Duası"
   },
   {
    "metin": "Allah'ım; zihnimizdeki karmaşayı gider, bildiğimizi unutturma, en doğru cevaba ve en hayırlı karara ulaştır.",
@@ -972,27 +1062,32 @@
    "tur": "hadis",
    "metin": "Allah'ım! Senin izninle sabaha erdik, senin izninle akşama ereriz. Senin izninle yaşar, senin izninle ölürüz. Dönüş ancak sanadır.",
    "kaynak": "Tirmizî, Daavât; Ebû Dâvûd",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "Sabah Zikri"
   },
   {
    "tur": "hadis",
    "metin": "Allah'ım! Bedenime afiyet ver, kulağıma afiyet ver, gözüme afiyet ver.",
    "kaynak": "Ebû Dâvûd, Edeb",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "Afiyet Duası"
   },
   {
    "tur": "hadis",
    "metin": "Allah'ım! Bugünün hayrını, fethini, yardımını, nurunu, bereketini ve hidayetini senden isterim.",
    "kaynak": "Ebû Dâvûd, Edeb",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "Bugünün Hayrı İçin Dua"
   },
   {
    "metin": "Ya Rabbim! Sana açılan ellerimi boş çevirme. Hayallerimi rızanla, dualarımı nasibimle, ömrümü ise Senin yolunda harcanan güzel amellerle buluştur.",
-   "tur": "ozgun"
+   "tur": "ozgun",
+   "konu": "Boş Çevrilmeyen Eller İçin"
   },
   {
    "metin": "Allah'ım; gönlümüze huzur, ömrümüze bereket, dualarımıza kabul, yolumuza hayır nasip eyle.",
-   "tur": "ozgun"
+   "tur": "ozgun",
+   "konu": "Huzur, Bereket ve Kabul Duası"
   },
   {
    "metin": "Yâ Şâfi! Şifayı bekleyen tüm hastalara acil şifalar ihsan eyle. Bedenimize kuvvet, kalbimize huzur, ruhumuza ferahlık ver. Hastalıklarımızı günahlarımıza kefaret, sıkıntılarımızı rahmetine vesile kıl. Bizi dertlerimizle değil, lütfun ve şifanla sevindir.",
@@ -1008,7 +1103,8 @@
   {
    "metin": "Allah'ım! Bugünü dünden, yarını bugünden hayırlı eyle. Şer bildiğine uzak, hayırlı bildiğine yakın eyle.",
    "tur": "ozgun",
-   "vakit": "sabah"
+   "vakit": "sabah",
+   "konu": "Bugünü Dünden Hayırlı Eyle"
   }
  ],
  "kuran": [
@@ -1016,154 +1112,184 @@
    "tur": "ayet",
    "tema": "hasta",
    "metin": "Başıma bir bela geldi. Sen merhametlilerin merhametlisisin.",
-   "kaynak": "Enbiyâ Suresi, 83. ayet (Hz. Eyyûb'un duası) · Diyanet meali"
+   "kaynak": "Enbiyâ Suresi, 83. ayet (Hz. Eyyûb'un duası) · Diyanet meali",
+   "konu": "Hz. Eyyûb'un Şifa Duası"
   },
   {
    "tur": "ayet",
    "metin": "Rabbim! Doğrusu bana indireceğin hayra muhtacım.",
-   "kaynak": "Kasas Suresi, 24. ayet · Diyanet meali"
+   "kaynak": "Kasas Suresi, 24. ayet · Diyanet meali",
+   "konu": "Hz. Musa'nın Rızık Duası"
   },
   {
    "tur": "ayet",
    "metin": "Şüphesiz rızıklandıran da, güç ve kuvvet sahibi olan da Allah'tır.",
    "kaynak": "Zâriyât Suresi, 58. ayet · Diyanet meali",
-   "tema": "borç"
+   "tema": "borç",
+   "konu": "Rızık Ayeti"
   },
   {
    "tur": "ayet",
    "metin": "Rabbim! Bana hikmet ver ve beni iyiler arasına kat.",
-   "kaynak": "Şuarâ Suresi, 83. ayet · Diyanet meali"
+   "kaynak": "Şuarâ Suresi, 83. ayet · Diyanet meali",
+   "konu": "Hikmet Duası"
   },
   {
    "tur": "ayet",
    "metin": "Rabbimiz! Bize dünyada iyiyi, ahirette de iyiyi ver, bizi ateşin azabından koru.",
-   "kaynak": "Bakara Suresi, 201. ayet · Diyanet meali"
+   "kaynak": "Bakara Suresi, 201. ayet · Diyanet meali",
+   "konu": "Rabbena Âtina Duası"
   },
   {
    "tur": "ayet",
    "metin": "Rabbim! Göğsümü genişlet, işimi kolaylaştır, dilimin düğümünü çöz ki sözümü iyi anlasınlar.",
-   "kaynak": "Tâhâ Suresi, 25-28. ayetler · Diyanet meali"
+   "kaynak": "Tâhâ Suresi, 25-28. ayetler · Diyanet meali",
+   "konu": "İşleri Kolaylaştırma Duası (Hz. Musa)"
   },
   {
    "tur": "ayet",
    "metin": "Allah, kendisine karşı gelmekten sakınan kimseye kurtuluş yolu sağlar, ona beklemediği yerden rızık verir. Allah'a güvenen kimseye O yeter.",
    "kaynak": "Talâk Suresi, 2-3. ayetler · Diyanet meali",
-   "tema": "borç"
+   "tema": "borç",
+   "konu": "Tevekkül Ayeti"
   },
   {
    "tur": "ayet",
    "metin": "Rabbimiz! Bizi doğru yola erdirdikten sonra kalblerimizi eğriltme, katından bize rahmet bağışla; şüphesiz Sen sonsuz bağışta bulunansın.",
-   "kaynak": "Âl-i İmrân Suresi, 8. ayet · Diyanet meali"
+   "kaynak": "Âl-i İmrân Suresi, 8. ayet · Diyanet meali",
+   "konu": "Kalbin Sebatı İçin Dua"
   },
   {
    "tur": "ayet",
    "metin": "Rabbim! Küçükken beni yetiştirdikleri gibi sen de onlara merhamet et!",
-   "kaynak": "İsrâ Suresi, 24. ayet · Diyanet meali"
+   "kaynak": "İsrâ Suresi, 24. ayet · Diyanet meali",
+   "konu": "Anne Baba İçin Dua"
   },
   {
    "tur": "ayet",
    "metin": "Rabbimiz! Bize eşlerimizden ve çocuklarımızdan gözümüzün aydınlığı olacak insanlar ihsan et ve bizi, Allah'a karşı gelmekten sakınanlara önder yap.",
-   "kaynak": "Furkân Suresi, 74. ayet · Diyanet meali"
+   "kaynak": "Furkân Suresi, 74. ayet · Diyanet meali",
+   "konu": "Eş ve Evlat Duası"
   },
   {
    "tur": "ayet",
    "metin": "Allah'ım! Senden başka ilah yoktur, Sen münezzehsin, doğrusu ben haksızlık edenlerdenim.",
-   "kaynak": "Enbiyâ Suresi, 87. ayet · Diyanet meali"
+   "kaynak": "Enbiyâ Suresi, 87. ayet · Diyanet meali",
+   "konu": "Hz. Yunus'un Duası"
   },
   {
    "tur": "ayet",
    "metin": "Rabbimiz! Katından bize rahmet ver ve işimizde doğruyu göster, bizi başarılı kıl.",
-   "kaynak": "Kehf Suresi, 10. ayet · Diyanet meali"
+   "kaynak": "Kehf Suresi, 10. ayet · Diyanet meali",
+   "konu": "Ashâb-ı Kehf'in Duası"
   },
   {
    "tur": "ayet",
    "metin": "Rabbimiz! Bizi ve bizden önce inanmış olan kardeşlerimizi bağışla; kalbimizde müminlere karşı kin bırakma; Rabbimiz! Şüphesiz Sen şefkatlisin, merhametlisin.",
-   "kaynak": "Haşr Suresi, 10. ayet · Diyanet meali"
+   "kaynak": "Haşr Suresi, 10. ayet · Diyanet meali",
+   "konu": "Kalpteki Kinden Arınma Duası"
   },
   {
    "tur": "ayet",
    "metin": "Rabbim! Beni ve çocuklarımı namaz kılanlardan eyle. Rabbimiz! Duamı kabul buyur.",
-   "kaynak": "İbrâhîm Suresi, 40. ayet · Diyanet meali"
+   "kaynak": "İbrâhîm Suresi, 40. ayet · Diyanet meali",
+   "konu": "Evlat ve Namaz Duası"
   },
   {
    "tur": "ayet",
    "metin": "Rabbimiz! Bize gücümüzün yetmeyeceği şeyi taşıtma, bizi affet, bizi bağışla, bize acı.",
-   "kaynak": "Bakara Suresi, 286. ayet · Diyanet meali"
+   "kaynak": "Bakara Suresi, 286. ayet · Diyanet meali",
+   "konu": "Güç Yetmeyen Yük İçin Dua"
   },
   {
    "tur": "ayet",
    "metin": "Rabbim! Bağışla, merhamet et, Sen merhamet edenlerin en hayırlısısın.",
-   "kaynak": "Mü'minûn Suresi, 118. ayet · Diyanet meali"
+   "kaynak": "Mü'minûn Suresi, 118. ayet · Diyanet meali",
+   "konu": "Merhamet Duası"
   },
   {
    "tur": "ayet",
    "metin": "Rabbimiz! Kendimize yazık ettik; bizi bağışlamaz ve bize merhamet etmezsen biz kaybedenlerden oluruz.",
-   "kaynak": "A'râf Suresi, 23. ayet · Diyanet meali"
+   "kaynak": "A'râf Suresi, 23. ayet · Diyanet meali",
+   "konu": "Hz. Âdem'in Tövbe Duası"
   },
   {
    "tur": "ayet",
    "metin": "Rabbimiz! Işığımızı tamamla, bizi bağışla, doğrusu Sen her şeye Kadir'sin.",
-   "kaynak": "Tahrîm Suresi, 8. ayet · Diyanet meali"
+   "kaynak": "Tahrîm Suresi, 8. ayet · Diyanet meali",
+   "konu": "Nur Duası"
   },
   {
    "tur": "ayet",
    "metin": "Rabbimiz! Günahlarımızı bize bağışla, kötülüklerimizi ört, canımızı iyilerle beraber al.",
-   "kaynak": "Âl-i İmrân Suresi, 193. ayet · Diyanet meali"
+   "kaynak": "Âl-i İmrân Suresi, 193. ayet · Diyanet meali",
+   "konu": "Günahların Örtülmesi İçin Dua"
   },
   {
    "tur": "ayet",
    "metin": "Rabbimiz! Yaptığımızı kabul buyur. Şüphesiz ki, Sen hem işitir hem bilirsin.",
-   "kaynak": "Bakara Suresi, 127. ayet · Diyanet meali"
+   "kaynak": "Bakara Suresi, 127. ayet · Diyanet meali",
+   "konu": "Kabul Duası"
   },
   {
    "tur": "ayet",
    "metin": "Rabbimiz! Bize sabır ver, sebatımızı artır.",
-   "kaynak": "Bakara Suresi, 250. ayet · Diyanet meali"
+   "kaynak": "Bakara Suresi, 250. ayet · Diyanet meali",
+   "konu": "Sabır Duası"
   },
   {
    "tur": "ayet",
    "metin": "Rabbimiz! Biz şüphesiz inandık, bunun için günahlarımızı bize bağışla ve bizi ateşin azabından koru.",
-   "kaynak": "Âl-i İmrân Suresi, 16. ayet · Diyanet meali"
+   "kaynak": "Âl-i İmrân Suresi, 16. ayet · Diyanet meali",
+   "konu": "Bağışlanma Duası"
   },
   {
    "tur": "ayet",
    "metin": "Rabbim! Bana ve ana babama verdiğin nimete şükürde, hoşnut olacağın işi yapmakta beni muvaffak kıl. Rahmetinle, beni iyi kullarının arasına koy.",
-   "kaynak": "Neml Suresi, 19. ayet · Diyanet meali"
+   "kaynak": "Neml Suresi, 19. ayet · Diyanet meali",
+   "konu": "Hz. Süleyman'ın Şükür Duası"
   },
   {
    "tur": "ayet",
    "metin": "Rabbimiz! Hesap görülecek günde, beni, anamı babamı ve inananları bağışla.",
-   "kaynak": "İbrâhîm Suresi, 41. ayet · Diyanet meali"
+   "kaynak": "İbrâhîm Suresi, 41. ayet · Diyanet meali",
+   "konu": "Anne Baba İçin Bağışlanma Duası"
   },
   {
    "tur": "ayet",
    "metin": "Rabbim! Beni tek başıma bırakma, Sen varislerin en hayırlısısın.",
-   "kaynak": "Enbiyâ Suresi, 89. ayet · Diyanet meali"
+   "kaynak": "Enbiyâ Suresi, 89. ayet · Diyanet meali",
+   "konu": "Hz. Zekeriyya'nın Evlat Duası"
   },
   {
    "tur": "ayet",
    "metin": "Rabbim! İlmimi artır.",
-   "kaynak": "Tâhâ Suresi, 114. ayet · Diyanet meali"
+   "kaynak": "Tâhâ Suresi, 114. ayet · Diyanet meali",
+   "konu": "İlim Duası"
   },
   {
    "tur": "ayet",
    "metin": "Rabbimiz! Sana güvendik, Sana yöneldik; dönüş Sanadır.",
-   "kaynak": "Mümtehine Suresi, 4. ayet · Diyanet meali"
+   "kaynak": "Mümtehine Suresi, 4. ayet · Diyanet meali",
+   "konu": "Tevekkül Duası"
   },
   {
    "tur": "ayet",
    "metin": "Rabbim! Şeytanların kışkırtmalarından Sana sığınırım. Rabbim! Yanımda bulunmalarından da Sana sığınırım.",
-   "kaynak": "Mü'minûn Suresi, 97-98. ayetler · Diyanet meali"
+   "kaynak": "Mü'minûn Suresi, 97-98. ayetler · Diyanet meali",
+   "konu": "Şeytandan Korunma Duası"
   },
   {
    "tur": "ayet",
    "metin": "Ey göklerin ve yerin yaradanı! Dünya ve ahirette işlerimi yoluna koyan sensin; benim canımı müslüman olarak al ve beni iyilere kat.",
-   "kaynak": "Yûsuf Suresi, 101. ayet · Diyanet meali"
+   "kaynak": "Yûsuf Suresi, 101. ayet · Diyanet meali",
+   "konu": "Hz. Yusuf'un Duası"
   },
   {
    "tur": "ayet",
    "metin": "Rabbimiz! Bizden cehennem azabını uzaklaştır.",
-   "kaynak": "Furkân Suresi, 65. ayet · Diyanet meali"
+   "kaynak": "Furkân Suresi, 65. ayet · Diyanet meali",
+   "konu": "Cehennemden Korunma Duası"
   },
   {
    "metin": "Allah bize yeter. O ne güzel vekildir.",
@@ -1178,63 +1304,74 @@
    "tur": "hadis",
    "metin": "Akşama erdik, mülk de Allah'a ait olarak akşama erdi. Hamd Allah'a mahsustur. Allah'tan başka ilah yoktur, O tektir, ortağı yoktur.",
    "kaynak": "Müslim, Zikir",
-   "vakit": "aksam"
+   "vakit": "aksam",
+   "konu": "Akşam Zikri"
   },
   {
    "tur": "hadis",
    "tema": "borç",
    "metin": "Allah'ım! Helâlinle beni haramdan koruyup kifayetlendir; lütfunla beni Senden başkasına muhtaç bırakma.",
-   "kaynak": "Tirmizî, Daavât"
+   "kaynak": "Tirmizî, Daavât",
+   "konu": "Borçlu İçin Dua"
   },
   {
    "tur": "hadis",
    "tema": "hasta",
    "metin": "Ey insanların Rabbi! Sıkıntıyı gider, şifa ver. Şifa veren ancak sensin. Senin şifandan başka şifa yoktur. Öyle bir şifa ver ki hiçbir hastalık bırakmasın.",
-   "kaynak": "Buhârî, Merdâ; Müslim, Selâm"
+   "kaynak": "Buhârî, Merdâ; Müslim, Selâm",
+   "konu": "Hasta İçin Şifa Duası"
   },
   {
    "tur": "hadis",
    "metin": "De ki: Ey mülkün sahibi olan Allah'ım! Dilediğine mülk verirsin, dilediğinden mülkü çeker alırsın; dilediğini yüceltir, dilediğini alçaltırsın. *Hayır yalnız senin elindedir.* Sen dünyanın ve ahiretin Rahmân'ısın. Bana, senden başkasının rahmetine ihtiyaç duymayacağım şekilde *rahmet et.*",
    "kaynak": "Taberânî, el-Mu'cemü's-Sağîr, 558",
-   "tema": "borç"
+   "tema": "borç",
+   "konu": "Borçtan Kurtulma Duası"
   },
   {
    "tur": "hadis",
    "tema": "dert",
    "metin": "Azîm ve Halîm olan Allah'tan başka ilah yoktur. Büyük Arş'ın Rabbi olan Allah'tan başka ilah yoktur. Göklerin, yerin ve kerim Arş'ın Rabbi olan Allah'tan başka ilah yoktur.",
-   "kaynak": "Buhârî, Daavât; Müslim, Zikir (sıkıntı anında okunan dua)"
+   "kaynak": "Buhârî, Daavât; Müslim, Zikir (sıkıntı anında okunan dua)",
+   "konu": "Sıkıntı Anında Okunan Dua"
   },
   {
    "tur": "hadis",
    "metin": "Allah'ım! Hamd ancak sanadır, senden başka ilah yoktur. Sen Mennân'sın, gökleri ve yeri eşsiz şekilde yaratansın. Ey Celâl ve İkrâm sahibi, ey Hayy ve Kayyûm! İşte bu isimlerin hürmetine senden istiyorum.",
-   "kaynak": "Ebû Dâvûd, Vitr; Nesâî, Sehv"
+   "kaynak": "Ebû Dâvûd, Vitr; Nesâî, Sehv",
+   "konu": "İsm-i Âzam Duası"
   },
   {
    "tur": "hadis",
    "metin": "Allah'ım! Senin adınla ölür, senin adınla dirilirim.",
    "kaynak": "Buhârî, Daavât",
-   "vakit": "aksam"
+   "vakit": "aksam",
+   "konu": "Uyumadan Önce Okunan Dua"
   },
   {
    "tur": "hadis",
    "metin": "Allah'ım! Senden faydalı ilim, helal rızık ve kabul edilmiş amel isterim.",
    "kaynak": "İbn Mâce, İkâme",
-   "okunus": "Allahümme innî es'elüke ilmen nâfian ve rızkan tayyiben ve amelen mütekabbelen."
+   "okunus": "Allahümme innî es'elüke ilmen nâfian ve rızkan tayyiben ve amelen mütekabbelen.",
+   "konu": "İlim, Rızık ve Kabul Duası"
   },
   {
    "tur": "dua",
    "metin": "Ey Allah'ım! Ancak senin nurunla hidayet buldum, ancak senin lütfunla ihtiyaçlarımdan kurtuldum, ancak senin nimetinle sabahladım ve akşama çıktım. İşte günahlarım senin huzurunda. Senden mağfiret diler, sana tevbe ederim. Yâ Hannân! Yâ Mennân! Beni bu sıkıntıdan kurtar.",
-   "tema": "dert"
+   "tema": "dert",
+   "konu": "Hidayet Duası"
   },
   {
    "tur": "dua",
    "metin": "Allah'ım! Sen dertleri ferahlatan, kederleri gideren, darda kalanların duasına icabet eden, dünya ve ahiretin Rahmân ve Rahîm'isin. Bana ancak sen merhamet edersin; bana öyle bir rahmet et ki, senden başkasının merhametine ihtiyaç bırakmasın.",
-   "tema": "dert"
+   "tema": "dert",
+   "konu": "Dertlere Derman Duası"
   },
   {
    "tur": "hadis",
    "metin": "Allah'ım! Senden hidayet, takva, iffet ve gönül zenginliği isterim.",
-   "kaynak": "Müslim, Zikir"
+   "kaynak": "Müslim, Zikir",
+   "konu": "Hidayet ve Takva Duası"
   },
   {
    "tur": "hadis",
@@ -1247,7 +1384,8 @@
    "tur": "hadis",
    "metin": "Allah'ım! Kullarını dirilttiğin gün beni azabından koru.",
    "kaynak": "Tirmizî, Daavât; Ebû Dâvûd",
-   "vakit": "aksam"
+   "vakit": "aksam",
+   "konu": "Uyumadan Önce Okunan Dua"
   },
   {
    "tur": "hadis",
@@ -1258,53 +1396,63 @@
   },
   {
    "tur": "dua",
-   "metin": "Allah'ım! Senden lütfunu ve rahmetini diliyorum. Çünkü bunlara yalnızca sen sahipsin."
+   "metin": "Allah'ım! Senden lütfunu ve rahmetini diliyorum. Çünkü bunlara yalnızca sen sahipsin.",
+   "konu": "Rahmet Duası"
   },
   {
    "tur": "hadis",
    "metin": "Allah'ım! Bana öğrettiklerinle beni faydalandır, bana fayda verecek olanı öğret ve ilmimi artır.",
-   "kaynak": "Tirmizî, Daavât; İbn Mâce"
+   "kaynak": "Tirmizî, Daavât; İbn Mâce",
+   "konu": "Faydalı İlim Duası"
   },
   {
    "tur": "dua",
    "metin": "Allah'ım, kendi gücümden ve kuvvetimden sıyrılıp senin gücüne ve kuvvetine sığınıyorum. Allah'ım, bana yardım et, aleyhime yardım etme. Beni muzaffer kıl, aleyhime zafer verme. Beni hidayete erdir ve hidayeti bana kolaylaştır.",
-   "tema": "dert"
+   "tema": "dert",
+   "konu": "Yardım Duası"
   },
   {
    "tur": "hadis",
    "metin": "Ey kalpleri evirip çeviren Allah'ım! Kalbimi dinin üzere sabit kıl.",
-   "kaynak": "Tirmizî, Daavât"
+   "kaynak": "Tirmizî, Daavât",
+   "konu": "Kalbin Sebatı İçin Dua"
   },
   {
    "tur": "hadis",
    "metin": "Allah'ım! Bilerek ya da bilmeyerek işlediğim günahlarımı, gizli ve açık hatalarımı bağışla.",
    "kaynak": "Buhârî, Daavât; Müslim, Zikir",
-   "vakit": "aksam"
+   "vakit": "aksam",
+   "konu": "Bağışlanma Duası"
   },
   {
    "tur": "hadis",
    "metin": "Allah'ım! Beni bağışla, bana merhamet et, beni doğru yola ilet, bana afiyet ver ve beni rızıklandır.",
-   "kaynak": "Müslim, Zikir"
+   "kaynak": "Müslim, Zikir",
+   "konu": "Merhamet ve Rızık Duası"
   },
   {
    "tur": "hadis",
    "metin": "Allah'ım! Seni zikretmek, sana şükretmek ve sana güzelce ibadet etmek için bana yardım et.",
-   "kaynak": "Ebû Dâvûd, Vitr; Nesâî"
+   "kaynak": "Ebû Dâvûd, Vitr; Nesâî",
+   "konu": "Şükür ve İbadet Duası"
   },
   {
    "tur": "hadis",
    "metin": "Allah'ım! Nimetinin yok olmasından, verdiğin afiyetin değişmesinden, ansızın gelecek cezandan ve her türlü gazabından sana sığınırım.",
-   "kaynak": "Müslim, Rikâk"
+   "kaynak": "Müslim, Rikâk",
+   "konu": "Nimetin Korunması İçin Dua"
   },
   {
    "tur": "hadis",
    "metin": "Allah'ım! Yaratılışımı güzel yaptığın gibi ahlakımı da güzelleştir.",
-   "kaynak": "Ahmed b. Hanbel, Müsned"
+   "kaynak": "Ahmed b. Hanbel, Müsned",
+   "konu": "Güzel Ahlak Duası"
   },
   {
    "tur": "hadis",
    "metin": "Ey Hayy ve Kayyûm olan Allah'ım! Rahmetinle yardım dilerim. Bütün işlerimi düzelt, beni göz açıp kapayıncaya kadar bile nefsimle baş başa bırakma.",
-   "kaynak": "Nesâî, es-Sünenü'l-Kübrâ; Hâkim, Müstedrek"
+   "kaynak": "Nesâî, es-Sünenü'l-Kübrâ; Hâkim, Müstedrek",
+   "konu": "Yâ Hayyu Yâ Kayyûm Duası"
   },
   {
    "tur": "hadis",
@@ -1317,7 +1465,8 @@
    "metin": "Allah'ım! Rahmetini umarım. Göz açıp kapayıncaya kadar bile olsa beni nefsime bırakma. Bütün işlerimi ıslah et. Senden başka hakkıyla ibadete layık hiçbir ilah yoktur.",
    "kaynak": "Ebû Dâvûd, Edeb, 5090",
    "tur": "hadis",
-   "okunus": "Allâhümme rahmeteke ercû, felâ tekilnî ilâ nefsî tarfete aynin, ve aslih lî şe'nî küllehû, lâ ilâhe illâ ente."
+   "okunus": "Allâhümme rahmeteke ercû, felâ tekilnî ilâ nefsî tarfete aynin, ve aslih lî şe'nî küllehû, lâ ilâhe illâ ente.",
+   "konu": "Beni Nefsime Bırakma Duası"
   },
   {
    "metin": "Allah'ım! Sen benim Rabbimsin. Senden başka ilah yoktur. Beni sen yarattın, ben senin kulunum. Gücüm yettiğince sana verdiğim söz üzerindeyim. Yaptıklarımın şerrinden sana sığınırım. Bana verdiğin nimetleri kabul ediyor, günahımı itiraf ediyorum. Beni bağışla; çünkü günahları ancak sen bağışlarsın.",

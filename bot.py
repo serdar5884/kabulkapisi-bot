@@ -111,32 +111,38 @@ def _sec(gun, vakit):
     if havuz_adi == "kuran":
         vtag, baslik = ["#kuran", "#ayet"], "Kur'an'dan Bir Dua"
     elif havuz_adi == "hadis":
-        vtag = (["#hadis"] if dua.get("tur") == "hadis" else ["#duaistegi"]) + (["#akşamduası"] if vakit == "aksam" else [])
+        vtag = (["#hadis"] if dua.get("tur") == "hadis" else ["#duaisteği"]) + (["#akşamduası"] if vakit == "aksam" else [])
         baslik = "Hadislerden Bir Dua" if dua.get("tur") == "hadis" else VAKIT_BASLIK["sabah"]
     tur = havuz_adi if havuz_adi in ("kuran", "hadis") else vakit
     return dua, tur, baslik, tema_tag + vtag + ["#amin"]
 
 
-def caption(dua, tur, baslik, tags):
+GONDER = {"borç": "borcu olan", "hasta": "hastası olan", "dert": "içi daralan", "çocuk": "evladı olan",
+          "aile": "ailesini seven"}
+DOLGU_TAG = ["#dua", "#amin", "#kabulkapisi", "#dualar", "#duaisteği"]
+
+
+def caption(dua, tur, baslik, tags, konu=None):
     acilis = {"sabah": "🌅 Hayırlı sabahlar, bu satırları okuyan sana bir dua var",
-              "ikindi": "🤲 Bu satırları okuyan sana bir dua var",
+              "ikindi": "Bu satırları okuyan sana bir dua var",
               "ogle": "📖 Kur'an-ı Kerim'den bir dua, bu satırları okuyan herkes için",
               "aksam": "🌙 Hayırlı akşamlar, bu satırları okuyan sana bir dua var",
               "kuran": "📖 Kur'an-ı Kerim'den bir dua, bu satırları okuyan herkes için",
-              "hadis": "🤲 Peygamber Efendimizin dualarından biri, bu satırları okuyan sana",
+              "hadis": "Peygamber Efendimizin dualarından biri, bu satırları okuyan sana",
               "cuma": "🕌 Hayırlı Cumalar",
               "kandil": f"✨ {baslik} mübarek olsun"}[tur]
     if tur == "hadis" and dua.get("tur") != "hadis":
-        acilis = "🤲 Bu satırları okuyan sana bir dua var"
-    parts = [acilis]
+        acilis = "Bu satırları okuyan sana bir dua var"
+    parts = [f"🤲 {konu}\n{acilis}" if konu else acilis]
     if dua.get("okunus"):
         parts.append(f"🕋 Okunuşu: {dua['okunus']}")
     parts.append(("Anlamı: " if dua.get("okunus") else "") + dua["metin"])
     if dua.get("kaynak"):
         parts.append(f"📖 {dua['kaynak']}")
-    parts.append("Âmin yazmayı unutma 🤲\nDuaya ihtiyacı olan birini etiketle 👇\nSevdiklerine gönder, bu dua onlara da ulaşsın 💛")
+    kime = GONDER.get(dua.get("tema"), "sevdiğin")
+    parts.append(f"Âmin yaz ve bu duayı {kime} birine gönder 💌")
     alltags = []
-    for t in tags + insta.BASE_TAGS:
+    for t in tags + insta.BASE_TAGS + DOLGU_TAG:
         if t.lower() not in [a.lower() for a in alltags]:
             alltags.append(t)
     parts.append(" ".join(alltags[:5]))   # Instagram sınırı: en fazla 5 etiket
@@ -420,7 +426,7 @@ def main():
                 "çocuk": "#evlatduası", "aile": "#aileduası"}.get(tema, "#dua")
         cap = (f"🤲 {konu}\n\n{dua['metin']}\n\n📖 {dua.get('kaynak', '')}\n\n"
                "Âmin yazmayı unutma 🤲\nDuaya ihtiyacı olan birini etiketle 👇\n\n"
-               f"#kabulkapisi #dua {tags} #amin #duaistegi")
+               f"#kabulkapisi #dua {tags} #amin #duaisteği")
         print(f"--- dua_reel ---\n{cap}\n---")
         if DRY_RUN:
             print("DRY_RUN=1 -> paylaşılmadı:", mp4); return
@@ -512,7 +518,7 @@ def main():
             except Exception as e:
                 print("[insta] bilgi Reels'i paylaşılamadı (carousel yayında):", e)
         hikaye(yollar[0], None)
-    elif vakit == "ikindi" and gun.weekday() == 6 and os.getenv("DERLEME", "1") == "1":   # Pazar: haftalık derleme
+    elif vakit == "ikindi" and gun.weekday() == 6 and os.getenv("DERLEME", "0") == "1":   # Pazar: haftalık derleme
         yollar, cap = derleme(gun)
         print(f"--- {gun} {vakit} [derleme] ---\n{cap}\n---")
         if DRY_RUN:
@@ -539,7 +545,7 @@ def main():
                                               out.replace(".jpg", ".mp4"), vakit=vakit,
                                               date=datetime(gun.year, gun.month, gun.day),
                                               muzik_bas=[47, 15, 64, 33, 86, 75, 99, 110][(gun.toordinal() + VAKITLER.index(vakit)) % 8])
-                cap = f"🤲 {konu}\n\n" + cap
+                cap = caption(dua, tur, baslik, tags, konu=konu)
             except Exception as e:
                 print("[dua_reel] olmadı, eski hareketli karta dönülüyor:", e)
                 kapak_reel, mp4 = out, None

@@ -1067,12 +1067,6 @@
   },
   {
    "tur": "ayet",
-   "metin": "Üç peygamber, üç dua: Hz. İbrahim ateşe atılırken \"Hasbünallahu ve ni'mel vekîl\" dedi. Hz. Yunus karanlıklar içinde \"Lâ ilâhe illâ ente sübhâneke innî küntü mine'z-zâlimîn\" dedi. Hz. Musa çaresiz kaldığında \"Rabbi innî limâ enzelte ileyye min hayrin fakîr\" dedi.",
-   "kaynak": "Âl-i İmrân 173 · Enbiyâ 87 · Kasas 24",
-   "tema": "dert"
-  },
-  {
-   "tur": "ayet",
    "metin": "Allah'ım! Senden başka ilah yoktur, Sen münezzehsin, doğrusu ben haksızlık edenlerdenim.",
    "kaynak": "Enbiyâ Suresi, 87. ayet · Diyanet meali"
   },
@@ -1212,20 +1206,14 @@
   },
   {
    "tur": "hadis",
-   "metin": "Allah'ım! Üzüntüden ve kederden sana sığınırım. Acizlikten ve tembellikten sana sığınırım, korkaklıktan ve cimrilikten sana sığınırım. Borcun galebe çalmasından ve insanların kahrından sana sığınırım.",
-   "kaynak": "Ebû Dâvûd, Salât 367 (Ebû Ümâme rivayeti)",
-   "tema": "borç"
+   "metin": "Allah'ım! Hamd ancak sanadır, senden başka ilah yoktur. Sen Mennân'sın, gökleri ve yeri eşsiz şekilde yaratansın. Ey Celâl ve İkrâm sahibi, ey Hayy ve Kayyûm! İşte bu isimlerin hürmetine senden istiyorum.",
+   "kaynak": "Ebû Dâvûd, Vitr; Nesâî, Sehv"
   },
   {
    "tur": "hadis",
    "metin": "Allah'ım! Senin adınla ölür, senin adınla dirilirim.",
    "kaynak": "Buhârî, Daavât",
    "vakit": "aksam"
-  },
-  {
-   "tur": "hadis",
-   "metin": "Allah'ım! Hamd ancak sanadır, senden başka ilah yoktur. Sen Mennân'sın, gökleri ve yeri eşsiz şekilde yaratansın. Ey Celâl ve İkrâm sahibi, ey Hayy ve Kayyûm! İşte bu isimlerin hürmetine senden istiyorum.",
-   "kaynak": "Ebû Dâvûd, Vitr; Nesâî, Sehv"
   },
   {
    "tur": "hadis",
@@ -1250,12 +1238,6 @@
   },
   {
    "tur": "hadis",
-   "metin": "Allah'ım! Kullarını dirilttiğin gün beni azabından koru.",
-   "kaynak": "Tirmizî, Daavât; Ebû Dâvûd",
-   "vakit": "aksam"
-  },
-  {
-   "tur": "hadis",
    "metin": "Her türlü şeytandan, zararlı şeylerden ve kem gözlerden Allah'ın eksiksiz kelimelerine sığınırım.",
    "kaynak": "Buhârî, Enbiyâ, 10",
    "okunus": "Eûzü bi-kelimâtillâhi't-tâmmeti min külli şeytânin ve hâmmetin ve min külli aynin lâmmeh.",
@@ -1263,8 +1245,16 @@
   },
   {
    "tur": "hadis",
+   "metin": "Allah'ım! Kullarını dirilttiğin gün beni azabından koru.",
+   "kaynak": "Tirmizî, Daavât; Ebû Dâvûd",
+   "vakit": "aksam"
+  },
+  {
+   "tur": "hadis",
    "metin": "Allah'ım! Kaygıdan ve üzüntüden, acizlikten ve tembellikten, cimrilikten ve korkaklıktan, borcun ağırlığından ve insanların baskısından sana sığınırım.",
-   "kaynak": "Buhârî, Daavât"
+   "kaynak": "Buhârî, Daavât, 6369",
+   "tema": "borç",
+   "konu": "Borç ve Sıkıntıdan Korunma Duası"
   },
   {
    "tur": "dua",
@@ -1282,14 +1272,14 @@
   },
   {
    "tur": "hadis",
-   "metin": "Allah'ım! Bilerek ya da bilmeyerek işlediğim günahlarımı, gizli ve açık hatalarımı bağışla.",
-   "kaynak": "Buhârî, Daavât; Müslim, Zikir",
-   "vakit": "aksam"
+   "metin": "Ey kalpleri evirip çeviren Allah'ım! Kalbimi dinin üzere sabit kıl.",
+   "kaynak": "Tirmizî, Daavât"
   },
   {
    "tur": "hadis",
-   "metin": "Ey kalpleri evirip çeviren Allah'ım! Kalbimi dinin üzere sabit kıl.",
-   "kaynak": "Tirmizî, Daavât"
+   "metin": "Allah'ım! Bilerek ya da bilmeyerek işlediğim günahlarımı, gizli ve açık hatalarımı bağışla.",
+   "kaynak": "Buhârî, Daavât; Müslim, Zikir",
+   "vakit": "aksam"
   },
   {
    "tur": "hadis",
@@ -1334,6 +1324,13 @@
    "kaynak": "Buhârî, Daavât, 6306",
    "tur": "hadis",
    "konu": "Seyyidü'l-İstiğfâr"
+  },
+  {
+   "tur": "hadis",
+   "metin": "Rabbim! Beni bağışla, tövbemi kabul et. Şüphesiz sen tövbeleri çok kabul eden, çok merhamet edensin.",
+   "kaynak": "Tirmizî, Daavât, 3434",
+   "okunus": "Rabbiğfir lî ve tüb aleyye, inneke ente't-Tevvâbü'r-Rahîm.",
+   "konu": "Tövbe Duası"
   }
  ],
  "cuma": [
@@ -1427,5 +1424,13 @@
   "2026-12-10": "regaip",
   "2027-01-04": "mirac",
   "2027-01-22": "berat"
- }
+ },
+ "arsiv": [
+  {
+   "tur": "ayet",
+   "metin": "Üç peygamber, üç dua: Hz. İbrahim ateşe atılırken \"Hasbünallahu ve ni'mel vekîl\" dedi. Hz. Yunus karanlıklar içinde \"Lâ ilâhe illâ ente sübhâneke innî küntü mine'z-zâlimîn\" dedi. Hz. Musa çaresiz kaldığında \"Rabbi innî limâ enzelte ileyye min hayrin fakîr\" dedi.",
+   "kaynak": "Âl-i İmrân 173 · Enbiyâ 87 · Kasas 24",
+   "tema": "dert"
+  }
+ ]
 }

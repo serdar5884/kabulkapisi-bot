@@ -135,7 +135,7 @@ DUALAR = {
 
 # beddua, hakaret, reklam: cevap verilmez
 ATLA = ["beddua", "lanet", "kahrolsun", "geberesi", "ölsün", "belasını", "http", "www.", "takip et", "dm at",
-        "kazan", "bonus", "bahis", "kripto"]
+        "bonus kazan", "para kazan", "bonus", "bahis", "kripto"]
 REKLAM = re.compile(r"\bdm\b|\bdm[' ]?(ye|e|den)\b|mesaj att|istek kutu|isteklere|isteğe bak|bakar ?m[ıi]s[ıi]n[ıi]z|"
                     r"profilime|profilimize|sayfama|bio|link|takipleş|takip ederseniz|gt\b|karşılıklı", re.I)
 SIKCA_AMIN = re.compile(r"^\W*(amin|âmin|amiin|amin+|ecmain|allah kabul etsin|inşallah|insallah)\W*$", re.I)

@@ -108,7 +108,7 @@ def make_card(path, metin, baslik="GÜNÜN DUASI", kaynak=None, date=None, kandi
 
     y = 96 + mh + 34
     ft = font("semibold", 58 if kandil else 36)
-    spaced = " ".join(baslik.upper()) if not kandil else baslik
+    spaced = " ".join(baslik.replace("i", "İ").replace("ı", "I").upper()) if not kandil else baslik
     _center(d, y, spaced, ft, GOLD)
     y += 84 if kandil else 62
     d.line([(W / 2 - 70, y), (W / 2 + 70, y)], fill=GOLD + (170,), width=2)
@@ -175,7 +175,7 @@ def _make_photo_card_v1(path, metin, zemin, baslik="Günün Duası", kaynak=None
         _center(d, y, baslik, font("semibold", 60), GOLD)
         y += 82
     else:
-        _center(d, y, " ".join(baslik.upper()), font("semibold", 38), GOLD)
+        _center(d, y, " ".join(baslik.replace("i", "İ").replace("ı", "I").upper()), font("semibold", 38), GOLD)
         y += 62
     d.line([(W / 2 - 70, y), (W / 2 + 70, y)], fill=GOLD + (190,), width=2)
     d.ellipse([W / 2 - 5, y - 5, W / 2 + 5, y + 5], fill=GOLD)

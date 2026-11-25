@@ -237,6 +237,23 @@ LISTE_BASLANGIC = date(2026, 11, 25)
 LISTE_GUNLER = {int(x) for x in os.getenv("LISTE_GUNLER", "0,2,4").split(",") if x.strip()}   # Pzt, Çar, Cum
 
 
+def dua_reel_sabit_video(gorsel, out, gun, parca=3, sure=4.0):
+    """Tek görseli 3 parça x 4 sn müzikli Reels yapar."""
+    import subprocess
+    muzik = os.path.join(HERE, "ses", "muzik.mp3")
+    bas = [47, 15, 64, 33, 86, 75, 99, 110][gun.toordinal() % 8]
+    gir, f = [], ""
+    for i in range(parca):
+        gir += ["-loop", "1", "-framerate", "30", "-t", str(sure), "-i", gorsel]
+        f += f"[{i}:v]scale=1080:1920,format=yuv420p,setsar=1[v{i}];"
+    f += "".join(f"[v{i}]" for i in range(parca)) + f"concat=n={parca}:v=1:a=0[v]"
+    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", *gir, "-ss", str(bas), "-t", str(parca * sure), "-i", muzik,
+                    "-filter_complex", f, "-map", "[v]", "-map", f"{parca}:a", "-t", str(parca * sure),
+                    "-c:v", "libx264", "-preset", "veryfast", "-tune", "stillimage", "-crf", "20",
+                    "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", out], check=True)
+    return out
+
+
 def liste_gunu(gun):
     return gun.weekday() in LISTE_GUNLER and gun >= LISTE_BASLANGIC
 
@@ -441,6 +458,31 @@ def main():
         print(f"{gun} {vakit} paylaşımı zaten yapıldı, tekrar paylaşılmıyor.")
         return
 
+    if vakit == "sabah" and gun.weekday() == 4 and os.getenv("CUMA_KART", "1") == "1" and not DB.get("kandil_tarihleri", {}).get(gun.isoformat()):
+        import cuma_kart, dua_reel
+        k = os.path.join(brand.OUT_DIR, f"cuma_{gun}")
+        os.makedirs(k, exist_ok=True)
+        no = (gun - date(2026, 11, 27)).days // 7
+        mesaj = cuma_kart.MESAJLAR[no % len(cuma_kart.MESAJLAR)]
+        kart_yol = cuma_kart.kart(os.path.join(k, "cuma.jpg"), mesaj)
+        mp4 = dua_reel_sabit_video(kart_yol, os.path.join(k, "cuma.mp4"), gun)
+        cap = "\n\n".join(["🕌 Hayırlı Cumalar", mesaj, "Âmin yazmayı unutma 🤲\nCuma'nı kutlamak istediğin herkese gönder 💚",
+                            "#hayırlıcumalar #cuma #cumamesajları #amin #kabulkapisi"])
+        print(f"--- {gun} {vakit} [cuma kartı] ---\n{cap}\n---")
+        if DRY_RUN:
+            print("DRY_RUN=1 -> paylaşılmadı:", mp4)
+            return
+        if not insta.enabled():
+            sys.exit(1)
+        insta.publish_reel(mp4, cap, kart_yol)
+        try:
+            insta.publish_story(kart_yol)
+        except Exception as e:
+            print("[insta] hikâye paylaşılamadı:", e)
+        son = (hist.get("paylasilanlar", []) + [anahtar])[-30:]
+        with open(HISTORY_FILE, "w", encoding="utf-8") as f:
+            json.dump({"paylasilanlar": son}, f)
+        return
     if vakit == "ikindi" and os.getenv("LISTE", "1") == "1" and liste_gunu(gun) and os.path.exists(os.path.join(HERE, "listeler.json")):
         kap, lst, mp4, cap = liste_gonderi(gun)   # 17:00: kapak + liste Reels'i
         print(f"--- {gun} {vakit} [liste] ---\n{cap}\n---")

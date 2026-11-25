@@ -101,7 +101,13 @@ def _sec(gun, vakit):
     if havuz is None:
         pass
     elif havuz_adi == "ozel":   # günde 2 özel dua: sabah çift, ikindi tek sıradaki
-        dua = havuz[(gecen * 2 + (1 if vakit == "ikindi" else 0)) % len(havuz)]
+        i = (gecen * 2 + (1 if vakit == "ikindi" else 0)) % len(havuz)
+        dua = havuz[i]
+        if vakit == "ikindi" and gun.weekday() != 4:   # aynı gün sabahla aynı konu gelmesin
+            sabah = _sec(gun, "sabah")[0]
+            while dua.get("tema") and dua.get("tema") == sabah.get("tema"):
+                i = (i + 1) % len(havuz)
+                dua = havuz[i]
     else:
         dua = havuz[gecen % len(havuz)]
     tema_tag = {"borç": ["#borçduası"], "hasta": ["#şifaduası"], "dert": ["#sıkıntıduası"],

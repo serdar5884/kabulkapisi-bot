@@ -1163,6 +1163,149 @@
       "vakit": "sabah",
       "konu": "Bugünü Dünden Hayırlı Eyle",
       "tema": "sabah"
+    },
+    {
+      "tur": "ozgun",
+      "tema": "dert",
+      "metin": "Kelimelerin bittiği yerde bir dua kalır. Rabbim içinden geçenleri en iyi bilendir; yüreğindeki ağırlığı hafifletsin, gönlüne huzur versin.",
+      "konu": "Kelimelerin Bittiği Yerde"
+    },
+    {
+      "tur": "ozgun",
+      "tema": "dert",
+      "metin": "Yorulduysan, kimseye anlatamıyorsan, sadece 'Ya Rab' de. Rabbim işlerini kolaylaştırsın, kalbine sükûnet versin.",
+      "konu": "Yorgun Kalpler İçin Dua"
+    },
+    {
+      "tur": "ozgun",
+      "tema": "dert",
+      "metin": "Rabbim, beklemekten yorulan kalplere sabır, belirsizlikten bunalan gönüllere tevekkül versin. Hayırlısı neyse onu nasip etsin.",
+      "konu": "Bekleyenler İçin Dua"
+    },
+    {
+      "tur": "ozgun",
+      "tema": "dert",
+      "metin": "Rabbim, yükünü kendisine emanet edenlere gönül rahatlığı versin. Bu satırları okuyanın kalbine ferahlık yağdırsın.",
+      "konu": "Emanet Duası"
+    },
+    {
+      "tur": "ozgun",
+      "tema": "dert",
+      "metin": "Yüreğinde ne varsa Rabbim bilsin ve hayırlısını nasip etsin. Sen tevekkül et, dua et, sabret.",
+      "konu": "Tevekkül Duası"
+    },
+    {
+      "tur": "ozgun",
+      "tema": "dert",
+      "metin": "Rabbim, 'dayanamıyorum' dediğin anda sana dayanacak güç, 'bitti' dediğin yerde yeni bir başlangıç nasip etsin.",
+      "konu": "Güç ve Umut Duası"
+    },
+    {
+      "tur": "ozgun",
+      "tema": "dert",
+      "metin": "Gözyaşların boşa akmasın. Rabbim her damlasını rahmetine katsın, kalbindeki acıyı ferahlığa çevirsin.",
+      "konu": "Gözyaşı Duası"
+    },
+    {
+      "tur": "ozgun",
+      "tema": "dert",
+      "metin": "Kalbin kırıksa Rabbim onarsın, yorgunsa dinlendirsin. Kimsenin duymadığı sesini O duysun, sana yetsin.",
+      "konu": "Kırık Kalpler İçin Dua"
+    },
+    {
+      "tur": "ozgun",
+      "tema": "dert",
+      "metin": "Hayırlı bir haber bekleyen herkese: Rabbim beklemenin yorgunluğunu ferahlığa, merakını müjdeye çevirsin.",
+      "konu": "Müjde Bekleyenler İçin Dua"
+    },
+    {
+      "tur": "ozgun",
+      "tema": "dert",
+      "metin": "Çaresiz hissettiğin bu anda 'Hasbünallah' de, işini O'na bırak. Rabbim yolunu açsın, kalbini rahatlatsın.",
+      "konu": "Hasbünallah Duası"
+    },
+    {
+      "tur": "ozgun",
+      "tema": "dert",
+      "metin": "Sabır kolay değil Rabbim. Sabredenlere güç, bekleyenlere umut, yorulanlara huzur ver.",
+      "konu": "Sabır Duası"
+    },
+    {
+      "tur": "ozgun",
+      "tema": "hasret",
+      "metin": "Allah'ım, uzaktaki sevdiklerimizi koru. Mesafeleri kalplerimizden uzak tut, hasreti hayırlı bir kavuşmaya çevir.",
+      "konu": "Hasret Duası"
+    },
+    {
+      "tur": "ozgun",
+      "tema": "hasret",
+      "metin": "Özlediğin kişiye Rabbim selamet versin; seni ona, onu sana hayırla kavuştursun.",
+      "konu": "Özlem Duası"
+    },
+    {
+      "tur": "ozgun",
+      "tema": "kısmet",
+      "metin": "Rabbim, gönlünde taşıdığın dileği en güzel zamanda, en hayırlı şekilde nasip etsin. Acele ettirmesin, kırgın bırakmasın.",
+      "konu": "Hayırlı Dilek Duası"
+    },
+    {
+      "tur": "ozgun",
+      "tema": "kısmet",
+      "metin": "Kalbine yerleşen hayra Rabbim yol açsın; kapanan kapıların yerine daha hayırlısını açsın.",
+      "konu": "Kapılar Açılsın Duası"
+    },
+    {
+      "tur": "ozgun",
+      "tema": "şükür",
+      "metin": "Rabbim, elimizdeki küçük nimetlerin kıymetini bildirsin; şükrü unutturmasın, nimetini eksik etmesin.",
+      "konu": "Nimet Şükrü Duası"
+    },
+    {
+      "tur": "ozgun",
+      "tema": "şükür",
+      "metin": "Bir nefes daha aldığın, bir sabaha daha uyandığın için şükret. Rabbim şükreden kalpler nasip etsin.",
+      "konu": "Şükreden Kalpler İçin Dua"
+    },
+    {
+      "tur": "ozgun",
+      "tema": "sabah",
+      "metin": "Yeni bir sabah, yeni bir umut. Rabbim bugün sana hayırdan başkasını göstermesin, kalbini sevindirsin.",
+      "konu": "Yeni Umut Duası",
+      "vakit": "sabah"
+    },
+    {
+      "tur": "ozgun",
+      "tema": "sabah",
+      "metin": "Bu sabah bir kişi için dua et. Rabbim ikinizin de gönlünü ferahlatsın.",
+      "konu": "Bir Kişi İçin Dua",
+      "vakit": "sabah"
+    },
+    {
+      "tur": "ozgun",
+      "tema": "gece",
+      "metin": "Bu gece başın yastığa değerken Rabbim bütün endişelerini alsın, yerine huzur bıraksın. İyi geceler.",
+      "konu": "Huzurlu Uyku Duası",
+      "vakit": "aksam"
+    },
+    {
+      "tur": "ozgun",
+      "tema": "gece",
+      "metin": "Günün yorgunluğunu Rabbim bağışlasın; yarına umutla, bereketle ve hayırla uyanmayı nasip etsin.",
+      "konu": "Yarına Hazırlık Duası",
+      "vakit": "aksam"
+    },
+    {
+      "tur": "ozgun",
+      "tema": "gece",
+      "metin": "Gece sessizliğinde ettiğin duaları Rabbim duysun. Sabaha hafiflemiş bir kalple, huzurlu bir yürekle uyan.",
+      "konu": "Gece Sessizliği Duası",
+      "vakit": "aksam"
+    },
+    {
+      "tur": "ozgun",
+      "tema": "aile",
+      "metin": "Rabbim, birbirini yorulmadan seven, birbirine dua eden aileler nasip etsin; yuvalarımızı sevgiyle doldursun.",
+      "konu": "Sevgi Dolu Yuvalar Duası"
     }
   ],
   "kuran": [
@@ -1611,6 +1754,30 @@
     {
       "metin": "Rabbim; dilimizi hamd ile, kalbimizi şükür ile, günümüzü rahmetinle doldur.",
       "tur": "ozgun"
+    },
+    {
+      "tur": "ozgun",
+      "metin": "Bazen kelimeler yetmez, sadece dua edersin. Rabbim yüreğindekileri bilir; bu Cuma gönlünden geçen her hayırlı dileği nasip etsin."
+    },
+    {
+      "tur": "ozgun",
+      "metin": "Rabbim; bu Cuma sessiz dualarını duysun, yorgun kalbine huzur, yoluna kolaylık versin."
+    },
+    {
+      "tur": "ozgun",
+      "metin": "Allah'ım; bu mübarek günde kalbi kırık olanlara teselli, umudunu yitirenlere ferahlık, yalnız kalanlara dost ver."
+    },
+    {
+      "tur": "ozgun",
+      "metin": "Rabbim; Cuma'nın bereketiyle ağır yüklerini hafiflet, kapanan kapıların yerine hayırlısını aç."
+    },
+    {
+      "tur": "ozgun",
+      "metin": "Allah'ım; bu Cuma sabrımızı güçlendir, tevekkülümüzü artır, dualarımızı hayırla sonuçlandır."
+    },
+    {
+      "tur": "ozgun",
+      "metin": "Rabbim; gönlünden geçip de dilinin söyleyemediği her hayırlı duayı bu Cuma kabul eylesin."
     }
   ],
   "kandil": {

@@ -156,4 +156,10 @@ MESAJLAR = [
     "Allah'ım; bu Cuma'yı bizim için rahmet, mağfiret ve kurtuluş vesilesi eyle.",
     "Rabbim; Cuma'nın sükûneti kalbine, bereketi rızkına, nuru yüzüne yansısın.",
     "Allah'ım; bu Cuma gününde bizi affettiğin ve duasını kabul ettiğin kullarından eyle.",
+    "Bazen kelimeler yetmez, sadece dua edersin. Rabbim yüreğindekileri bilir; bu Cuma gönlünden geçen her hayırlı dileği nasip etsin.",
+    "Rabbim; bu Cuma sessiz dualarını duysun, yorgun kalbine huzur, yoluna kolaylık versin.",
+    "Allah'ım; bu mübarek günde kalbi kırık olanlara teselli, umudunu yitirenlere ferahlık, yalnız kalanlara dost ver.",
+    "Rabbim; Cuma'nın bereketiyle ağır yüklerini hafiflet, kapanan kapıların yerine hayırlısını aç.",
+    "Allah'ım; bu Cuma sabrımızı güçlendir, tevekkülümüzü artır, dualarımızı hayırla sonuçlandır.",
+    "Rabbim; gönlünden geçip de dilinin söyleyemediği her hayırlı duayı bu Cuma kabul eylesin.",
 ]

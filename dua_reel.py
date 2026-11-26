@@ -129,6 +129,16 @@ TEMA_KANCA = {"çocuk": "Evladın için 10 saniyeni ayır", "hasta": "Hastan iç
 
 
 def kanca(dua):
+    t = dua.get("metin", "").lower()
+    if dua.get("tema") == "aile":   # "Ailen için oku" çok genel kalıyordu; duanın asıl konusuna göre netleştir
+        if any(k in t for k in ("eşim", "eşin", "eşlerin", "eşimle")):
+            return "Eşi için dua etmek isteyen birine gönder"
+        if "anne" in t and "baba" in t:
+            return "Anne babası için dua isteyen biri için oku"
+        if any(k in t for k in ("yuva", "evine", "evimiz", "evinde", "sofra")):
+            return "Evinde huzur istiyorsan oku"
+        if any(k in t for k in ("kardeş", "akraba", "küs")):
+            return "Gönül koparmak istemeyen birine gönder"
     return TEMA_KANCA.get(dua.get("tema"), "10 saniyeni ayır, âmin de")
 
 

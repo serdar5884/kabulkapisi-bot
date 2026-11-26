@@ -89,9 +89,11 @@ def _sec(gun, vakit):
     havuz_adi = VAKIT_HAVUZ[vakit]
     if vakit in ("ogle", "aksam"):   # gün aşırı yer değiştirir: çift gün öğle Kur'an/akşam hadis, tek gün tersi
         havuz_adi = ("kuran", "hadis")[(gecen + (vakit == "aksam")) % 2]
+    if vakit == "ikindi" and gun.weekday() != 4 and gecen % 2 == 1:   # tek günlerde ikindi de kaynaklı: ayet/hadis dönüşümlü
+        havuz_adi = ("kuran", "hadis")[(gecen // 2) % 2]
     if havuz_adi in ("kuran", "hadis"):   # sıra her gün bir ilerler; öğleye akşam duası düşerse sonrakine geç
         liste = DB[havuz_adi]
-        i = gecen % len(liste)
+        i = (gecen + (len(liste) // 2 if vakit == "ikindi" else 0)) % len(liste)   # ikindi, aynı günün öğle/akşamıyla aynı duaya düşmesin
         while liste[i].get("vakit") in zit:
             i = (i + 1) % len(liste)
         dua = liste[i]

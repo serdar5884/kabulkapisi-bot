@@ -407,8 +407,8 @@ def main():
             sys.exit(1)
         yorum.calistir(dry_run=DRY_RUN)
         return
-    if MODE == "sabit":   # sabit/ klasöründeki tanıtım Reels'ini bir kez paylaşır
-        d = os.path.join(HERE, "sabit")
+    if MODE == "sabit":   # sabit/ (ya da liste girdisinde adı verilen) klasördeki Reels'i bir kez paylaşır
+        d = os.path.join(HERE, os.getenv("LISTE_SEC") or "sabit")
         cap = open(os.path.join(d, "aciklama.txt"), encoding="utf-8").read().strip()
         if DRY_RUN:
             print("DRY_RUN=1 -> sabit gönderi paylaşılmadı"); return
